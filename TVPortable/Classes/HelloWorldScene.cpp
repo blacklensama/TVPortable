@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 
+#include "../Visual/Layer.h"
+
 USING_NS_CC;
 
 CCScene* HelloWorld::scene()
@@ -9,9 +11,13 @@ CCScene* HelloWorld::scene()
 	
 	// 'layer' is an autorelease object
 	HelloWorld *layer = HelloWorld::node();
+    
+    TVPortable::Visual::Layer* c_layer = TVPortable::Visual::Layer::LayerWithClippingRect(CCRect(0, 0, 128, 128));
+    
+    c_layer->addChild(layer);
 
 	// add layer as a child to scene
-	scene->addChild(layer);
+	scene->addChild(c_layer);
 
 	// return the scene
 	return scene;
