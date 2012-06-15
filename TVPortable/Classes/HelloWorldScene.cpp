@@ -15,6 +15,7 @@ CCScene* HelloWorld::scene()
     TVPortable::Visual::Layer* c_layer = TVPortable::Visual::Layer::LayerWithClippingRect(CCRect(0, 0, 128, 128));
     
     c_layer->addChild(layer);
+    c_layer->focus();
 
 	// add layer as a child to scene
 	scene->addChild(c_layer);

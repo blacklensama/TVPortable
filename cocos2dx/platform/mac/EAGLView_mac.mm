@@ -38,6 +38,7 @@
 #import "CCSet.h"
 #import "CCTouch.h"
 #import "CCIMEDispatcher.h"
+#import "CCEventDispatcher.h"
 
 
 #define MAX_TOUCHES     11
@@ -97,8 +98,8 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 //             GLint order = -1;
 //             [[self openGLContext] setValues:&order forParameter:NSOpenGLCPSurfaceOrder];
 		
-		// event delegate
-		eventDelegate_ = nil;		
+		// event delegate;	
+        eventDelegate_ = [CCEventDispatcher sharedDispatcher];
 	}
 	
 	touchesIntergerDict = CFDictionaryCreateMutable(kCFAllocatorDefault, 4, NULL, NULL);
@@ -195,9 +196,9 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-#if 0
+//#if 0
 	DISPATCH_EVENT(theEvent, _cmd);
-#else
+//#else
 	cocos2d::CCSet set;
     cocos2d::CCTouch *pTouch;
 
@@ -228,7 +229,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 	set.addObject(pTouch);
 	
 	cocos2d::CCDirector::sharedDirector()->getOpenGLView()->touchesBegan(&set);
-#endif
+//#endif
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent
@@ -238,9 +239,9 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-#if 0
+//#if 0
 	DISPATCH_EVENT(theEvent, _cmd);
-#else
+//#else
 	cocos2d::CCSet set;
 	
 	NSNumber *index = (NSNumber*)CFDictionaryGetValue(touchesIntergerDict, [NSNumber numberWithInt:11]);
@@ -265,14 +266,14 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 	set.addObject(pTouch);
 	
 	cocos2d::CCDirector::sharedDirector()->getOpenGLView()->touchesMoved(&set);	
-#endif
+//#endif
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-#if 0
+//#if 0
 	DISPATCH_EVENT(theEvent, _cmd);
-#else
+//#else
 	cocos2d::CCSet set;
 	
 	NSNumber *index = (NSNumber*)CFDictionaryGetValue(touchesIntergerDict, [NSNumber numberWithInt:11]);
@@ -306,7 +307,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 		cocos2d::CCTouch* pTouch = (cocos2d::CCTouch*)(*iter);
 		pTouch->release();
 	}	
-#endif
+//#endif
 }
 
 - (void)rightMouseDown:(NSEvent *)theEvent {
@@ -344,6 +345,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 -(void) scrollWheel:(NSEvent *)theEvent {
 	DISPATCH_EVENT(theEvent, _cmd);
 }
+
 
 #pragma mark EAGLView - Key events
 

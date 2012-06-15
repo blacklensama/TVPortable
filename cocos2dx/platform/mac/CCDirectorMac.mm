@@ -55,6 +55,7 @@
 #include "CCAnimationCache.h"
 #include "CCTouch.h"
 #include "CCScriptSupport.h"
+#include "CCEventDispatcher.h"
 
 #include "EAGLView_mac.h"
 
@@ -320,6 +321,8 @@ void CCDisplayLinkDirectorMac::drawScene(void)
 	{
 		showFPS();
 	}
+    
+    [[CCEventDispatcher sharedDispatcher] dispatchQueuedEvents];
 	
 //	if (m_pWatcherFun && m_pWatcherSender)
 //	{

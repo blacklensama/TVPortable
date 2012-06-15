@@ -13,6 +13,9 @@
 
 #include "../Predefine.h"
 
+#include "CCInputDispatcher.h"
+#include "CCInputListener.h"
+
 namespace TVPortable {
     
     namespace Visual {
@@ -44,7 +47,11 @@ namespace TVPortable {
         /**
          krkr Layer
          **/
-        class Layer: public cocos2d::CCTouchDelegate, public cocos2d::CCNode {
+        class Layer: public cocos2d::CCTargetedTouchDelegate, public cocos2d::CCInputListener, public cocos2d::CCNode {
+        public:
+            Layer();
+            virtual ~Layer();
+            
         public:
             /* properties */
             /**
@@ -52,6 +59,8 @@ namespace TVPortable {
              **/
             TVP_PROPERTY(ClippingRect, cocos2d::CCRect);
             TVP_PROPERTY(Image, cocos2d::CCSprite);
+            TVP_PROPERTY(Focused, bool);
+            TVP_PROPERTY(CallOnPaint, bool);
             
         public:
             /* CCTouchDelegate */
@@ -59,10 +68,6 @@ namespace TVPortable {
             virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
             virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) ;
             virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-            virtual void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
-            virtual void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
-            virtual void ccTouchesEnded(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
-            virtual void ccTouchesCancelled(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
             
             /* CCNode */
             virtual void visit();
@@ -70,6 +75,11 @@ namespace TVPortable {
             virtual void onEnter();
             virtual void onExit();
             
+            /* CCInputListener */
+            virtual bool onMouseEvent(const cocos2d::CCMouseEvent& evt);
+            virtual bool onKeyEvent(const cocos2d::CCKeyEvent& evt);
+            virtual bool onJoystickEvent(const cocos2d::CCJoyStickEvent& evt);
+
         public:
             /* krkr2 Layer methods */
             void adjustGamma(float rgamma = 1.0, // 0.0 ~ 1.0 ~ 9.0
@@ -141,6 +151,7 @@ namespace TVPortable {
             void stopTransition();
             
             void update(float left, float top, float width, float height);
+            
             
         public:
             /* krkr2 Layer events */
