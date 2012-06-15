@@ -35,7 +35,7 @@ namespace TVPortable {
              convert origin point to upper-left and set scissor rect
              */
             CCEGLView::sharedOpenGLView().setScissorInPoints(mClippingRect.origin.x + getPosition().x, 
-                                                             CCDirector::sharedDirector()->getWinSize().height - (mClippingRect.origin.y + getPosition().y),
+                                                             CCDirector::sharedDirector()->getWinSize().height - (mClippingRect.origin.y + getPosition().y) - mClippingRect.size.height,
                                                              mClippingRect.size.width,
                                                              mClippingRect.size.height);
             
