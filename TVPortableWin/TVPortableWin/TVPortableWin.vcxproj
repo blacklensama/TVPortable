@@ -54,7 +54,6 @@
     <ClInclude Include="..\..\TVPortable\Predefine.h" />
     <ClInclude Include="..\..\TVPortable\Type.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Layer.h" />
-    <ClInclude Include="..\..\TVPortable\Visual\Predefine.h" />
     <ClInclude Include="..\..\UKN\AppleStuff.h" />
     <ClInclude Include="..\..\UKN\Base64.h" />
     <ClInclude Include="..\..\UKN\Basic.h" />

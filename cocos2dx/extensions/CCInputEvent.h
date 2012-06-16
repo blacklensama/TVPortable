@@ -154,13 +154,13 @@ namespace cocos2d {
         };
         
         enum KeyFlag {
-            FlagShift		= 1,
-            FlagCtrl		= 2,
-            FlagAlt			= 4,
-            FlagCapslock	= 8,
-            FlagScrolllock	= 16,
-            FlagNumlock		= 32,
-            FlagRepeat		= 64,
+            FlagShift		= 1 << 0,
+            FlagCtrl		= 1 << 1,
+            FlagAlt			= 1 << 2,
+            FlagCapslock	= 1 << 3,
+            FlagScrolllock	= 1 << 4,
+            FlagNumlock		= 1 << 5,
+            FlagRepeat		= 1 << 6,
         };
     };
     
@@ -190,8 +190,21 @@ namespace cocos2d {
             Release     = 1
         };
     };
+
+	struct CC_DLL CCInputEvent {
+		enum Type {
+			Mouse,
+			Keyboard,
+			Joystick,
+			Touch,
+		};
+
+		CCInputEvent::Type type;
+	};
     
-    struct CC_DLL CCKeyEvent {
+    struct CC_DLL CCKeyEvent: public CCInputEvent {
+		CCKeyEvent() { type = CCInputEvent::Keyboard; }
+
         CCKey::KeyState    state;		// state
         CCKey::KeyCode     key;			// key code
         int                flag;
@@ -211,7 +224,9 @@ namespace cocos2d {
         char toCharCode() const;
     };
     
-    struct CC_DLL CCMouseEvent {
+    struct CC_DLL CCMouseEvent: public CCInputEvent {
+		CCMouseEvent() { type = CCInputEvent::Mouse; }
+
         CCMouse::MouseState   state;
         CCMouse::MouseButton  button;
         
@@ -224,7 +239,9 @@ namespace cocos2d {
         int  deltaY;
     };
     
-    struct CC_DLL CCJoyStickEvent {
+    struct CC_DLL CCJoyStickEvent: public CCInputEvent {
+		CCJoyStickEvent() { type = CCInputEvent::Joystick; }
+
         CCJoyStick::JoyStickState     flag;
         CCJoyStick::JoyStickButton    button;
     };

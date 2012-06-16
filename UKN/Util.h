@@ -110,7 +110,7 @@ namespace ukn {
             }
             
             IEnumerator<T>* clone() const {
-                return new Array<T>::Enumerator(mParent);
+                return new typename Array<T>::Enumerator(mParent);
             }
             
             const T& current() const {

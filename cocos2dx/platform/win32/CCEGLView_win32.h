@@ -30,7 +30,11 @@ THE SOFTWARE.
 #include "CCCommon.h"
 #include "CCGeometry.h"
 
+#include <vector>
+
 NS_CC_BEGIN;
+
+class CCInputEvent;
 
 class CCSet;
 class CCTouch;
@@ -80,9 +84,13 @@ public:
     */
     static CCEGLView& sharedOpenGLView();
 
+	void dispatchInputEvents();
+
 protected:
 
 private:
+	std::vector	<CCInputEvent*> m_InputEventQueue;
+	void _buildEvent(int type, int key, int scan, int flags, int x, int y);
 
     bool                m_bCaptured;
 	bool				m_bOrientationReverted;

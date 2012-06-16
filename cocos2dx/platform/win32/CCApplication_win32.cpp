@@ -64,6 +64,8 @@ int CCApplication::run()
             {
                 nLast.QuadPart = nNow.QuadPart;
                 CCDirector::sharedDirector()->mainLoop();
+
+				mainWnd.dispatchInputEvents();
             }
             else
             {

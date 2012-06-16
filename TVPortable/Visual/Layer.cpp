@@ -113,12 +113,21 @@ namespace TVPortable {
                     case CCMouse::Enter:
                     case CCMouse::Leave:
                     case CCMouse::Press:
+						
+                        printf("Mouse down !!!!!, with button %d\n", evt.button);
+                        break;
+
                     case CCMouse::Release:
+						printf("Mouse Release !!!!!, with button %d\n", evt.button);
+                        break;
+
                     case CCMouse::Wheel:
+						printf("Mouse Wheel !!!!!, with wheel %d\n", evt.wheel);
+                        break;
+
                     case CCMouse::Drag:
                     case CCMouse::Move:
-                        printf("Mouse down !!!!!, with eve %d\n", evt.state);
-                        break;
+						break;
                 }
                 return true;
             }
@@ -128,7 +137,13 @@ namespace TVPortable {
         bool Layer::onKeyEvent(const cocos2d::CCKeyEvent& evt) {
             if(mFocused) {
                 switch(evt.state) {
-                    
+				case CCKey::Press:
+                    printf("Key down !!!!!, with button %d, char: %c\n", evt.key, evt.toCharCode());
+                        break;
+
+				case CCKey::Release:
+					printf("Key Up !!!!!, with button %d, char: %c\n", evt.key, evt.toCharCode());
+                        break;
                 }
             }
             return false;

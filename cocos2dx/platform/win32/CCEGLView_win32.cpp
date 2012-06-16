@@ -36,6 +36,8 @@ THE SOFTWARE.
 #include "CCKeypadDispatcher.h"
 #include "CCApplication.h"
 
+#include "../../extensions//CCInputDispatcher.h"
+
 NS_CC_BEGIN;
 
 //////////////////////////////////////////////////////////////////////////
@@ -271,6 +273,123 @@ bool CCEGLView::Create(LPCTSTR pTitle, int w, int h)
 	return bRet;
 }
 
+inline int _build_event_flag() {
+	static unsigned char kbstate[256];
+	GetKeyboardState(kbstate);
+
+	int flags = 0;
+	if(kbstate[VK_SHIFT] & 0x80) flags |= CCKey::FlagShift;
+	if(kbstate[VK_CONTROL] & 0x80) flags |= CCKey::FlagCtrl;
+	if(kbstate[VK_MENU] & 0x80) flags |= CCKey::FlagAlt;
+	if(kbstate[VK_CAPITAL] & 0x1) flags |= CCKey::FlagCapslock;
+	if(kbstate[VK_SCROLL] & 0x1) flags |= CCKey::FlagScrolllock;
+	if(kbstate[VK_NUMLOCK] & 0x1) flags |= CCKey::FlagNumlock;
+
+	return flags;
+}
+
+enum _event_type {
+	INPUT_MOUSEWHEEL,
+	INPUT_MOUSEUP,
+	INPUT_MOUSEMOVE,
+	INPUT_MOUSEDOWN,
+	INPUT_KEYDOWN,
+	INPUT_KEYUP,
+};
+
+void CCEGLView::_buildEvent(int type, int key, int scan, int flags, int x, int y) {
+	switch(type) {
+	case INPUT_MOUSEWHEEL: {
+		CCMouseEvent* mouse_evt = new CCMouseEvent;
+		mouse_evt->x = x;
+		mouse_evt->y = y;
+		mouse_evt->state = CCMouse::Press;
+		mouse_evt->button = CCMouse::Null;
+		mouse_evt->flag = _build_event_flag() | flags;
+		mouse_evt->wheel = key;
+		m_InputEventQueue.push_back(mouse_evt);
+		break;
+						   }
+	case INPUT_MOUSEMOVE: {
+		CCMouseEvent* mouse_evt = new CCMouseEvent;
+		mouse_evt->x = x;
+		mouse_evt->y = y;
+		mouse_evt->state = CCMouse::Move;
+		mouse_evt->button = CCMouse::Null;
+		mouse_evt->flag = _build_event_flag() | flags;
+		mouse_evt->wheel = key;
+		m_InputEventQueue.push_back(mouse_evt);
+		break;
+						  }
+	case INPUT_MOUSEUP: {
+		CCMouseEvent* mouse_evt = new CCMouseEvent;
+		mouse_evt->x = x;
+		mouse_evt->y = y;
+		mouse_evt->state = CCMouse::Release;
+		mouse_evt->button = (CCMouse::MouseButton)key;
+		mouse_evt->flag = _build_event_flag() | flags;
+				
+		m_InputEventQueue.push_back(mouse_evt);
+		break;
+						}
+	case INPUT_MOUSEDOWN: {
+		CCMouseEvent* mouse_evt = new CCMouseEvent;
+		mouse_evt->x = x;
+		mouse_evt->y = y;
+		mouse_evt->state = CCMouse::Press;
+		mouse_evt->button = (CCMouse::MouseButton)key;
+		mouse_evt->flag = _build_event_flag() | flags;
+				
+		m_InputEventQueue.push_back(mouse_evt);
+		break;
+						  }
+	case INPUT_KEYDOWN: {
+		CCKeyEvent* key_evt = new CCKeyEvent;
+		key_evt->flag = _build_event_flag() | flags;
+		key_evt->key = (CCKey::KeyCode)key;
+		key_evt->state = CCKey::Press;
+		key_evt->isIME = false;
+		
+		m_InputEventQueue.push_back(key_evt);
+		break;
+						}
+	case INPUT_KEYUP: {
+		CCKeyEvent* key_evt = new CCKeyEvent;
+		key_evt->flag = _build_event_flag() | flags;
+		key_evt->key = (CCKey::KeyCode)key;
+		key_evt->state = CCKey::Release;
+		key_evt->isIME = false;
+		
+		m_InputEventQueue.push_back(key_evt);
+		break;
+					  }
+	}
+}
+
+void CCEGLView::dispatchInputEvents() {
+	std::vector<CCInputEvent*>::iterator it = m_InputEventQueue.begin();
+	for(; it != m_InputEventQueue.end(); ++it) {
+		CCInputEvent* evt = *it;
+		switch(evt->type) {
+		case CCInputEvent::Mouse:
+			CCInputDispatcher::Instance().publishMouseEvent(*(CCMouseEvent*)evt);
+		
+			break;
+		
+		case CCInputEvent::Keyboard:
+			CCInputDispatcher::Instance().publishKeyboardEvent(*(CCKeyEvent*)evt);
+			
+			break;
+		
+		case CCInputEvent::Joystick:
+			CCInputDispatcher::Instance().publishJoystickEvent(*(CCJoyStickEvent*)evt);
+			
+			break;
+		}
+	}
+	m_InputEventQueue.clear();
+}
+
 LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
 	PAINTSTRUCT ps;
@@ -289,6 +408,13 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
                     (float)(pt.y - m_rcViewPort.top) / m_fScreenScaleFactor);
                 m_pSet->addObject(m_pTouch);
                 m_pDelegate->touchesBegan(m_pSet, NULL);
+
+				_buildEvent(INPUT_MOUSEDOWN, 
+							CCMouse::LeftButton, 
+							0, 
+							0, 
+							m_pTouch->locationInView().x, 
+							m_pTouch->locationInView().y);
             }
 		}
 		break;
@@ -299,6 +425,13 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
             m_pTouch->SetTouchInfo((float)((short)LOWORD(lParam)- m_rcViewPort.left) / m_fScreenScaleFactor,
                 (float)((short)HIWORD(lParam) - m_rcViewPort.top) / m_fScreenScaleFactor);
             m_pDelegate->touchesMoved(m_pSet, NULL);
+
+			_buildEvent(INPUT_MOUSEMOVE, 
+						CCMouse::Null, 
+						0, 
+						0, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
 		}
 		break;
 
@@ -311,6 +444,13 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 			m_pSet->removeObject(m_pTouch);
             ReleaseCapture();
 			m_bCaptured = false;
+
+			_buildEvent(INPUT_MOUSEUP, 
+						CCMouse::LeftButton, 
+						0, 
+						0, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
 		}
 		break;
 	case WM_SIZE:
@@ -334,13 +474,117 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			(*m_lpfnAccelerometerKeyHook)( message,wParam,lParam );
 		}
+		_buildEvent(INPUT_KEYDOWN, 
+					wParam, 
+					HIWORD(lParam) & 0xFF, 
+					lParam & 0x4000000 ? CCKey::FlagRepeat : 0, // repeat flag 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
 		break;
 	case WM_KEYUP:
 		if ( m_lpfnAccelerometerKeyHook!=NULL )
 		{
 			(*m_lpfnAccelerometerKeyHook)( message,wParam,lParam );
 		}
+		_buildEvent(INPUT_KEYUP, 
+					wParam, 
+					HIWORD(lParam) & 0xFF, 
+					lParam & 0x4000000 ? CCKey::FlagRepeat : 0, // repeat flag 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
 		break;
+	case WM_SYSKEYDOWN:
+		_buildEvent(INPUT_KEYDOWN, 
+					wParam, 
+					HIWORD(lParam) & 0xFF, 
+					lParam & 0x4000000 ? CCKey::FlagRepeat : 0, // repeat flag 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_SYSKEYUP:
+		_buildEvent(INPUT_KEYUP, 
+					wParam, 
+					HIWORD(lParam) & 0xFF, 
+					lParam & 0x4000000 ? CCKey::FlagRepeat : 0, // repeat flag 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_MBUTTONDOWN:
+		_buildEvent(INPUT_MOUSEDOWN, 
+					CCMouse::MiddleButton, 
+					0, 
+					0, 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_MBUTTONUP:
+		_buildEvent(INPUT_MOUSEUP, 
+					CCMouse::MiddleButton, 
+					0, 
+					0, 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_RBUTTONDOWN:
+		_buildEvent(INPUT_MOUSEDOWN, 
+					CCMouse::RightButton, 
+					0, 
+					0, 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_RBUTTONUP:
+		_buildEvent(INPUT_MOUSEUP, 
+					CCMouse::RightButton, 
+					0, 
+					0, 
+					m_pTouch->locationInView().x, 
+					m_pTouch->locationInView().y);
+		break;
+
+	case WM_LBUTTONDBLCLK:
+		_buildEvent(INPUT_MOUSEDOWN, 
+						CCMouse::LeftButton, 
+						0, 
+						CCKey::FlagRepeat, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
+		break;
+
+	case WM_RBUTTONDBLCLK:
+		_buildEvent(INPUT_MOUSEDOWN, 
+						CCMouse::RightButton, 
+						0, 
+						CCKey::FlagRepeat, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
+		break;
+
+	case WM_MBUTTONDBLCLK:
+		_buildEvent(INPUT_MOUSEDOWN, 
+						CCMouse::MiddleButton, 
+						0, 
+						CCKey::FlagRepeat, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
+		break;
+
+		// mouse wheel
+	case 0x020A:
+		_buildEvent(INPUT_MOUSEWHEEL, 
+						short(HIWORD(wParam)) / 120, 
+						0, 
+						0, 
+						m_pTouch->locationInView().x, 
+						m_pTouch->locationInView().y);
+		break;
+
+
     case WM_CHAR:
         {
             if (wParam < 0x20)

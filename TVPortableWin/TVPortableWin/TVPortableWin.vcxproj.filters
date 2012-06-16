@@ -312,9 +312,6 @@
     <ClInclude Include="..\..\TVPortable\Visual\Layer.h">
       <Filter>TVPortable\Visual</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\TVPortable\Visual\Predefine.h">
-      <Filter>TVPortable\Visual</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\TVPortable\Predefine.h">
       <Filter>TVPortable</Filter>
     </ClInclude>
