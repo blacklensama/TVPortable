@@ -48,7 +48,7 @@ build for which target platform
 #define CC_PLATFORM_QNX				   8
 #define CC_PLATFORM_MAC	      		   9
 // Determine tartet platform by compile environment macro.
-#define CC_TARGET_PLATFORM             CC_PLATFORM_WIN32
+#define CC_TARGET_PLATFORM             CC_PLATFORM_UNKNOWN
 
 #ifdef __APPLE__
 #include "TargetConditionals.h"

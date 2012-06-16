@@ -389,6 +389,7 @@
 		D42B783E1589A07E00306904 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A71589856C00306904 /* CloseNormal.png */; };
 		D42B783F1589A07E00306904 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A81589856C00306904 /* CloseSelected.png */; };
 		D42B78401589A07E00306904 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AC1589856C00306904 /* HelloWorld.png */; };
+		D4BD9FCF158C828C00E36E39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -993,6 +994,7 @@
 		D42B783015899B7800306904 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		D42B783215899B7F00306904 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		D42B783615899C1900306904 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1000,6 +1002,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BD9FCF158C828C00E36E39 /* AudioToolbox.framework in Frameworks */,
 				D42B78281589976800306904 /* QuartzCore.framework in Frameworks */,
 				D42B78221589963700306904 /* libz.dylib in Frameworks */,
 				D42B7820158995C600306904 /* OpenGLES.framework in Frameworks */,
@@ -1150,6 +1153,7 @@
 		D42B6AD41589843A00306904 = {
 			isa = PBXGroup;
 			children = (
+				D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */,
 				881CE30B158B0CBA00AAC5A5 /* UKN */,
 				D42B6AE91589843A00306904 /* TVPortable */,
 				D42B768E1589849F00306904 /* TVPortableiOS */,
