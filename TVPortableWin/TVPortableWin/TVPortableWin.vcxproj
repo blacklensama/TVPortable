@@ -203,7 +203,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)\..\;$(SolutionDir)\..\tjs2;$(SolutionDir)\..\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)\..\boost;$(SolutionDir)\..\cocos2dx\;$(SolutionDir)\..\cocos2dx\platform;$(SolutionDir)\..\cocos2dx\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\libraries;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\Resources;$(SolutionDir)\libraries;$(LibraryPath)</LibraryPath>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
