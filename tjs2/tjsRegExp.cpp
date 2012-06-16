@@ -127,7 +127,7 @@ public:
 
 	const ttstr & GetRes() const { return res; }
 
-	bool TJS_cdecl Callback(match_results<const tjs_char *> what)
+	bool Callback(match_results<const tjs_char *> what)
 	{
 		// callback on each match
 
@@ -216,7 +216,7 @@ public:
 		}
 	}
 
-	bool TJS_cdecl Callback(match_results<const tjs_char *> what)
+	bool Callback(match_results<const tjs_char *> what)
 	{
 		tjs_int pos = what.position();
 		tjs_int len = what.length();

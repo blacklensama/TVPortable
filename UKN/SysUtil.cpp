@@ -41,13 +41,23 @@ namespace ukn {
 #ifdef UKN_OS_WINDOWS
     
     inline MessageBoxButton ukn_win_message_box(const ukn_string& mssg, const ukn_string& title, int option) {
-        HWND hWnd = (Context::Instance().isAppAvailable() && Context::Instance().getApp().getMainWindowPtr().isValid()) ? Context::Instance().getApp().getMainWindow().getHWnd() : 0;
-        return (MessageBoxButton)MessageBoxA(hWnd, mssg.c_str(), title.c_str(), option);
+        HWND hWnd;
+#ifdef Context
+		hWnd = (Context::Instance().isAppAvailable() && Context::Instance().getApp().getMainWindowPtr().isValid()) ? Context::Instance().getApp().getMainWindow().getHWnd() : 0;
+#else
+		hWnd = 0x0;
+#endif
+		return (MessageBoxButton)::MessageBoxA(hWnd, mssg.c_str(), title.c_str(), option);
     }
     
     inline MessageBoxButton ukn_win_message_box(const ukn_wstring& mssg, const ukn_wstring& title, int option) {
-        HWND hWnd = (Context::Instance().isAppAvailable() && Context::Instance().getApp().getMainWindowPtr().isValid()) ? Context::Instance().getApp().getMainWindow().getHWnd() : 0;
-        return (MessageBoxButton)MessageBoxW(hWnd, mssg.c_str(), title.c_str(), option);
+		HWND hWnd;
+#ifdef Context
+		hWnd = (Context::Instance().isAppAvailable() && Context::Instance().getApp().getMainWindowPtr().isValid()) ? Context::Instance().getApp().getMainWindow().getHWnd() : 0;
+#else
+		hWnd = 0x0;
+#endif
+		return (MessageBoxButton)::MessageBoxW(hWnd, mssg.c_str(), title.c_str(), option);
     }
     
     inline uint32 ukn_win_get_processor_speed() {
@@ -109,7 +119,7 @@ namespace ukn {
         
 		DWORD n = 0;
 		while(EnumDisplaySettings(0, n, &devmode) != 0) {
-			DesktopMode mode;
+			SystemInformation::DesktopMode mode;
             mode.width  = devmode.dmPelsWidth;
             mode.height = devmode.dmPelsHeight;
             mode.bpp    = devmode.dmBitsPerPel;
@@ -122,7 +132,11 @@ namespace ukn {
     
 #endif
     
-    MessageBoxButton MessageBox::Show(const ukn_string& mssg, const ukn_string& title, int option) {
+#ifdef UKN_OS_WINDOWS
+#undef MessageBox
+#endif
+
+    MessageBoxButton ukn::MessageBox::Show(const ukn_string& mssg, const ukn_string& title, int option) {
 #ifdef UKN_OS_WINDOWS
         return ukn_win_message_box(mssg, title, option);
         
@@ -134,7 +148,7 @@ namespace ukn {
         return MBB_OK;
     }
     
-    MessageBoxButton MessageBox::Show(const ukn_wstring& mssg, const ukn_wstring& title, int option) {
+    MessageBoxButton ukn::MessageBox::Show(const ukn_wstring& mssg, const ukn_wstring& title, int option) {
 #ifdef UKN_OS_WINDOWS
         return ukn_win_message_box(mssg, title, option);
         

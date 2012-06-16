@@ -153,7 +153,7 @@ static void TJSUninitStringHeap(void)
 	if(!TJSStringHeapList->empty())
 	{
 		std::vector<tTJSVariantString*>::iterator c;
-		for(c = TJSStringHeapList->end()-1; c >= TJSStringHeapList->begin(); c--)
+		for(c = TJSStringHeapList->end()-1; c > TJSStringHeapList->begin(); c--)
 		{
 			tTJSVariantString *h = *c;
 			for(tjs_int i = 0; i < HEAP_CAPACITY_INC; i++)

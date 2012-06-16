@@ -85,7 +85,7 @@ namespace ukn {
             ukn_string log = String::WStringToString(realLog);
 #ifdef UKN_OS_WINDOWS
             log += "\r\n";
-            mOutputStream->write(log.c_str(), log.size());
+            mOutputStream->write((uint8*)log.c_str(), log.size());
 #else
 			log += "\n";
             mOutputStream->write((uint8*)log.c_str(), log.size());

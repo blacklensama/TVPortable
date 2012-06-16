@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="tjs2">
+      <UniqueIdentifier>{534d47c7-ecc7-4d36-8795-3ddf50470ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="regex">
+      <UniqueIdentifier>{4240da49-58de-4710-9af9-669246c88f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ukn">
+      <UniqueIdentifier>{7b7cdb49-8898-4085-8009-a0464af7b24c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HelloWorldScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AppDelegate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsArray.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsCommHead.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsCompileControl.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsConfig.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsDate.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsDateParser.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsDebug.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsDictionary.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsError.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsError_jp.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsErrorDefs.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsException.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsGlobalStringMap.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsHashSearch.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsInterCodeExec.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsInterCodeGen.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsInterface.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsLex.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsMath.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsMessage.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsMT19937ar-cok.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsNamespace.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsNative.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsObject.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjspp.tab.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsRandomGenerator.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsRegExp.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsScriptBlock.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsScriptCache.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsString.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsTypes.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsUtils.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsVariant.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjsVariantString.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\syntax\tjs.tab.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\syntax\tjsdate.tab.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tjs2\tjs.h">
+      <Filter>tjs2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\regex_src\primary_transform.hpp">
+      <Filter>regex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\AppleStuff.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Base64.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Basic.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Color.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Common.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Convert.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\Bind.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\FunctionBase.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\FunctionDetail.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\FunctionFoward.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\FunctionInclude.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\FunctionTemplate.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\function\Memfun.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\operations\OperationForEach.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\detail\TypeTraits.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Exception.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\FileUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\FSM.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Function.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Hashing.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Interfaces.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Logger.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\MathUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\MemoryUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Platform.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Port.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\PreDeclare.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Preprocessor.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Ptr.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\RandomUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\RefCounted.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\ArrayContainer.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Container.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Field.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Method.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Object.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Serialize.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\Type.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\TypeDatabase.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\TypeInfo.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\reflection\TypeName.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Resource.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Serializer.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Singleton.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Stream.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\StreamWrapper.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\StringUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\SysUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Thread.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\TimeUtil.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Type.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Uncopyable.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\UKN\Util.h">
+      <Filter>ukn</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\main.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AppDelegate.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HelloWorldScene.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsArray.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsCompileControl.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsConfig.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsDate.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsdate.tab.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsDateParser.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsDebug.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsDictionary.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsDisassemble.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsError.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsException.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsGlobalStringMap.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsInterCodeExec.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsInterCodeGen.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsInterface.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsLex.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsMath.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsMessage.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsMT19937ar-cok.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsNamespace.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsNative.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsObject.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjspp.tab.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsRandomGenerator.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsRegExp.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsScriptBlock.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsScriptCache.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsString.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsUtils.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsVariant.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjsVariantString.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjs.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tjs2\tjs.tab.cpp">
+      <Filter>tjs2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\cpp_regex_traits.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\cregex.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\c_regex_traits.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\c_regex_traits_common.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\fileiter.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\instances.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\posix_api.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\regex.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\regex_debug.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\regex_synch.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\w32_regex_traits.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\wide_posix_api.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\regex_src\winstances.cpp">
+      <Filter>regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Base64.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Convert.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\FileUtil.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Hashing.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Logger.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Port.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\reflection\Field.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\reflection\Type.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\reflection\TypeDatabase.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\reflection\TypeRegistration.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Resource.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Serializer.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Stream.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\StreamWrapper.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\StringUtil.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\SysUtil.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Thread.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\UKN\Timeutil.cpp">
+      <Filter>ukn</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -2,76 +2,76 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="base_nodes">
-      <UniqueIdentifier>{f3277e3d-84f3-4840-a31d-8ff5e84dd136}</UniqueIdentifier>
+      <UniqueIdentifier>{99195912-3184-4818-b60f-4d770341b94b}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocoa">
-      <UniqueIdentifier>{ded95344-2130-4fa9-805e-fabeba358bad}</UniqueIdentifier>
+      <UniqueIdentifier>{2020df03-ddbb-411d-bb16-4c734183cabf}</UniqueIdentifier>
     </Filter>
     <Filter Include="effects">
-      <UniqueIdentifier>{21e7592b-d2e3-4f15-a297-2643a81039d8}</UniqueIdentifier>
+      <UniqueIdentifier>{bd0f02b1-3f4d-455e-bd01-8b2d2327ac7b}</UniqueIdentifier>
     </Filter>
     <Filter Include="actions">
-      <UniqueIdentifier>{b2b4d623-4408-4ed7-8063-d62b74b2ecfc}</UniqueIdentifier>
+      <UniqueIdentifier>{b7edcdd7-d923-4c64-88a8-8ffe2e64a567}</UniqueIdentifier>
     </Filter>
     <Filter Include="include">
-      <UniqueIdentifier>{9ddfa14a-82b0-4bff-ad2c-b0b058052e0a}</UniqueIdentifier>
+      <UniqueIdentifier>{c86d32d2-ae88-4ddc-8121-bde0f8affc8c}</UniqueIdentifier>
     </Filter>
     <Filter Include="label_nodes">
-      <UniqueIdentifier>{3f94b0fa-2a3b-4dc7-8cae-67a99257b3c3}</UniqueIdentifier>
+      <UniqueIdentifier>{36ab51ea-13ae-49f4-b66e-c0621a8f2f62}</UniqueIdentifier>
     </Filter>
     <Filter Include="layers_scenes_transitions_nodes">
-      <UniqueIdentifier>{85ad290d-3fd4-47d5-ba1a-87393aabdaba}</UniqueIdentifier>
+      <UniqueIdentifier>{94e88cb5-6a6d-4fe5-917e-31afad30b779}</UniqueIdentifier>
     </Filter>
     <Filter Include="menu_nodes">
-      <UniqueIdentifier>{3b7fd88c-c4fb-47ff-b98c-dc108713390b}</UniqueIdentifier>
+      <UniqueIdentifier>{6ff8e2b3-44dc-4086-b114-58c00ceb6dbb}</UniqueIdentifier>
     </Filter>
     <Filter Include="misc_nodes">
-      <UniqueIdentifier>{493ffcf9-262f-48f5-9572-f4e50773c4fb}</UniqueIdentifier>
+      <UniqueIdentifier>{c8470485-9b3d-4870-b547-2bdf543d3daf}</UniqueIdentifier>
     </Filter>
     <Filter Include="particle_nodes">
-      <UniqueIdentifier>{55b03bf1-9100-489c-89cc-16fad97a8762}</UniqueIdentifier>
+      <UniqueIdentifier>{fa8ec1d8-179c-42ed-940c-ebb8341acb48}</UniqueIdentifier>
     </Filter>
     <Filter Include="platform">
-      <UniqueIdentifier>{55cd28c6-4c82-45a3-906e-542b589f27d4}</UniqueIdentifier>
+      <UniqueIdentifier>{22e4f07e-058c-4594-b090-604ecb37ad86}</UniqueIdentifier>
     </Filter>
     <Filter Include="platform\win32">
-      <UniqueIdentifier>{40a48afa-d5fb-441f-8348-d1014f692256}</UniqueIdentifier>
+      <UniqueIdentifier>{0f8e0090-38f5-49b1-9aaa-e2c36cc4099c}</UniqueIdentifier>
     </Filter>
     <Filter Include="sprite_nodes">
-      <UniqueIdentifier>{751ea16a-d51a-47c4-9884-e3c99db48df9}</UniqueIdentifier>
+      <UniqueIdentifier>{0dd43aaa-c574-402c-85ee-96567cc6faf3}</UniqueIdentifier>
     </Filter>
     <Filter Include="support">
-      <UniqueIdentifier>{9cf46310-2c09-4fc9-91dd-121325dcf34b}</UniqueIdentifier>
+      <UniqueIdentifier>{728e0fdd-b8c8-4853-a53f-8c53b6cb5e7e}</UniqueIdentifier>
     </Filter>
     <Filter Include="support\data_support">
-      <UniqueIdentifier>{47042c62-da04-4ae4-994c-74a064174be8}</UniqueIdentifier>
+      <UniqueIdentifier>{be647a06-1272-4461-902a-3e94d2b94045}</UniqueIdentifier>
     </Filter>
     <Filter Include="support\image_support">
-      <UniqueIdentifier>{a651c933-a7e6-427c-8f32-cd9935cecff7}</UniqueIdentifier>
+      <UniqueIdentifier>{d981adce-d02a-44e4-8e20-976ea349c056}</UniqueIdentifier>
     </Filter>
     <Filter Include="support\zip_support">
-      <UniqueIdentifier>{813dece4-78bf-491d-a851-690b06d3a5a1}</UniqueIdentifier>
+      <UniqueIdentifier>{d5ad71ea-7427-42da-8725-c2ea1d0e6a07}</UniqueIdentifier>
     </Filter>
     <Filter Include="textures">
-      <UniqueIdentifier>{56a87ca1-c62a-4b27-897b-5de4260b3845}</UniqueIdentifier>
+      <UniqueIdentifier>{fd9acf06-b845-4b53-a793-5edf16712f6c}</UniqueIdentifier>
     </Filter>
     <Filter Include="tileMap_parallax_nodes">
-      <UniqueIdentifier>{1bfa95c9-d799-4b42-8861-86f5146db1cc}</UniqueIdentifier>
+      <UniqueIdentifier>{4f5f948a-f164-40eb-9169-2a79ae50f501}</UniqueIdentifier>
     </Filter>
     <Filter Include="touch_dispatcher">
-      <UniqueIdentifier>{572ac5fe-54c6-495d-85b6-0f5f7b903fb7}</UniqueIdentifier>
+      <UniqueIdentifier>{2d13da54-9682-4acd-b1a4-ab60a9d26eb9}</UniqueIdentifier>
     </Filter>
     <Filter Include="keypad_dispatcher">
-      <UniqueIdentifier>{17de5b29-0571-40cb-83dd-1ccdf67b59da}</UniqueIdentifier>
+      <UniqueIdentifier>{d8785c5e-1bee-4fad-87a0-fd9371014ba7}</UniqueIdentifier>
     </Filter>
     <Filter Include="text_input_node">
-      <UniqueIdentifier>{de464353-a149-4cda-85a9-7b1a763f4d66}</UniqueIdentifier>
+      <UniqueIdentifier>{5466b192-bfc4-4eef-a43e-1595c1076c82}</UniqueIdentifier>
     </Filter>
     <Filter Include="script_support">
-      <UniqueIdentifier>{e20bbd88-a111-40c3-9d5d-387a4c9cd4d1}</UniqueIdentifier>
+      <UniqueIdentifier>{55b8414a-5ec0-4294-8abc-80ce665799c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="extensions">
-      <UniqueIdentifier>{35a45df9-e7ee-4fba-b38c-7b1369c3385c}</UniqueIdentifier>
+      <UniqueIdentifier>{884bcb8f-2a79-4b98-aa34-3b6dff6f789b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,9 @@
     <ClCompile Include="..\platform\platform.cpp">
       <Filter>platform</Filter>
     </ClCompile>
+    <ClCompile Include="..\platform\win32\CCAccelerometer_win32.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
     <ClCompile Include="..\platform\win32\CCApplication_win32.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
@@ -288,6 +291,9 @@
     <ClCompile Include="..\textures\CCTextureCache.cpp">
       <Filter>textures</Filter>
     </ClCompile>
+    <ClCompile Include="..\textures\CCTexturePVR.cpp">
+      <Filter>textures</Filter>
+    </ClCompile>
     <ClCompile Include="..\tileMap_parallax_nodes\CCParallaxNode.cpp">
       <Filter>tileMap_parallax_nodes</Filter>
     </ClCompile>
@@ -327,21 +333,15 @@
     <ClCompile Include="..\script_support\CCScriptSupport.cpp">
       <Filter>script_support</Filter>
     </ClCompile>
+    <ClCompile Include="..\extensions\CCNotificationCenter.cpp">
+      <Filter>extensions</Filter>
+    </ClCompile>
     <ClCompile Include="..\CCCamera.cpp" />
     <ClCompile Include="..\CCConfiguration.cpp" />
     <ClCompile Include="..\CCDirector.cpp" />
     <ClCompile Include="..\CCDrawingPrimitives.cpp" />
     <ClCompile Include="..\CCScheduler.cpp" />
     <ClCompile Include="..\cocos2d.cpp" />
-    <ClCompile Include="..\textures\CCTexturePVR.cpp">
-      <Filter>textures</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platform\win32\CCAccelerometer_win32.cpp">
-      <Filter>platform\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\extensions\CCNotificationCenter.cpp">
-      <Filter>extensions</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocoa\CCNS.h">
@@ -509,9 +509,6 @@
     <ClInclude Include="..\include\CCProtocols.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\CCPVRTexture.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\CCRenderTexture.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -557,6 +554,9 @@
     <ClInclude Include="..\include\CCTextureCache.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\CCTexturePVR.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\CCTileMapAtlas.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -579,6 +579,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\CCTouchDispatcher.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\CCTouchHandler.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\CCTransition.h">
@@ -689,15 +692,9 @@
     <ClInclude Include="..\support\zip_support\ZipUtils.h">
       <Filter>support\zip_support</Filter>
     </ClInclude>
-    <ClInclude Include="..\touch_dispatcher\CCTouchHandler.h">
-      <Filter>touch_dispatcher</Filter>
-    </ClInclude>
-    <ClInclude Include="..\CCConfiguration.h" />
-    <ClInclude Include="..\include\CCTexturePVR.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\extensions\CCNotificationCenter.h">
       <Filter>extensions</Filter>
     </ClInclude>
+    <ClInclude Include="..\CCConfiguration.h" />
   </ItemGroup>
 </Project>

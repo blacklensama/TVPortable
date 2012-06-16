@@ -72,6 +72,9 @@ NS_CC_BEGIN;
 // Impliment CCImage
 //////////////////////////////////////////////////////////////////////////
 
+// true?
+bool CCImage::m_bEnabledScale = true;
+
 CCImage::CCImage()
 : m_nWidth(0)
 , m_nHeight(0)
@@ -592,7 +595,9 @@ NS_CC_END;
    It makes a little difference on ios */
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+
 #include "win32/CCImage_win32.cpp"
+
 #endif 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WOPHONE)
