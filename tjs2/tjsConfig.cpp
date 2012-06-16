@@ -16,7 +16,7 @@
 #include <windows.h>
 #endif
 
-#ifdef __WIN32__
+#ifdef _WIN32
 #include "float.h"
 #endif
 
@@ -195,7 +195,7 @@ void TJS_cdecl TJS_debug_out(const tjs_char *format, ...)
 //---------------------------------------------------------------------------
 
 
-#ifdef __WIN32__
+#ifdef _WIN32
 //---------------------------------------------------------------------------
 // Wide<->narrow conversion functions.
 // These functions (Win32 only) are as same as the RTL's, but
@@ -383,7 +383,7 @@ void TJSNativeDebuggerBreak()
 	// debugger, or the program may cause an unhandled debugger breakpoint
 	// exception.
 
-#if defined(__WIN32__) && defined(_M_IX86)
+#if defined(_WIN32) && defined(_M_IX86)
 	#ifdef __BORLANDC__
 			__emit__ (0xcc); // int 3 (Raise debugger breakpoint exception)
 	#else
@@ -397,20 +397,20 @@ void TJSNativeDebuggerBreak()
 //---------------------------------------------------------------------------
 // FPU control
 //---------------------------------------------------------------------------
-#if defined(__WIN32__) && !defined(__GNUC__)
+#if defined(_WIN32) && !defined(__GNUC__)
 static unsigned int TJSDefaultFPUCW = 0;
 static unsigned int TJSNewFPUCW = 0;
 static bool TJSFPUInit = false;
 #endif
 void TJSSetFPUE()
 {
-#if defined(__WIN32__) && !defined(__GNUC__)
+#if defined(_WIN32) && !defined(__GNUC__)
 	if(!TJSFPUInit)
 	{
 		TJSFPUInit = true;
 		TJSDefaultFPUCW = _control87(0, 0);
 
-		_default87 = TJSNewFPUCW = _control87(MCW_EM, MCW_EM);
+		//_default87 = TJSNewFPUCW = _control87(MCW_EM, MCW_EM);
 #ifdef TJS_SUPPORT_VCL
 		Default8087CW = TJSNewFPUCW;
 #endif
@@ -425,7 +425,7 @@ void TJSSetFPUE()
 void TJSRestoreFPUE()
 {
 
-#if defined(__WIN32__) && !defined(__GNUC__)
+#if defined(_WIN32) && !defined(__GNUC__)
 	if(!TJSFPUInit) return;
 	_control87(TJSDefaultFPUCW, 0xffff);
 #endif

@@ -36,19 +36,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\libraries</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\libraries</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/../cocos2dx/platform/third_party/win32/libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
@@ -57,7 +52,7 @@
     </PreBuildEvent>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\platform;..\platform\third_party\win32\iconv;..\platform\third_party\win32\zlib;..\platform\third_party\win32\libpng;..\platform\third_party\win32\libjpeg;..\platform\third_party\win32\pthread;..\platform\third_party\win32\libxml2;..\platform\third_party\win32\pthread;..\platform\third_party\win32\OGLES;..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\platform;..\platform\third_party\win32\iconv;..\platform\third_party\win32\zlib;..\platform\third_party\win32\libpng;..\platform\third_party\win32\libjpeg;..\platform\third_party\win32\libxml2;..\platform\third_party\win32\pthread;..\platform\third_party\win32\OGLES;..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -66,15 +61,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4251;4996;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <PreLinkEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>libEGL.lib;libgles_cm.lib;libxml2.lib;libzlib.lib;libpng.lib;libjpeg.lib;libiconv.lib;pthreadVCE2.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libEGL.lib;libgles_cm.lib;libxml2.lib;libzlib.lib;libpng.lib;libjpeg.lib;libiconv.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -95,19 +89,18 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
       </Command>
     </PreBuildEvent>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\platform;..\platform\third_party\win32\iconv;..\platform\third_party\win32\zlib;..\platform\third_party\win32\libpng;..\platform\third_party\win32\libjpeg;..\platform\third_party\win32\pthread;..\platform\third_party\win32\libxml2;..\platform\third_party\win32\OGLES;..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\platform;..\platform\third_party\win32\iconv;..\platform\third_party\win32\zlib;..\platform\third_party\win32\libpng;..\platform\third_party\win32\libjpeg;..\platform\third_party\win32\libxml2;..\platform\third_party\win32\pthread;..\platform\third_party\win32\OGLES;..\include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4251;4996;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <PreLinkEvent>
-      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
     <Link>
       <AdditionalDependencies>libEGL.lib;libgles_cm.lib;libxml2.lib;libzlib.lib;libpng.lib;libjpeg.lib;libiconv.lib;pthreadVCE2.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -150,7 +143,6 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClCompile Include="..\actions\CCActionPageTurn3D.cpp" />
     <ClCompile Include="..\actions\CCActionProgressTimer.cpp" />
     <ClCompile Include="..\actions\CCActionTiledGrid.cpp" />
-    <ClCompile Include="..\extensions\CCNotificationCenter.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelAtlas.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelBMFont.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelTTF.cpp" />
@@ -214,6 +206,7 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClCompile Include="..\text_input_node\CCIMEDispatcher.cpp" />
     <ClCompile Include="..\text_input_node\CCTextFieldTTF.cpp" />
     <ClCompile Include="..\script_support\CCScriptSupport.cpp" />
+    <ClCompile Include="..\extensions\CCNotificationCenter.cpp" />
     <ClCompile Include="..\CCCamera.cpp" />
     <ClCompile Include="..\CCConfiguration.cpp" />
     <ClCompile Include="..\CCDirector.cpp" />
@@ -225,7 +218,6 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClInclude Include="..\cocoa\CCNS.h" />
     <ClInclude Include="..\effects\CCGrabber.h" />
     <ClInclude Include="..\effects\CCGrid.h" />
-    <ClInclude Include="..\extensions\CCNotificationCenter.h" />
     <ClInclude Include="..\include\CCAccelerometer.h" />
     <ClInclude Include="..\include\CCAccelerometerDelegate.h" />
     <ClInclude Include="..\include\CCAction.h" />
@@ -278,7 +270,6 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClInclude Include="..\include\CCPointExtension.h" />
     <ClInclude Include="..\include\CCProgressTimer.h" />
     <ClInclude Include="..\include\CCProtocols.h" />
-    <ClInclude Include="..\include\CCPVRTexture.h" />
     <ClInclude Include="..\include\CCRenderTexture.h" />
     <ClInclude Include="..\include\CCRibbon.h" />
     <ClInclude Include="..\include\CCScene.h" />
@@ -303,6 +294,7 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClInclude Include="..\include\CCTouch.h" />
     <ClInclude Include="..\include\CCTouchDelegateProtocol.h" />
     <ClInclude Include="..\include\CCTouchDispatcher.h" />
+    <ClInclude Include="..\include\CCTouchHandler.h" />
     <ClInclude Include="..\include\CCTransition.h" />
     <ClInclude Include="..\include\CCTransitionPageTurn.h" />
     <ClInclude Include="..\include\CCTransitionRadial.h" />
@@ -339,7 +331,7 @@ xcopy /Y /Q "$(SolutionDir)cocos2dx\platform\third_party\win32\libraries\*.*" "$
     <ClInclude Include="..\support\zip_support\ioapi.h" />
     <ClInclude Include="..\support\zip_support\unzip.h" />
     <ClInclude Include="..\support\zip_support\ZipUtils.h" />
-    <ClInclude Include="..\touch_dispatcher\CCTouchHandler.h" />
+    <ClInclude Include="..\extensions\CCNotificationCenter.h" />
     <ClInclude Include="..\CCConfiguration.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -45,7 +45,7 @@ const tjs_int TJSVersionRelease = 28;
 const tjs_int TJSVersionHex =
 	TJSVersionMajor * 0x1000000 + TJSVersionMinor * 0x10000 + TJSVersionRelease;
 
-tjs_char TJSCompiledDate[] = TJS_W("" __DATE__ " " __TIME__);
+tjs_char TJSCompiledDate[] = TJS_W("") TEXT(__DATE__)  TEXT(__TIME__);
 	// first empty literal string is to avoid a compile error with bcc which can not
 	// process directly L __DATE__ as a pre-processer wide literal string.
 //---------------------------------------------------------------------------

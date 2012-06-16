@@ -19,7 +19,7 @@ namespace TJS
 //---------------------------------------------------------------------------
 // tTJSCriticalSection ( implement on each platform for multi-threading support )
 //---------------------------------------------------------------------------
-#ifdef __WIN32__
+#ifdef _WIN32
 #include <Windows.h>
 class tTJSCriticalSection
 {
@@ -46,7 +46,7 @@ public:
 // interlocked operation ( implement on each platform for multi-threading support )
 //---------------------------------------------------------------------------
 /*
-#ifdef __WIN32__
+#ifdef _WIN32
 #include <Windows.h>
 
 // we assume that sizeof(tjs_uint) is 4 on TJS2/win32.

@@ -27,7 +27,7 @@ namespace ukn {
     
     namespace reflection {
         
-        class TypeDB: public virtual IEnumerable<Type>, Uncopyable {
+        class TypeDB: public virtual IEnumerable<Type> {
         public:
             static TypeDB& Default();
 

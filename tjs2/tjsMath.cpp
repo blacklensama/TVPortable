@@ -14,7 +14,7 @@
 #include "math.h"
 #include "time.h"
 
-#ifdef __WIN32__
+#if defined(_WIN32) || defined(_WIN32)
 #ifndef TJS_NO_MASK_MATHERR
 	#include "float.h"
 #endif
@@ -25,13 +25,13 @@
 //---------------------------------------------------------------------------
 // these functions invalidate the mathmarical error
 // (other exceptions, like divide-by-zero error, are not to be caught here)
-#if defined(__WIN32__) && !defined(__GNUC__)
+#if (defined(_WIN32) || defined(_WIN32)) && !defined(__GNUC__)
 #ifndef TJS_NO_MASK_MATHERR
-int _USERENTRY _matherr(struct _exception *e)
+int _matherr(struct _exception *e)
 {
 	return 1;
 }
-int _USERENTRY _matherrl(struct _exception *e)
+int _matherrl(struct _exception *e)
 {
 	return 1;
 }
@@ -294,7 +294,6 @@ TJS_BEGIN_NATIVE_METHOD_DECL(/*func. name*/min)
 
 		*result = r;
 	}
-
 	return TJS_S_OK;
 }
 TJS_END_NATIVE_STATIC_METHOD_DECL(/*func. name*/min)

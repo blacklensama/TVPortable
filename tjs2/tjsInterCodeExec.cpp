@@ -2621,7 +2621,7 @@ void tTJSInterCodeContext::ProcessStringFunction(const tjs_char *member,
 			if(pstr) pstr->Release();
 			return;
 		}
-		tjs_char *p;
+		const tjs_char *p;
 		p = ::wcsstr((const tjs_char*)(s + start), (const tjs_char*)*pstr);
 		if(!p)
 		{

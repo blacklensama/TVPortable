@@ -82,17 +82,44 @@ TJS_EXP_FUNC_DEF(size_t, TJS_strlen, (const tjs_char *d));
 	#define TJS_wcstombs wcstombs
 	#define TJS_mbtowc   mbtowc
 	#define TJS_wctomb   wctomb
-#elif __WIN32__
+#elif defined(_WIN32) || defined(_MSC_VER)
+
+#include <stdio.h>
+#include <wchar.h>
+
+#define M_PI            3.14159265358979323846264338327950288
+#define M_2PI           6.28318530717958647692528676655900576
+#define M_3PI_4         2.35619449019234492884698253745962716
+#define M_PI_2          1.57079632679489661923132169163975144
+#define M_3PI_8         1.17809724509617246442349126872981358
+#define M_PI_4          0.78539816339744830961566084581987572
+#define M_PI_8          0.39269908169872415480783042290993786
+#define M_1_PI          0.31830988618379067153776752674502872
+#define M_2_PI          0.63661977236758134307553505349005744
+#define M_4_PI          1.27323954473516268615107010698011488
+#define M_E             2.71828182845904523536028747135266250
+#define M_LOG2E         1.44269504088896340735992468100189213
+#define M_LOG10E        0.43429448190325182765112891891660508
+#define M_LN2           0.69314718055994530941723212145817657
+#define M_LN10          2.30258509299404568401799145468436421
+#define M_SQRT2         1.41421356237309504880168872420969808
+#define M_1_SQRT2       0.70710678118654752440084436210484904
+#define M_EULER         0.57721566490153286060651209008240243
+
 	#define TJS_cdecl __cdecl
-	#define TJS_vsnprintf		vsnwprintf
+	#define TJS_vsnprintf		_vsnwprintf
 	#define TJS_sprintf			swprintf
 	#define TJS_timezone _timezone
-	#define TJS_rand _lrand
-	#define TJS_RAND_MAX LRAND_MAX
+	#define TJS_rand rand
+	#define TJS_RAND_MAX RAND_MAX
 	extern size_t TJS_mbstowcs(tjs_char *pwcs, const tjs_nchar *s, size_t n);
 	extern size_t TJS_wcstombs(tjs_nchar *s, const tjs_char *pwcs, size_t n);
 	extern int TJS_mbtowc(tjs_char *pwc, const tjs_nchar *s, size_t n);
 	extern int TJS_wctomb(tjs_nchar *s, tjs_char wc);
+
+	#pragma warning(disable:4800) // force bool
+	#pragma warning(disable:4099) // class & struct
+	#pragma warning(disable:4996) // _s c functions instead
 #endif
 
 
