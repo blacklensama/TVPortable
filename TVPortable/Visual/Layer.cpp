@@ -8,6 +8,12 @@
 
 #include "Layer.h"
 
+#ifdef _MSC_VER
+#include <GLES/gl.h>
+
+#pragma comment(lib, "libgles_cm.lib")
+#endif
+
 namespace TVPortable {
     
     namespace Visual {
@@ -40,6 +46,7 @@ namespace TVPortable {
                                                              mClippingRect.size.height);
             
             CCNode::visit();
+
             glDisable(GL_SCISSOR_TEST);
             glPopMatrix();
         }
@@ -188,19 +195,19 @@ namespace TVPortable {
         }
         
         Layer* Layer::getLayerAt(float x, float y, bool exclude_self/* = false*/, bool get_disabled/* = false*/) {
-            
+            return 0;
         }
         
         uint32 Layer::getMainPixel(int x, int y) {
-            
+            return 0;
         }
         
         uint32 Layer::getMaskPixel(int x, int y) {
-            
+            return 0;
         }
         
         uint32 Layer::getProvincePixel(int x, int y) {
-            
+            return 0;
         }
         
         void Layer::independMainImage(bool copy/* = true*/) {

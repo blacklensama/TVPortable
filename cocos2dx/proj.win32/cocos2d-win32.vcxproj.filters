@@ -342,6 +342,15 @@
     <ClCompile Include="..\CCDrawingPrimitives.cpp" />
     <ClCompile Include="..\CCScheduler.cpp" />
     <ClCompile Include="..\cocos2d.cpp" />
+    <ClCompile Include="..\extensions\CCInputDispatcher.cpp">
+      <Filter>extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\extensions\CCInputEvent.cpp">
+      <Filter>extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\extensions\CCInputListener.cpp">
+      <Filter>extensions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocoa\CCNS.h">
@@ -696,5 +705,14 @@
       <Filter>extensions</Filter>
     </ClInclude>
     <ClInclude Include="..\CCConfiguration.h" />
+    <ClInclude Include="..\extensions\CCInputDispatcher.h">
+      <Filter>extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\extensions\CCInputEvent.h">
+      <Filter>extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\extensions\CCInputListener.h">
+      <Filter>extensions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

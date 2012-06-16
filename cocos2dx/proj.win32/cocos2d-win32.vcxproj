@@ -40,7 +40,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\libraries</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\Resources\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\..\TVPortable\Resources\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)/../cocos2dx/platform/third_party/win32/libraries;$(LibraryPath)</LibraryPath>
@@ -145,6 +145,9 @@
     <ClCompile Include="..\actions\CCActionPageTurn3D.cpp" />
     <ClCompile Include="..\actions\CCActionProgressTimer.cpp" />
     <ClCompile Include="..\actions\CCActionTiledGrid.cpp" />
+    <ClCompile Include="..\extensions\CCInputDispatcher.cpp" />
+    <ClCompile Include="..\extensions\CCInputEvent.cpp" />
+    <ClCompile Include="..\extensions\CCInputListener.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelAtlas.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelBMFont.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelTTF.cpp" />
@@ -220,6 +223,9 @@
     <ClInclude Include="..\cocoa\CCNS.h" />
     <ClInclude Include="..\effects\CCGrabber.h" />
     <ClInclude Include="..\effects\CCGrid.h" />
+    <ClInclude Include="..\extensions\CCInputDispatcher.h" />
+    <ClInclude Include="..\extensions\CCInputEvent.h" />
+    <ClInclude Include="..\extensions\CCInputListener.h" />
     <ClInclude Include="..\include\CCAccelerometer.h" />
     <ClInclude Include="..\include\CCAccelerometerDelegate.h" />
     <ClInclude Include="..\include\CCAction.h" />

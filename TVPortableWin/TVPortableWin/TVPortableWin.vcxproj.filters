@@ -22,15 +22,18 @@
     <Filter Include="ukn">
       <UniqueIdentifier>{7b7cdb49-8898-4085-8009-a0464af7b24c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TVPortable">
+      <UniqueIdentifier>{fbfa087f-2fd4-4986-a39e-ce134d82ce41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TVPortable\Visual">
+      <UniqueIdentifier>{7ae196b4-aa19-42a3-a7c4-258a8fde89bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TVPortable\Classes">
+      <UniqueIdentifier>{74007307-ada7-4e2b-9924-44fce8465ef3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HelloWorldScene.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\main.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\AppDelegate.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\tjs2\tjsArray.h">
@@ -306,15 +309,27 @@
     <ClInclude Include="..\..\UKN\Util.h">
       <Filter>ukn</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Layer.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Predefine.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Predefine.h">
+      <Filter>TVPortable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Type.h">
+      <Filter>TVPortable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Classes\HelloWorldScene.h">
+      <Filter>TVPortable\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Classes\AppDelegate.h">
+      <Filter>TVPortable\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\AppDelegate.cpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HelloWorldScene.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tjs2\tjsArray.cpp">
@@ -508,6 +523,15 @@
     </ClCompile>
     <ClCompile Include="..\..\UKN\Timeutil.cpp">
       <Filter>ukn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\Layer.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Classes\AppDelegate.cpp">
+      <Filter>TVPortable\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Classes\HelloWorldScene.cpp">
+      <Filter>TVPortable\Classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

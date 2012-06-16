@@ -9,13 +9,15 @@
 #ifndef TVPortable_CCKeyboardEvent_h
 #define TVPortable_CCKeyboardEvent_h
 
+#include "cocos2d.h"
+
 namespace cocos2d {
     
     /**
      Original Input classes from Project Unknown
      **/
     // mouse
-    struct CCMouse {
+    struct CC_DLL CCMouse {
         enum MouseButton {
             Null = -1,
             
@@ -36,7 +38,7 @@ namespace cocos2d {
     };
     
     // keyboard
-    struct CCKey {
+    struct CC_DLL CCKey {
         enum KeyCode {
             Null = -1,
             
@@ -163,7 +165,7 @@ namespace cocos2d {
     };
     
     // joystick
-    struct CCJoyStick {
+    struct CC_DLL CCJoyStick {
         enum JoyStickButton {
             Joystick1 = 0,
             Joystick2,
@@ -189,7 +191,7 @@ namespace cocos2d {
         };
     };
     
-    struct CCKeyEvent {
+    struct CC_DLL CCKeyEvent {
         CCKey::KeyState    state;		// state
         CCKey::KeyCode     key;			// key code
         int                flag;
@@ -209,7 +211,7 @@ namespace cocos2d {
         char toCharCode() const;
     };
     
-    struct CCMouseEvent {
+    struct CC_DLL CCMouseEvent {
         CCMouse::MouseState   state;
         CCMouse::MouseButton  button;
         
@@ -222,7 +224,7 @@ namespace cocos2d {
         int  deltaY;
     };
     
-    struct CCJoyStickEvent {
+    struct CC_DLL CCJoyStickEvent {
         CCJoyStick::JoyStickState     flag;
         CCJoyStick::JoyStickButton    button;
     };

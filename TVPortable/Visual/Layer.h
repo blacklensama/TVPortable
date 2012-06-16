@@ -13,8 +13,8 @@
 
 #include "../Predefine.h"
 
-#include "CCInputDispatcher.h"
-#include "CCInputListener.h"
+#include "extensions/CCInputDispatcher.h"
+#include "extensions/CCInputListener.h"
 
 namespace TVPortable {
     

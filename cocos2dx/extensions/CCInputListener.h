@@ -17,7 +17,7 @@ namespace cocos2d {
      Simple listener class
      */
     
-    class CCInputListener {
+    class CC_DLL CCInputListener {
     public:
         CCInputListener():mPriority(0) { }
         virtual ~CCInputListener() { }

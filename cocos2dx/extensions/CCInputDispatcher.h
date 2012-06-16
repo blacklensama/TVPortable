@@ -20,7 +20,7 @@ namespace cocos2d {
      Simple Singleton dispatcher for input events on desktop
      you should add support by yourself in platform specific codes
      */
-    class CCInputDispatcher {
+    class CC_DLL CCInputDispatcher {
     public:
         // singleton instance
         static CCInputDispatcher& Instance(); 
