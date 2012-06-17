@@ -18,4 +18,14 @@
         type get##prop() const { return m##prop; } \
         void set##prop(type val) { m##prop = val; } 
 
+#define TVP_PROPERTY_READ_ONLY(prop, type) \
+    private: \
+        type m##prop; \
+    public: \
+        type get##prop() const { return m##prop; } \
+
+#define TVP_PROPERTY_GETTER_SETTER(prop, type, accessor) \
+    type get##prop() const { return accessor; } \
+    void set##prop(type val) { accessor = val; }
+
 #endif

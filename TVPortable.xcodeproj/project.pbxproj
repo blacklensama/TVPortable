@@ -52,6 +52,10 @@
 		881CE39A158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */; };
 		881CE39B158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */; };
 		881CE3A2158B1A3800AAC5A5 /* CCMacEventDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE3A1158B1A3100AAC5A5 /* CCMacEventDelegate.mm */; };
+		88D9C8EE158E1FC9005E0DAC /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C8ED158E1FC9005E0DAC /* Font.cpp */; };
+		88D9C8F1158E1FD1005E0DAC /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C8F0158E1FD1005E0DAC /* Window.cpp */; };
+		88D9C8F4158E2035005E0DAC /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C8F3158E2035005E0DAC /* MenuItem.cpp */; };
+		88D9C8F8158E2604005E0DAC /* PixelOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C8F7158E2604005E0DAC /* PixelOperations.cpp */; };
 		88EE94001589C3460096AEF9 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88EE93FE1589C3460096AEF9 /* Layer.cpp */; };
 		88EE94011589C3460096AEF9 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88EE93FE1589C3460096AEF9 /* Layer.cpp */; };
 		D42B768B1589849F00306904 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE31589843A00306904 /* UIKit.framework */; };
@@ -473,9 +477,18 @@
 		881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCInputDispatcher.cpp; sourceTree = "<group>"; };
 		881CE3A0158B1A2F00AAC5A5 /* CCMacEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMacEventDelegate.h; sourceTree = "<group>"; };
 		881CE3A1158B1A3100AAC5A5 /* CCMacEventDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCMacEventDelegate.mm; sourceTree = "<group>"; };
+		88D9C8EB158E1FC5005E0DAC /* Font.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
+		88D9C8ED158E1FC9005E0DAC /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		88D9C8EF158E1FCD005E0DAC /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		88D9C8F0158E1FD1005E0DAC /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		88D9C8F3158E2035005E0DAC /* MenuItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
+		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
+		88D9C8F6158E2497005E0DAC /* PixelOperations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixelOperations.h; sourceTree = "<group>"; };
+		88D9C8F7158E2604005E0DAC /* PixelOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelOperations.cpp; sourceTree = "<group>"; };
 		88EE93FE1589C3460096AEF9 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		88EE93FF1589C3460096AEF9 /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
-		88EE94021589C36F0096AEF9 /* Predefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Predefine.h; sourceTree = "<group>"; };
+		88EE94021589C36F0096AEF9 /* Preprocessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preprocessor.h; sourceTree = "<group>"; };
 		88EE94171589CCDD0096AEF9 /* Type.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		D42B6AE31589843A00306904 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D42B6AE51589843A00306904 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1146,6 +1159,15 @@
 			children = (
 				88EE93FF1589C3460096AEF9 /* Layer.h */,
 				88EE93FE1589C3460096AEF9 /* Layer.cpp */,
+				88D9C8EB158E1FC5005E0DAC /* Font.h */,
+				88D9C8ED158E1FC9005E0DAC /* Font.cpp */,
+				88D9C8EF158E1FCD005E0DAC /* Window.h */,
+				88D9C8F0158E1FD1005E0DAC /* Window.cpp */,
+				88D9C8F2158E2031005E0DAC /* MenuItem.h */,
+				88D9C8F3158E2035005E0DAC /* MenuItem.cpp */,
+				88D9C8F6158E2497005E0DAC /* PixelOperations.h */,
+				88D9C8F7158E2604005E0DAC /* PixelOperations.cpp */,
+				88D9C8F5158E205E005E0DAC /* Prerequisites.h */,
 			);
 			path = Visual;
 			sourceTree = "<group>";
@@ -1192,7 +1214,7 @@
 				88EE93FD1589C3460096AEF9 /* Visual */,
 				D42B76A41589856C00306904 /* Resources */,
 				D42B769D1589856100306904 /* Classes */,
-				88EE94021589C36F0096AEF9 /* Predefine.h */,
+				88EE94021589C36F0096AEF9 /* Preprocessor.h */,
 				88EE94171589CCDD0096AEF9 /* Type.h */,
 			);
 			path = TVPortable;
@@ -2438,6 +2460,10 @@
 				881CE393158B12C300AAC5A5 /* CCInputEvent.cpp in Sources */,
 				881CE396158B132200AAC5A5 /* CCInputListener.cpp in Sources */,
 				881CE39A158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */,
+				88D9C8EE158E1FC9005E0DAC /* Font.cpp in Sources */,
+				88D9C8F1158E1FD1005E0DAC /* Window.cpp in Sources */,
+				88D9C8F4158E2035005E0DAC /* MenuItem.cpp in Sources */,
+				88D9C8F8158E2604005E0DAC /* PixelOperations.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ using namespace cocos2d;
 static CCMacEventDelegate* delegate = [[CCMacEventDelegate alloc] init];
 
 // mac osx keycode to cc keycode
-static int __key_map[128] = { 0 };
+static uint8 __key_map[128] = { 0 };
 
 - (void)__init_key_map {
     __key_map[kVK_ANSI_A] = CCKey::A;
