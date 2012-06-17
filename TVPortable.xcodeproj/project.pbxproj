@@ -488,7 +488,7 @@
 		88D9C8F7158E2604005E0DAC /* PixelOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelOperations.cpp; sourceTree = "<group>"; };
 		88EE93FE1589C3460096AEF9 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		88EE93FF1589C3460096AEF9 /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
-		88EE94021589C36F0096AEF9 /* Preprocessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preprocessor.h; sourceTree = "<group>"; };
+		88EE94021589C36F0096AEF9 /* Predefine.h */ = {isa = PBXFileReference; path = Predefine.h; sourceTree = "<group>"; };
 		88EE94171589CCDD0096AEF9 /* Type.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		D42B6AE31589843A00306904 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D42B6AE51589843A00306904 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1214,7 +1214,7 @@
 				88EE93FD1589C3460096AEF9 /* Visual */,
 				D42B76A41589856C00306904 /* Resources */,
 				D42B769D1589856100306904 /* Classes */,
-				88EE94021589C36F0096AEF9 /* Preprocessor.h */,
+				88EE94021589C36F0096AEF9 /* Predefine.h */,
 				88EE94171589CCDD0096AEF9 /* Type.h */,
 			);
 			path = TVPortable;
