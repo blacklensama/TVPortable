@@ -65,7 +65,6 @@ TVP_NS_VISUAL_BEGIN
         mImpl->add(item);
     }
 
-
     void MenuItem::insert(MenuItem* item, int index) {
         item->mParent = this;
         mChildren.push_back(item);

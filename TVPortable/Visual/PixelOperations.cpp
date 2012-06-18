@@ -24,10 +24,10 @@ TVP_NS_VISUAL_BEGIN
 
 #define MIN(a, b) (a) < (b) ? (a) : (b)
 #define MAX(a, b) (a) > (b) ? (a) : (b)
-#define BLEND(a, b, r) (a) * (1.0 - r) + b * r
-#define OVERLAY(a, b) (a) < 0.5 ? (a * b * 2.0) : (1.0 - (1.0 - (a))) * (1.0 - (b)) * 2.0
-#define HARDLIGHT(a, b) (b) < 0.5 ? (a * b * 2.0) : (1.0 - (1.0 - (a))) * (1.0 - (b)) * 2.0
-#define SOFTLIGHT(a, b) (b) < 0.5 ? pow(a, 0.5 / (b)) : pow(a, (1.0 - (b)) / 2)
+#define BLEND(a, b, r) (a) * (1.0f - r) + b * r
+#define OVERLAY(a, b) (a) < 0.5f ? (a * b * 2.0f) : (1.0f - (1.0f - (a))) * (1.0f - (b)) * 2.0f
+#define HARDLIGHT(a, b) (b) < 0.5f ? (a * b * 2.0f) : (1.0f - (1.0f - (a))) * (1.0f - (b)) * 2.0f
+#define SOFTLIGHT(a, b) (b) < 0.5f ? (float)pow((float)a, (float)(0.5f / (b))) : (float)pow((float)a, (float)((1.0f - (b)) / 2))
 #define ABS(a) (a) < 0 ? (a) : -(a)
 
 void operate_pixels(uint32* src, 
@@ -43,30 +43,30 @@ float do_blend(float src, float dst, float alpha, int operation) {
     switch(operation) {
         case ltOpaque:          return src;
         case ltAlpha:           return BLEND(dst, src, alpha);
-        case ltAddApha:         return MIN(1.0, dst * (1.0 - alpha) + src);
-        case ltAdditive:        return MIN(1.0, dst + src);
-        case ltSubtractive:     return MAX(0.0, dst + src - 1.0);
+        case ltAddApha:         return MIN(1.0f, dst * (1.0f - alpha) + src);
+        case ltAdditive:        return MIN(1.0f, dst + src);
+        case ltSubtractive:     return MAX(0.0f, dst + src - 1.0f);
         case ltMultiplicative:  return dst * src;
-        case ltDodge:           return MIN(1.0 , dst / (1.0 - src));
+        case ltDodge:           return MIN(1.0f , dst / (1.0f - src));
         case ltLighten:         return MAX(dst, src);
         case ltDarken:          return MIN(dst, src);
-        case ltScreen:          return 1.0 - (1.0 - dst) * (1.0 - src);
-        case ltPsNormal:        return dst * (1.0 - alpha) + src * alpha;
-        case ltPsAdditive:      return BLEND(dst, MIN(1.0, dst + src), alpha);
-        case ltPsSubtractive:   return BLEND(dst, MAX(0.0, dst + src - 1.0), alpha);
+        case ltScreen:          return 1.0f - (1.0f - dst) * (1.0f - src);
+        case ltPsNormal:        return dst * (1.0f - alpha) + src * alpha;
+        case ltPsAdditive:      return BLEND(dst, MIN(1.0f, dst + src), alpha);
+        case ltPsSubtractive:   return BLEND(dst, MAX(0.0f, dst + src - 1.0f), alpha);
         case ltPsMultiplicative:return BLEND(dst, dst * src, alpha);
-        case ltPsScreen:        return BLEND(dst, 1.0 - (1.0 - dst) * (1.0 - src), alpha);
+        case ltPsScreen:        return BLEND(dst, 1.0f - (1.0f - dst) * (1.0f - src), alpha);
         case ltPsOverlay:       return BLEND(dst, OVERLAY(dst, src), alpha);
         case lsPsHardLight:     return BLEND(dst, HARDLIGHT(dst, src), alpha);
         case ltPsSoftLight:     return BLEND(dst, SOFTLIGHT(dst, src), alpha);
-        case lsPsColorDodge:    return BLEND(dst, MIN(1.0, dst / (1.0 - src)), alpha);
-        case ltPsColorDodge5:   return MIN(1.0, dst / (1.0 - src * alpha));
-        case ltPsColorBurn:     return BLEND(dst, MAX(0.0, 1.0 - (1.0 - dst) / src), alpha);
+        case lsPsColorDodge:    return BLEND(dst, MIN(1.0f, dst / (1.0f - src)), alpha);
+        case ltPsColorDodge5:   return MIN(1.0f, dst / (1.0f - src * alpha));
+        case ltPsColorBurn:     return BLEND(dst, MAX(0.0f, 1.0f - (1.0f - dst) / src), alpha);
         case lsPsLighten:       return BLEND(dst, MAX(dst, src), alpha);
         case lsPsDarken:        return BLEND(dst, MIN(dst, src), alpha);
         case lsPsDifference:    return BLEND(dst, abs(dst - src), alpha);
         case lsPsDifference5:   return ABS(dst - src * alpha);
-        case ltPsExclusion:     return BLEND(dst, dst + src - 2.0 * src * dst, alpha);
+        case ltPsExclusion:     return BLEND(dst, dst + src - 2.0f * src * dst, alpha);
     }
 }
 

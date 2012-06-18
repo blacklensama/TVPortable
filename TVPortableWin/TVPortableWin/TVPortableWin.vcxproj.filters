@@ -324,6 +324,27 @@
     <ClInclude Include="..\..\TVPortable\Classes\AppDelegate.h">
       <Filter>TVPortable\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\MenuItemImpl_Null.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\MenuItemImpl_Win.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\PixelOperations.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\MenuItem.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Font.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Window.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Prerequisites.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
@@ -529,6 +550,21 @@
     </ClCompile>
     <ClCompile Include="..\..\TVPortable\Classes\HelloWorldScene.cpp">
       <Filter>TVPortable\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\MenuItemImpl_Win.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\PixelOperations.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\MenuItem.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\Font.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\Window.cpp">
+      <Filter>TVPortable\Visual</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

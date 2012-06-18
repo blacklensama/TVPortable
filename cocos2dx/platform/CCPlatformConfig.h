@@ -85,7 +85,7 @@ build for which target platform
 #endif
 
 // win32
-#if ! CC_TARGET_PLATFORM && (defined(WIN32) && defined(_WINDOWS))
+#if ! CC_TARGET_PLATFORM && (defined(_WIN32) || defined(_MSC_VER))
     #undef  CC_TARGET_PLATFORM
     #define CC_TARGET_PLATFORM         CC_PLATFORM_WIN32
 

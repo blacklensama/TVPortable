@@ -13,13 +13,23 @@
 
 #include "ObjcWrappers.h"
 
+#include "cocos2d.h"
+
 TVP_NS_VISUAL_BEGIN
 
 Window::Window() {
 #ifdef UKN_OS_OSX
     mMenu = new MenuItem(this, GetApplicationMainMenu());
 #elif defined(UKN_OS_WINDOWS)
-    
+    HWND hWnd = cocos2d::CCEGLView::sharedOpenGLView().getHWnd();
+	HMENU hMenu = ::GetMenu(hWnd);
+	if(!hMenu) {
+		hMenu = ::CreateMenu();
+		::SetMenu(hWnd, hMenu);
+		AppendMenu(hMenu, MF_STRING, 0, L"Test");
+	}
+	mMenu = new MenuItem(this, (void*)hMenu);
+	
 #else
     mMenu = NULL;
 #endif
