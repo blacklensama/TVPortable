@@ -149,8 +149,8 @@ namespace cocos2d {
         };
         
         enum KeyState {
-            Press    = 0,
-            Release  = 1,
+            Press    = 1,
+            Release  = 0,
         };
         
         enum KeyFlag {
@@ -186,8 +186,8 @@ namespace cocos2d {
         };
         
         enum JoyStickState {
-            Press       = 0,
-            Release     = 1
+            Press       = 1,
+            Release     = 0
         };
     };
 

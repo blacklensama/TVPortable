@@ -322,7 +322,8 @@ void CCDisplayLinkDirectorMac::drawScene(void)
 		showFPS();
 	}
     
-    [[CCEventDispatcher sharedDispatcher] dispatchQueuedEvents];
+    if(!m_bPaused)
+        [[CCEventDispatcher sharedDispatcher] dispatchQueuedEvents];
 	
 //	if (m_pWatcherFun && m_pWatcherSender)
 //	{

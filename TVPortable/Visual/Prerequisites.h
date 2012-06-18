@@ -9,7 +9,7 @@
 #ifndef TVPortable_Visual_Prerequisites_h
 #define TVPortable_Visual_Prerequisites_h
 
-#include "../Preprocessor.h"
+#include "../Predefine.h"
 
 #define TVP_NS_VISUAL_BEGIN \
 namespace TVPortable { \
@@ -25,6 +25,11 @@ TVP_NS_VISUAL_BEGIN
     class MenuItem;
     class Window;
     class Layer;
+
+    /* 
+     H** on Windows,
+       */
+    typedef uintPtr Handle;
 
     // affine types used in Layer::affineCopy/Pie/Blend
     enum AffineType {
@@ -61,6 +66,43 @@ TVP_NS_VISUAL_BEGIN
         dfMain      = 1U << 7,
     };
 
+    enum {
+        ltOpaque,
+        ltAlpha,
+        ltAddApha,
+        ltAdditive,
+        ltSubtractive,
+        ltMultiplicative,
+        ltDodge,
+        ltLighten,
+        ltDarken,
+        ltScreen,
+        ltPsNormal,
+        ltPsAdditive,
+        ltPsSubtractive,
+        ltPsMultiplicative,
+        ltPsScreen,
+        ltPsOverlay,
+        lsPsHardLight,
+        ltPsSoftLight,
+        lsPsColorDodge,
+        ltPsColorDodge5,
+        ltPsColorBurn,
+        lsPsLighten,
+        lsPsDarken,
+        lsPsDifference,
+        lsPsDifference5,
+        ltPsExclusion,
+    };
+
+    enum FontFlags {
+        fsfFixedPitch,
+        fsfSameCharSet,
+        fsfNoVertical,
+        fsfTrueTypeOnly,
+        fsfUseFontFace,
+    };
+
     enum OperateMode {
         omAuto,
         omPsNormal,
@@ -88,6 +130,27 @@ TVP_NS_VISUAL_BEGIN
         omAlpha,
         omAddAlpha,
         omOpaque,
+    };
+
+    /* flags on windows
+     see http://msdn.microsoft.com/en-us/library/windows/desktop/ms648002(v=vs.85).aspx  for details
+     may have different behaviours or not available on other platforms*/
+    enum PopupMenuFlags {
+        tpmCenterAlign      = 0x0004L,
+        tpmLeftAlign        = 0x0000L,
+        tpmRightAlign       = 0x008L,
+        tpmBottomAlign      = 0x0020L,
+        tomTopAlign         = 0x0000L,
+        tpmVCenterAlign     = 0x0010L,
+        tpmNoNotify         = 0x0080L,
+        tpmReturnCmd        = 0x0100L,
+        tpmLeftButton       = 0x0000L,
+        tpmRightButton      = 0x0002L,
+        tpmHorNegAnimation  = 0x0800L,
+        tpmHorPosAnimation  = 0x0400L,
+        tpmNoAnimation      = 0x4000L,
+        tpmVerNegAnimation  = 0x2000L,
+        tpmVerPosAnimation  = 0x1000L,
     };
 
 TVP_NS_VISUAL_END

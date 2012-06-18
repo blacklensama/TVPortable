@@ -13,9 +13,15 @@
 
 TVP_NS_VISUAL_BEGIN
 
-    class Font {
+    class Window {
     public:
+        Window();
+        ~Window();
         
+        TVP_PROPERTY(Menu, MenuItem*);
+        
+    public:
+        static Window* MainWindow();
     };
 
 TVP_NS_VISUAL_END

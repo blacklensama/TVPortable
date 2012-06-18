@@ -616,7 +616,7 @@ static int		eventQueueCount;
 
 	@synchronized (self) {
 		eventQueue[eventQueueCount].selector = selector;
-		eventQueue[eventQueueCount].event = [event copy];
+		eventQueue[eventQueueCount].event = [event copy];;
 		
 		eventQueueCount++;
 	}
@@ -630,8 +630,8 @@ static int		eventQueueCount;
 			NSEvent *event = eventQueue[i].event;
 			
 			[self performSelector:sel withObject:event];
-			
-			[event release];
+            
+            [event release];
 		}
 		
 		eventQueueCount = 0;

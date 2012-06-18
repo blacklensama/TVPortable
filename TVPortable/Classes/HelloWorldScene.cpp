@@ -1,6 +1,8 @@
 #include "HelloWorldScene.h"
 
 #include "../Visual/Layer.h"
+#include "../Visual/MenuItem.h"
+#include "../Visual/Window.h"
 
 USING_NS_CC;
 
@@ -16,7 +18,36 @@ CCScene* HelloWorld::scene()
     
     c_layer->addChild(layer);
     c_layer->focus();
+   
+    TVPortable::Visual::Window* mainWindow = TVPortable::Visual::Window::MainWindow();
+    TVPortable::Visual::MenuItem* mainMenuItem = mainWindow->getMenu();
+    
+     if(mainMenuItem) {
+        TVPortable::Visual::MenuItem* fileMenu = new TVPortable::Visual::MenuItem(mainWindow, "File");
+         TVPortable::Visual::MenuItem* fileMenuX = new TVPortable::Visual::MenuItem(mainWindow, "Open");
+         fileMenuX->setRadio(true);
+         TVPortable::Visual::MenuItem* fileMenuY = new TVPortable::Visual::MenuItem(mainWindow, "Close");
+         fileMenuY->setRadio(true);
+         
+         TVPortable::Visual::MenuItem* fileMenuZ = new TVPortable::Visual::MenuItem(mainWindow, "Open2");
+         fileMenuZ->setRadio(true);
+         fileMenuZ->setGroup(1);
+         TVPortable::Visual::MenuItem* fileMenuK = new TVPortable::Visual::MenuItem(mainWindow, "Close2");
+         fileMenuK->setRadio(true);
+         fileMenuK->setGroup(1);
+      //   fileMenuX->setChecked(true);
+         
+         fileMenu->add(fileMenuX);
+         fileMenu->add(fileMenuY);
+         
+         fileMenu->add(fileMenuZ);
+         fileMenu->add(fileMenuK);
 
+      //   fileMenuX->add(fileMenuY);
+        mainMenuItem->add(fileMenu);
+        
+    }
+    
 	// add layer as a child to scene
 	scene->addChild(c_layer);
 

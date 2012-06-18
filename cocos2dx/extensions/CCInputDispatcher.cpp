@@ -14,7 +14,7 @@
 namespace cocos2d {
     
     CCInputDispatcher::CCInputDispatcher() {
-    
+        memset(mKeyStates, 0, sizeof(int) * 128);
     }
     
     CCInputDispatcher::~CCInputDispatcher() {
@@ -91,6 +91,8 @@ namespace cocos2d {
     }
     
     void CCInputDispatcher::publishKeyboardEvent(const CCKeyEvent& evt) {
+        mKeyStates[evt.key] = evt.state;
+
         if(mListeners.empty())
             return;
         
@@ -98,7 +100,7 @@ namespace cocos2d {
         for(; it != mListeners.end(); ++it) {
             CCInputListener* listener = *it;
             if(listener->onKeyEvent(evt))
-                break;
+                break;            
         }
     }
     
@@ -113,6 +115,10 @@ namespace cocos2d {
             if(listener->onJoystickEvent(evt))
                 break;
         }
+    }
+    
+    int CCInputDispatcher::getKeyState(CCKey::KeyCode key) {
+        return mKeyStates[key];
     }
     
 }

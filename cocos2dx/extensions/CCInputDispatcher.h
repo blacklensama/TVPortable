@@ -38,9 +38,13 @@ namespace cocos2d {
         void publishKeyboardEvent(const CCKeyEvent& evt);
         void publishJoystickEvent(const CCJoyStickEvent& evt);
         
+        int getKeyState(CCKey::KeyCode key);
+        
     private:
         typedef std::list<CCInputListener*> ListenerList;
         ListenerList mListeners;
+        
+        int mKeyStates[128];
         
     protected:
         CCInputDispatcher();

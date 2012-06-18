@@ -6,9 +6,6 @@
 //  Copyright (c) 2011 heizi. All rights reserved.
 //
 
-#ifndef Project_Unknown_Platform_h
-#define Project_Unknown_Platform_h
-
 #if !defined(__cplusplus)
     #error C++ compiler required.
 #endif
@@ -73,7 +70,7 @@
 
 #include <Availability.h>
 
-    #if !defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+    #if defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
         #define UKN_OS_OSX
     #else
         #define UKN_OS_IOS
@@ -232,4 +229,3 @@
 
 #include "Type.h"
 
-#endif // Project_Unknown_Platform_h
