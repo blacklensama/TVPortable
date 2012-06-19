@@ -62,19 +62,23 @@ TVP_NS_VISUAL_BEGIN
 	}
 
     void MenuItemImpl::popup(int flags, int32 x, int32 y) {
+		cocos2d::CCDirector::sharedDirector()->pause();
+
 		HMENU menuHandle;
 		if(mItem->mMenu == 0)
 			menuHandle = (HMENU)mSubMenuHandle;
 		else
 			menuHandle = (HMENU)mItem->mMenu;
 
-		TrackPopupMenu(menuHandle,
-						flags,
-						x,
-						y,
-						0,
-						cocos2d::CCEGLView::sharedOpenGLView().getHWnd(),
-						0);
+		uint32 button = TrackPopupMenu(menuHandle,
+										TPM_RETURNCMD | flags,
+										x,
+										y,
+										0,
+										cocos2d::CCEGLView::sharedOpenGLView().getHWnd(),
+										0);
+
+		cocos2d::CCDirector::sharedDirector()->resume();
 	}
 
     void MenuItemImpl::remove(MenuItem* item) {

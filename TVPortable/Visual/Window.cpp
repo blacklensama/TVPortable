@@ -26,7 +26,6 @@ Window::Window() {
 	if(!hMenu) {
 		hMenu = ::CreateMenu();
 		::SetMenu(hWnd, hMenu);
-		AppendMenu(hMenu, MF_STRING, 0, L"Test");
 	}
 	mMenu = new MenuItem(this, (void*)hMenu);
 	

@@ -38,6 +38,8 @@ THE SOFTWARE.
 
 #include "../../extensions//CCInputDispatcher.h"
 
+#include <algorithm>
+
 NS_CC_BEGIN;
 
 //////////////////////////////////////////////////////////////////////////
@@ -365,6 +367,15 @@ void CCEGLView::_buildEvent(int type, int key, int scan, int flags, int x, int y
 					  }
 	}
 }
+	struct DeleteSTLPtr {
+		template<typename T>
+		void operator() (const T* ptr) const {
+			if(ptr) {
+				delete ptr;
+				ptr = 0;
+			}
+		}
+	};
 
 void CCEGLView::dispatchInputEvents() {
 	std::vector<CCInputEvent*>::iterator it = m_InputEventQueue.begin();
@@ -387,6 +398,9 @@ void CCEGLView::dispatchInputEvents() {
 			break;
 		}
 	}
+	std::for_each(m_InputEventQueue.begin(),
+				  m_InputEventQueue.end(),
+				  DeleteSTLPtr());
 	m_InputEventQueue.clear();
 }
 

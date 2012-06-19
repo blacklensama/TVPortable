@@ -65,7 +65,12 @@ int CCApplication::run()
                 nLast.QuadPart = nNow.QuadPart;
                 CCDirector::sharedDirector()->mainLoop();
 
-				mainWnd.dispatchInputEvents();
+				if(!CCDirector::sharedDirector()->isPaused())
+					mainWnd.dispatchInputEvents();
+
+				HMENU menu = GetMenu(mainWnd.getHWnd());
+				if(menu != NULL)
+					DrawMenuBar(mainWnd.getHWnd());
             }
             else
             {
