@@ -14,12 +14,13 @@ CCScene* HelloWorld::scene()
 	// 'layer' is an autorelease object
 	HelloWorld *layer = HelloWorld::node();
     
-    TVPortable::Visual::Layer* c_layer = TVPortable::Visual::Layer::LayerWithClippingRect(CCRect(0, 0, 128, 128));
+    TVPortable::Visual::Window* mainWindow = TVPortable::Visual::Window::MainWindow();
+
+    TVPortable::Visual::Layer* c_layer = new TVPortable::Visual::Layer(mainWindow, 0);
     
-    c_layer->addChild(layer);
+    c_layer->loadImages("HelloWorld.png", 0xFFFFFFFF);
     c_layer->focus();
    
-    TVPortable::Visual::Window* mainWindow = TVPortable::Visual::Window::MainWindow();
     TVPortable::Visual::MenuItem* mainMenuItem = mainWindow->getMenu();
     
      if(mainMenuItem) {

@@ -9,7 +9,8 @@
 #ifndef TVPortable_CCKeyboardEvent_h
 #define TVPortable_CCKeyboardEvent_h
 
-#include "cocos2d.h"
+#include "ccConfig.h"
+#include "CCPlatformMacros.h"
 
 namespace cocos2d {
     

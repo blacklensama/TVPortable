@@ -11,6 +11,8 @@
 #include "MenuItem.h"
 #include "Window.h"
 
+#ifdef UKN_OS_WINDOWS
+
 #include <windows.h>
 #include "cocos2d.h"
 
@@ -143,3 +145,6 @@ TVP_NS_VISUAL_BEGIN
 	}
 
 TVP_NS_VISUAL_END
+
+
+#endif

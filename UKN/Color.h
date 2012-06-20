@@ -14,15 +14,26 @@
 
 namespace ukn {
     
-#define COLOR_ARGB(a,r,g,b)      ((uint32(a)<<24) + (uint32(r)<<16) + (uint32(g)<<8) + uint32(b))
-#define COLOR_GETA(col)          (((col)>>24) & 0xFF)
-#define COLOR_GETR(col)          (((col)>>16) & 0xFF)
-#define COLOR_GETG(col)          (((col)>>8) & 0xFF)
-#define COLOR_GETB(col)          ((col) & 0xFF)
-#define COLOR_SETA(col,a)	 	 (((col) & 0x00FFFFFF) + (uint32(a)<<24))
-#define COLOR_SETR(col,r)	  	 (((col) & 0xFF00FFFF) + (uint32(r)<<16))
-#define COLOR_SETG(col,g)		 (((col) & 0xFFFF00FF) + (uint32(g)<<8))
-#define COLOR_SETB(col,b)		 (((col) & 0xFFFFFF00) + uint32(b))
+#define COLOR_BGRA(a,r,g,b)      ((uint32(a)<<24) | (uint32(r)<<16) | (uint32(g)<<8) | uint32(b))
+#define COLOR_GETA_BGRA(col)          (((col)>>24) & 0xFF)
+#define COLOR_GETR_BGRA(col)          (((col)>>16) & 0xFF)
+#define COLOR_GETG_BGRA(col)          (((col)>>8) & 0xFF)
+#define COLOR_GETB_BGRA(col)          ((col) & 0xFF)
+#define COLOR_SETA_BGRA(col,a)	 	 (((col) & 0x00FFFFFF) | (uint32(a)<<24))
+#define COLOR_SETR_BGRA(col,r)	  	 (((col) & 0xFF00FFFF) | (uint32(r)<<16))
+#define COLOR_SETG_BGRA(col,g)		 (((col) & 0xFFFF00FF) | (uint32(g)<<8))
+#define COLOR_SETB_BGRA(col,b)		 (((col) & 0xFFFFFF00) | uint32(b))
+    
+    
+#define COLOR_RGBA(r,g,b,a)      ((uint32(a)<<24) | (uint32(b)<<16) | (uint32(g)<<8) | uint32(r))
+#define COLOR_GETA_RGBA(col)          (((col)>>24) & 0xFF)
+#define COLOR_GETB_RGBA(col)          (((col)>>16) & 0xFF)
+#define COLOR_GETG_RGBA(col)          (((col)>>8) & 0xFF)
+#define COLOR_GETR_RGBA(col)          ((col) & 0xFF)
+#define COLOR_SETA_RGBA(col,a)	 	 (((col) & 0x00FFFFFF) | (uint32(a)<<24))
+#define COLOR_SETB_RGBA(col,r)	  	 (((col) & 0xFF00FFFF) | (uint32(r)<<16))
+#define COLOR_SETG_RGBA(col,g)		 (((col) & 0xFFFF00FF) | (uint32(g)<<8))
+#define COLOR_SETR_RGBA(col,b)		 (((col) & 0xFFFFFF00) | uint32(b))
     
     class Color {
     public:
@@ -48,7 +59,7 @@ namespace ukn {
             normalize();
         }
         
-        Color(uint32 col) { 
+        explicit Color(uint32 col) { 
             *this = col;
         }
         

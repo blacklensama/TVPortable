@@ -125,6 +125,13 @@ THE SOFTWARE.
 #include "ccTypes.h"
 #include "ccMacros.h"
 
+
+// TVPortable extension
+#include "CCRenderTextureMutable.h"
+
+#include "extensions/CCInputDispatcher.h"
+#include "extensions/CCInputListener.h"
+
 namespace   cocos2d {
 
 const char* cocos2dVersion();

@@ -13,8 +13,6 @@
 
 #include "Prerequisites.h"
 
-#include "extensions/CCInputDispatcher.h"
-#include "extensions/CCInputListener.h"
 
 TVP_NS_VISUAL_BEGIN
         
@@ -23,7 +21,7 @@ TVP_NS_VISUAL_BEGIN
      **/
     class Layer: public cocos2d::CCTargetedTouchDelegate, public cocos2d::CCInputListener, public cocos2d::CCNode {
     public:
-        Layer();
+        Layer(Window* window, Layer* parent);
         virtual ~Layer();
         
     public:
@@ -32,7 +30,7 @@ TVP_NS_VISUAL_BEGIN
          Set/Get clipping rect, relates to layer origin
          **/
         TVP_PROPERTY(ClippingRect, cocos2d::CCRect);
-        TVP_PROPERTY(Image, cocos2d::CCSprite);
+        TVP_PROPERTY(Image, cocos2d::CCSprite*);
         TVP_PROPERTY(CallOnPaint, bool);
         TVP_PROPERTY(AbsoluteOrderMode, bool);
         TVP_PROPERTY(AttentionLeft, int32);
@@ -44,12 +42,13 @@ TVP_NS_VISUAL_BEGIN
         TVP_PROPERTY(Face, int32);
         TVP_PROPERTY(Focusable, bool);
         TVP_PROPERTY(HasImage, bool);
-        
-        
+        TVP_PROPERTY(ParentLayer, Layer*);
+        TVP_PROPERTY(Window, Window*);
+                
         TVP_PROPERTY_READ_ONLY(Focused, bool);
         TVP_PROPERTY_READ_ONLY(Cached, bool);
         TVP_PROPERTY_READ_ONLY(Font, Font*);
-        TVP_PROPERTY_READ_ONLY(RenderLayer, cocos2d::CCRenderTexture);
+        TVP_PROPERTY_READ_ONLY(RenderLayer, cocos2d::CCRenderTextureMutable*);
         
         TVP_PROPERTY_GETTER_SETTER(ClipHeight, int32, mClippingRect.size.height);
         TVP_PROPERTY_GETTER_SETTER(ClipWidth, int32, mClippingRect.size.width);
@@ -69,6 +68,13 @@ TVP_NS_VISUAL_BEGIN
         virtual void draw();
         virtual void onEnter();
         virtual void onExit();
+        
+        /* CCNode */
+        virtual void addChild(cocos2d::CCNode* node);
+        virtual void addChild(cocos2d::CCNode* node, int zOrder);
+        virtual void addChild(cocos2d::CCNode* node, int zOrder, int tag);
+        virtual void removeChild(cocos2d::CCNode* node, bool cleanup);
+        virtual void removeAllChildrenWithCleanup(bool cleanup);
         
         /* CCInputListener */
         virtual bool onMouseEvent(const cocos2d::CCMouseEvent& evt);
@@ -169,6 +175,8 @@ TVP_NS_VISUAL_BEGIN
         
         void update(int32 left, int32 top, int32 width, int32 height);
         
+        void setOrder(int order);
+        int getOrder();
         
     public:
         /* krkr2 Layer events */
@@ -194,9 +202,20 @@ TVP_NS_VISUAL_BEGIN
         void onSearchPrevFocusable(Layer* layer);
         void onTransitionCompleted(Layer* dest, Layer* src);
         
-    public:
-        static Layer* LayerWithClippingRect(const cocos2d::CCRect& rc);
+    public:        
+        typedef std::list<Layer*> ChildList;
         
+    private:
+        cocos2d::CCRect _getClippingRect();
+        void adjustOrder(int order);
+        void setDirty();
+        
+        ChildList mChildren;
+        
+        int mOrder;
+        
+        /* need redraw buffer texture? */
+        bool mDirty;
     };
 
 TVP_NS_VISUAL_END

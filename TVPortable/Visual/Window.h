@@ -19,6 +19,8 @@ TVP_NS_VISUAL_BEGIN
         ~Window();
         
         TVP_PROPERTY(Menu, MenuItem*);
+        TVP_PROPERTY(Width, int);
+        TVP_PROPERTY(Height, int);
         
     public:
         static Window* MainWindow();

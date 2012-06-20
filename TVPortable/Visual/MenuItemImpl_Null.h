@@ -15,6 +15,7 @@ TVP_NS_VISUAL_BEGIN
 
 class MenuItemImpl {
 public:
+    void initWithNativeMenu(void* menu) { }
     void initWithWindow(Window* window, const char*title) { }
     void add(MenuItem* item) { }
     void insert(MenuItem* item, int index) { }
@@ -37,10 +38,10 @@ public:
     void onClick(void* sender) { }
     
 private:
-    MenuItem* mItem { }
+    MenuItem* mItem;
     
-    void* mCocoaItemHandle { }
-    void* mActionReceiver { }
+    void* mCocoaItemHandle;
+    void* mActionReceiver;
 };
 
 TVP_NS_VISUAL_END

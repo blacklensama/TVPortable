@@ -17,6 +17,8 @@
 
 TVP_NS_VISUAL_BEGIN
 
+using namespace cocos2d;
+
 Window::Window() {
 #ifdef UKN_OS_OSX
     mMenu = new MenuItem(this, GetApplicationMainMenu());
@@ -32,6 +34,9 @@ Window::Window() {
 #else
     mMenu = NULL;
 #endif
+    
+    mWidth = cocos2d::CCDirector::sharedDirector()->getWinSize().width;
+    mHeight = cocos2d::CCDirector::sharedDirector()->getWinSize().height;
 }
 
 Window::~Window() {
