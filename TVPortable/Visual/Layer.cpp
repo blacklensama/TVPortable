@@ -50,8 +50,10 @@ TVP_NS_VISUAL_BEGIN
     mCached(false),
     mFont(0),
     mRenderLayer(0),
-    mWindow(window) {
+    mWindow(window),
+    mText(0){
         CCInputDispatcher::Instance().addListener(this, 1);
+        CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 1, false);
         
         setClippingRect(CCRect(0,
                                0,
@@ -132,40 +134,72 @@ TVP_NS_VISUAL_BEGIN
 
 
     bool Layer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+        CCMouseEvent evt;
+        evt.button = CCMouse::LeftButton;
+        evt.state = CCMouse::Press;
+        evt.x = pTouch->locationInView().x;
+        evt.y = pTouch->locationInView().y;
+        evt.wheel = 0;
+        evt.flag = 0;
+        evt.deltaX = 0;
+        evt.deltaY = 0;
         
-        if(mFocused) {
-            onMouseDown(pTouch->locationInView().x, 
-                        pTouch->locationInView().y, 
-                        mbLeft,
-                        0);
-            return true;
-        }
-        return false;
+        mPrevTouchPosX = evt.x;
+        mPrevTouchPosY = evt.y;
+        
+        this->onMouseEvent(evt);
+        
+        return mFocused;
     }
 
     void Layer::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-        if(mFocused) {
-            onMouseMove(pTouch->locationInView().x,
-                        pTouch->locationInView().y,
-                        0);
-        }
+        CCMouseEvent evt;
+        evt.button = CCMouse::LeftButton;
+        evt.state = CCMouse::Drag;
+        evt.x = pTouch->locationInView().x;
+        evt.y = pTouch->locationInView().y;
+        evt.wheel = 0;
+        evt.flag = 0;
+        // to do, touch moved delta position
+        evt.deltaX = evt.x - mPrevTouchPosX;
+        evt.deltaY = evt.y - mPrevTouchPosY;
+        
+        mPrevTouchPosX = evt.x;
+        mPrevTouchPosY = evt.y;
+        
+        this->onMouseEvent(evt);
     }
 
     void Layer::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-        if(mFocused) {
-            onMouseUp(pTouch->locationInView().x, 
-                      pTouch->locationInView().y,
-                      mbRight,
-                      0);
-        }
+        CCMouseEvent evt;
+        evt.button = CCMouse::LeftButton;
+        evt.state = CCMouse::Release;
+        evt.x = pTouch->locationInView().x;
+        evt.y = pTouch->locationInView().y;
+        evt.wheel = 0;
+        evt.flag = 0;
+        evt.deltaX = 0;
+        evt.deltaY = 0;
+        
+        this->onMouseEvent(evt);
     }
 
     void Layer::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+        CCMouseEvent evt;
+        evt.button = CCMouse::LeftButton;
+        evt.state = CCMouse::Release;
+        evt.x = pTouch->locationInView().x;
+        evt.y = pTouch->locationInView().y;
+        evt.wheel = 0;
+        evt.flag = 0;
+        evt.deltaX = 0;
+        evt.deltaY = 0;
         
+        this->onMouseEvent(evt);
     }
 
     void Layer::draw() {
-        // draw children recursively
+        // render child layers first
         if(!mChildren.empty()) {
             ChildList::iterator it = mChildren.end();
             for(; it != mChildren.begin(); --it) {
@@ -173,23 +207,32 @@ TVP_NS_VISUAL_BEGIN
             }
         }
         
+        // if there are changes, RTT and save the buffer
         if(mDirty) {
             mRenderLayer->begin();
         
-            mImage->draw();
-        
-            if(!mChildren.empty()) {
-                ChildList::iterator it = mChildren.end();
-                for(; it != mChildren.begin(); --it) {
-                    (*it)->getRenderLayer()->getSprite()->draw();
-                }   
+            if(mImage) {
+                mImage->setFlipY(true);
+                mImage->draw();
             }
+            if(mText)
+                mText->draw();
             
             mRenderLayer->end();
             mDirty = false;
         }
         
-        mRenderLayer->getSprite()->setFlipY(true);
+        // render children buffers, not neccessary here
+        /*
+        if(!mChildren.empty()) {
+            ChildList::iterator it = mChildren.end();
+            for(; it != mChildren.begin(); --it) {
+                (*it)->getRenderLayer()->getSprite()->draw();
+            }   
+        }*/
+        
+        // render layer buffer
+       // mRenderLayer->getSprite()->setFlipY(true);
         mRenderLayer->getSprite()->draw();
     }
 
@@ -310,30 +353,7 @@ TVP_NS_VISUAL_BEGIN
                 case CCKey::Press:
                     printf("Key down !!!!!, with button %d, char: %c\n", evt.key, evt.toCharCode());
                     if(evt.key == CCKey::K) {
-                        if(mRenderLayer && mImage) {
-                            CCTexture2DMutable* texture = mRenderLayer->getTexture();
-                            int width = texture->getContentSize().width;
-                            int height = texture->getContentSize().height;
-                            unsigned int* data = texture->getDataRGBA();
-                            assert(data);
-                            for(int y = 0; y < height; ++y) {
-                                for(int x = 0; x < width; ++x) {
-                                    uint32 color = 
-                                    data[y * texture->getPixelsWide() + x];
-                                    
-                                    uint8 r = COLOR_GETR_RGBA(color);
-                                    uint8 g = COLOR_GETG_RGBA(color);
-                                    uint8 b = COLOR_GETB_RGBA(color);
-                                    uint8 a = COLOR_GETA_RGBA(color);
-                                    
-                                    uint8 avg = 0.3 * r + 0.59 * g + 0.11 * b;
-                                    
-                                    data[y * texture->getPixelsWide() + x] -= COLOR_RGBA(avg, avg, avg, a);
-                                    
-                                }
-                            }
-                            texture->putDataRGBA();
-                        }
+                        
                     }
                     break;
                     
@@ -371,7 +391,14 @@ TVP_NS_VISUAL_BEGIN
         CCSprite* image = src->getImage();
         if(image) {
             // copy 
-            this->setImage(CCSprite::spriteWithTexture(image->getTexture()));
+            if(mImage) {
+                mRenderLayer->removeChild(mImage, true);
+            }
+            mImage = CCSprite::spriteWithTexture(src->getImage()->getTexture());
+            mImage->setPosition(ccp(0, mWindow->getHeight()));
+            mImage->setAnchorPoint(ccp(0, 1));
+            
+            mRenderLayer->addChild(mImage);
             
             setDirty();
         }
@@ -413,11 +440,83 @@ TVP_NS_VISUAL_BEGIN
     }
 
     void Layer::doBoxBlur(float xblur/* = 1*/, float yblur/* = 1*/) {
-        
+        if(mRenderLayer) {
+            CCTexture2DMutable* texture = mRenderLayer->getTexture();
+            int width = texture->getContentSize().width;
+            int height = texture->getContentSize().height;
+            unsigned int* data = texture->getDataRGBA();
+            assert(data);
+           
+            uint8 filterSize = (xblur*2) * (yblur*2);
+            
+            // RGBA8888
+            unsigned int* origin = (unsigned int*)malloc(width * height * 4);
+            memcpy(origin, data, width * height * 4);
+            
+            for(int y = 0; y < height; ++y) {
+                for(int x = 0; x < width; ++x) {
+                    uint32 color = 
+                    origin[y * texture->getPixelsWide() + x];
+                    
+                    uint16 r = 0;
+                    uint16 g = 0;
+                    uint16 b = 0;
+                    uint8 a = COLOR_GETA_RGBA(color);
+                    
+                    if(a == 0)
+                        continue;
+                    
+                    for(int i=-xblur; i<xblur; ++i) {
+                        for(int j=-yblur; j<yblur; ++j) {
+                            uint32 fx = clampf(x+i, 0, width);
+                            uint32 fy = clampf(y+j, 0, height);
+                            
+                            uint32 fcolor = data[fy * texture->getPixelsWide() + fx];
+                            
+                            r += COLOR_GETR_RGBA(fcolor);
+                            g += COLOR_GETG_RGBA(fcolor);
+                            b += COLOR_GETB_RGBA(fcolor);
+                        }
+                    }
+                    r /= filterSize;
+                    g /= filterSize;
+                    b /= filterSize;
+                    
+                    data[y * texture->getPixelsWide() + x] = COLOR_RGBA(r, g, b, a);
+                }
+            }
+            texture->putDataRGBA();
+        }
     }
 
     void Layer::doGrayScale() {
-        
+        if(mRenderLayer) {
+            CCTexture2DMutable* texture = mRenderLayer->getTexture();
+            int width = texture->getContentSize().width;
+            int height = texture->getContentSize().height;
+            unsigned int* data = texture->getDataRGBA();
+            assert(data);
+            for(int y = 0; y < height; ++y) {
+                for(int x = 0; x < width; ++x) {
+                    uint32 color = 
+                    data[y * texture->getPixelsWide() + x];
+                    
+                    uint8 r = COLOR_GETR_RGBA(color);
+                    uint8 g = COLOR_GETG_RGBA(color);
+                    uint8 b = COLOR_GETB_RGBA(color);
+                    uint8 a = COLOR_GETA_RGBA(color);
+                    
+                    if(a == 0)
+                        continue;
+                    
+                    uint8 avg = 0.3 * r + 0.59 * g + 0.11 * b;
+                    
+                    data[y * texture->getPixelsWide() + x] = COLOR_RGBA(avg, avg, avg, a);
+                    
+                }
+            }
+            texture->putDataRGBA();
+        }
     }
 
     void Layer::drawText(float x, float y, const char* text, uint32 color, int32 opacity/* = 255*/, bool aa/* = true*/, int32 shadowlevel/* = 0*/, uint32 shadowColor/*=0x00000000*/, float shadowWidth/*= 0*/, float shadowfsx/* = 0*/, float shadowfsy/* = 0*/) {
@@ -511,6 +610,9 @@ TVP_NS_VISUAL_BEGIN
     }
 
     void Layer::loadImages(const char* image, uint32 color) {
+        if(mImage) {
+            mRenderLayer->removeChild(mImage, true);
+        }
         mImage = CCSprite::spriteWithFile(image);
         mImage->setPosition(ccp(0, mWindow->getHeight()));
         mImage->setAnchorPoint(ccp(0, 1));
@@ -632,7 +734,7 @@ TVP_NS_VISUAL_BEGIN
     void Layer::setSize(int32 width, int32 height) {
         if(mRenderLayer) 
             this->removeChild(mRenderLayer, true);
-        mRenderLayer = CCRenderTextureMutable::renderTextureWithWidthAndHeight(width, height, kTexture2DPixelFormat_RGBA8888);
+        mRenderLayer = CCRenderTextureMutable::renderTextureWithWidthAndHeight(width, height, kCCTexture2DPixelFormat_Default);
         this->addChild(mRenderLayer);
 
         this->setContentSize(CCSize(width, height));

@@ -31,6 +31,7 @@ TVP_NS_VISUAL_BEGIN
          **/
         TVP_PROPERTY(ClippingRect, cocos2d::CCRect);
         TVP_PROPERTY(Image, cocos2d::CCSprite*);
+        TVP_PROPERTY(Text, cocos2d::CCLabelTTF*);
         TVP_PROPERTY(CallOnPaint, bool);
         TVP_PROPERTY(AbsoluteOrderMode, bool);
         TVP_PROPERTY(AttentionLeft, int32);
@@ -58,6 +59,8 @@ TVP_NS_VISUAL_BEGIN
         
     public:
         /* CCTouchDelegate */
+        /* since there's no touch events in krkr, 
+         we need to dispatch touch events to mouse events */
         virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
         virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
         virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) ;
@@ -213,10 +216,37 @@ TVP_NS_VISUAL_BEGIN
         ChildList mChildren;
         
         int mOrder;
+        int mPrevTouchPosX;
+        int mPrevTouchPosY;
         
         /* need redraw buffer texture? */
         bool mDirty;
     };
+
+class LayerListener {
+public:
+    virtual void onBeforeFocus(Layer* layer, bool blurred, bool direction) { }
+    virtual void onBlur(bool focused) { }
+    virtual void onClick(float x, float y) { }
+    virtual void onDoubleClick(float x, float y) { }
+    virtual void onFocus(bool focused, bool direction) { }
+    virtual void onHitTest(float x, float y, bool hit) { }
+    virtual void onKeyDown(uint8 key, int32 shift, bool process = true) { }
+    virtual void onKeyPress(uint8 key, bool process = true) { }
+    virtual void onKeyUp(uint8 key, int32 shift, bool process = true) { }
+    virtual void onMouseDown(float x, float y, int32 btn, int32 shift) { }
+    virtual void onMouseEnter() { }
+    virtual void onMouseLeave() { }
+    virtual void onMouseMove(float x, float y, int32 shift) { }
+    virtual void onMouseUp(float x, float y, int32 button, int32 shift) { }
+    virtual void onMouseWheel(int32 shift, int32 delta, float x, float y) { }
+    virtual void onNodeDisabled() { }
+    virtual void onNodeEnabled() { }
+    virtual void onPaint() { }
+    virtual void onSearchNextFocusable(Layer* layer) { }
+    virtual void onSearchPrevFocusable(Layer* layer) { }
+    virtual void onTransitionCompleted(Layer* dest, Layer* src) { }
+};
 
 TVP_NS_VISUAL_END
 

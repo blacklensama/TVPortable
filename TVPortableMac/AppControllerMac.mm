@@ -27,10 +27,11 @@ static AppDelegate s_sharedApplication;
     glView = [[EAGLView alloc] initWithFrame:rect];
     [glView initWithFrame:rect];
     [window setContentView:glView];
-    [window setTitle:@"Cocos2d-x Hello World"];
+    [window setTitle:@"TVPortable"];
     
     [window makeKeyAndOrderFront:self];
     cocos2d::CCApplication::sharedApplication().run();
+    
 //	director->setOpenGLView(glView_);
 //
 //	// EXPERIMENTAL stuff.

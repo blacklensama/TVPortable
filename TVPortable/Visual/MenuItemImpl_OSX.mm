@@ -12,6 +12,8 @@
 #include "ObjcWrappers.h"
 #include "cocos2d.h"
 
+#ifdef UKN_OS_OSX 
+
 #import <Cocoa/Cocoa.h>
 
 @interface ActionReceiver: NSObject {
@@ -40,7 +42,6 @@
 
 TVP_NS_VISUAL_BEGIN
 
-#ifdef UKN_OS_OSX 
 
     void MenuItemImpl::initWithWindow(Window* window, const char* title) {
         mActionReceiver = new ActionReceiver;
@@ -248,7 +249,6 @@ TVP_NS_VISUAL_BEGIN
             doRadioChecked();
     }
 
-#endif
-
-
 TVP_NS_VISUAL_END
+
+#endif

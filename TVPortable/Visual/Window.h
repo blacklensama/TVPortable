@@ -14,16 +14,35 @@
 TVP_NS_VISUAL_BEGIN
 
     class Window {
-    public:
+    protected:
+        // since there's no multiple window support on some platforms, we just limit max window count to 1
         Window();
         ~Window();
         
+    public:
         TVP_PROPERTY(Menu, MenuItem*);
-        TVP_PROPERTY(Width, int);
-        TVP_PROPERTY(Height, int);
+        TVP_PROPERTY_READ_ONLY(NativeHandle, uintPtr);
+        
+        TVP_PROPERTY_READ_ONLY(MaxWidth, int32);
+        TVP_PROPERTY_READ_ONLY(MaxHeight, int32);
+        
+    public:
+        int32 getWidth() const;
+        int32 getHeight() const;
+        void setWidth(int32 width);
+        void setHeight(int32 height);
+        void setSize(int32 width, int32 height);
+        
+        const char* getCaption() const;
+        void setCaption(const char* caption);
         
     public:
         static Window* MainWindow();
+        
+    private:
+        int32 mWidth;
+        int32 mHeight;
+        std::string mCaption;
     };
 
 TVP_NS_VISUAL_END

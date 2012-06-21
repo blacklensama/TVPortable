@@ -15,6 +15,7 @@ CCScene* HelloWorld::scene()
 	HelloWorld *layer = HelloWorld::node();
     
     TVPortable::Visual::Window* mainWindow = TVPortable::Visual::Window::MainWindow();
+    mainWindow->setCaption("TVPortable!");
 
     TVPortable::Visual::Layer* c_layer = new TVPortable::Visual::Layer(mainWindow, 0);
     

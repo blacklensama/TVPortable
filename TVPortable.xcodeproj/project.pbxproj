@@ -56,6 +56,10 @@
 		88655C1015919E070045BF4B /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */; };
 		88655C1215919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */; };
 		88655C1315919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */; };
+		88655C1B159365410045BF4B /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C19159365410045BF4B /* Font.cpp */; };
+		88655C1C159365410045BF4B /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C19159365410045BF4B /* Font.cpp */; };
+		88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */; };
+		88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */; };
 		88D9C90A158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90B158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90C158EF45D005E0DAC /* MenuItemImpl_Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C905158EF44E005E0DAC /* MenuItemImpl_Win.cpp */; };
@@ -493,6 +497,10 @@
 		88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCRenderTextureMutable.cpp; path = cocos2dx/extensions/CCRenderTextureMutable.cpp; sourceTree = SOURCE_ROOT; };
 		88655C141591A3240045BF4B /* CCRenderTextureMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRenderTextureMutable.h; sourceTree = "<group>"; };
+		88655C19159365410045BF4B /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		88655C1A159365410045BF4B /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
+		88655C3915937F090045BF4B /* WindowsWrappers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsWrappers.h; sourceTree = "<group>"; };
+		88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowsWrappers.cpp; sourceTree = "<group>"; };
 		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
 		88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_OSX.h; sourceTree = "<group>"; };
@@ -1184,6 +1192,8 @@
 				88D9C911158EF476005E0DAC /* Layer.h */,
 				88D9C912158EF476005E0DAC /* Window.cpp */,
 				88D9C913158EF476005E0DAC /* Window.h */,
+				88655C19159365410045BF4B /* Font.cpp */,
+				88655C1A159365410045BF4B /* Font.h */,
 				88D9C8F2158E2031005E0DAC /* MenuItem.h */,
 				88D9C918158EF62E005E0DAC /* MenuItem.cpp */,
 				88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */,
@@ -1196,6 +1206,8 @@
 				88D9C8F5158E205E005E0DAC /* Prerequisites.h */,
 				88D9C928158F0C8F005E0DAC /* ObjcWrappers.h */,
 				88D9C929158F0C90005E0DAC /* ObjcWrappers.mm */,
+				88655C3915937F090045BF4B /* WindowsWrappers.h */,
+				88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */,
 			);
 			path = Visual;
 			sourceTree = "<group>";
@@ -2500,6 +2512,8 @@
 				88D9C92A158F0C90005E0DAC /* ObjcWrappers.mm in Sources */,
 				88655C0F15919E070045BF4B /* CCTexture2DMutable.cpp in Sources */,
 				88655C1215919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
+				88655C1B159365410045BF4B /* Font.cpp in Sources */,
+				88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2688,6 +2702,8 @@
 				88D9C92B158F0C90005E0DAC /* ObjcWrappers.mm in Sources */,
 				88655C1015919E070045BF4B /* CCTexture2DMutable.cpp in Sources */,
 				88655C1315919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
+				88655C1C159365410045BF4B /* Font.cpp in Sources */,
+				88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

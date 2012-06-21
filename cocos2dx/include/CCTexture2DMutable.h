@@ -36,7 +36,11 @@ public:
     ~CCTexture2DMutable(void);
     
     void restore();
+    
+    // reread data from texture
     void updateData();
+    // update data from fbo
+    void updateData(unsigned int fbo, unsigned int oldfbo);
     
 	/** These functions are needed to create mutable textures */
 	void releaseData(void *data);

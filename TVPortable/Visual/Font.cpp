@@ -10,5 +10,12 @@
 
 TVP_NS_VISUAL_BEGIN
 
+Font::Font() {
+    
+}
+
+Font::~Font() {
+    
+}
 
 TVP_NS_VISUAL_END

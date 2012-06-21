@@ -19,6 +19,7 @@ void operate_pixels(uint32* src,
                     int32 dleft, int32 dtop, int32 dwidth, int32 dheight,
                     int operation);
 
+
 TVP_NS_VISUAL_END
 
 #endif

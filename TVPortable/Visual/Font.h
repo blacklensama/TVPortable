@@ -15,6 +15,9 @@ TVP_NS_VISUAL_BEGIN
 
     class Font {
     public:
+        Font();
+        ~Font();
+        
         bool doUserSelect(int flags, const char* caption, const char* prompt, const char* sample);
         
         float getEscHeightX(const char* text);
@@ -33,7 +36,7 @@ TVP_NS_VISUAL_BEGIN
     public:
         TVP_PROPERTY(Angle, float);
         TVP_PROPERTY(Bold, bool);
-        TVP_PROPERTY(Face, const char*);
+        TVP_PROPERTY(Face, std::string);
         TVP_PROPERTY(Height, float);
         TVP_PROPERTY(Italic, bool);
         TVP_PROPERTY(Strikeout, bool);

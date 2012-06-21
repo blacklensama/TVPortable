@@ -10,6 +10,7 @@
 
 #include "CCTexture2DMutable.h"
 #include "ccMacros.h"
+#include "CCPlatformMacros.h"
 
 namespace cocos2d {
 
@@ -28,6 +29,8 @@ void CCTexture2DMutable::setTexData(void *var) {
 }
 
     void CCTexture2DMutable::updateData() {
+#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS
+
         glBindTexture(GL_TEXTURE_2D, m_uName);
         
         switch(m_ePixelFormat)
@@ -36,12 +39,83 @@ void CCTexture2DMutable::setTexData(void *var) {
                 glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data_);
                 break;
                 
+            case kTexture2DPixelFormat_RGBA4444:
+                glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, data_);
+                break;
+
+            case kTexture2DPixelFormat_RGB565:
+                glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, data_);
+                break;
+                
+            case kTexture2DPixelFormat_RGB5A1:
+                glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, data_);
+                break;
+                
             default:
                 break;
         }
         
         glBindTexture(GL_TEXTURE_2D, 0);
         dirty_ = false;
+#else
+        
+
+#endif
+
+    }
+    
+    void CCTexture2DMutable::updateData(unsigned int fbo, unsigned int oldfbo) {
+        
+        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, fbo);
+        
+        switch(m_ePixelFormat)
+        {
+            case kTexture2DPixelFormat_RGBA8888:
+                glReadPixels(0, 
+                             0, 
+                             m_tContentSize.width, 
+                             m_tContentSize.height, 
+                             GL_RGBA, 
+                             GL_UNSIGNED_BYTE, 
+                             data_);
+                break;
+                
+            case kTexture2DPixelFormat_RGBA4444:
+                glReadPixels(0, 
+                             0, 
+                             m_tContentSize.width, 
+                             m_tContentSize.height, 
+                             GL_RGBA, 
+                             GL_UNSIGNED_SHORT_4_4_4_4, 
+                             data_);
+                break;
+                
+            case kTexture2DPixelFormat_RGB565:
+                glReadPixels(0, 
+                             0, 
+                             m_tContentSize.width, 
+                             m_tContentSize.height, 
+                             GL_RGB, 
+                             GL_UNSIGNED_SHORT_5_6_5, 
+                             data_);
+                break;
+                
+            case kTexture2DPixelFormat_RGB5A1:
+                glReadPixels(0, 
+                             0, 
+                             m_tContentSize.width, 
+                             m_tContentSize.height, 
+                             GL_RGBA, 
+                             GL_UNSIGNED_SHORT_5_5_5_1, 
+                             data_);
+                break;
+                
+            default:
+                break;
+        }
+       
+        
+        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, oldfbo);
     }
 
 void CCTexture2DMutable::releaseData(void* data)
@@ -77,6 +151,7 @@ bool CCTexture2DMutable::initWithData(const void* data, CCTexture2DPixelFormat p
     unsigned int max = width*height*bytesPerPixel_;
     originalData_ = malloc(max);
     memcpy(originalData_, data_, max);
+    data_ = originalData_;
 #endif
 
     return true;

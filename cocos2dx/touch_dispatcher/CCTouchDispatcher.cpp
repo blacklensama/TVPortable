@@ -33,6 +33,7 @@ THE SOFTWARE.
 #include "ccMacros.h"
 #include <algorithm>
 
+
 /**
  * Used for sort
  */
@@ -499,6 +500,7 @@ void CCTouchDispatcher::touchesBegan(CCSet *touches, CCEvent *pEvent)
 	{
 		this->touches(touches, pEvent, CCTOUCHBEGAN);
 	}
+    
 }
 
 void CCTouchDispatcher::touchesMoved(CCSet *touches, CCEvent *pEvent)

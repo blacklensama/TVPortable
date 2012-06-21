@@ -170,7 +170,12 @@ void CCRenderTextureMutable::begin()
 	float heightRatio = size.height / texSize.height;
 
 	// Adjust the orthographic propjection and viewport
-	ccglOrtho((float)-1.0 / widthRatio,  (float)1.0 / widthRatio, (float)-1.0 / heightRatio, (float)1.0 / heightRatio, -1,1);
+	ccglOrtho((float)-1.0 / widthRatio,  
+              (float)1.0 / widthRatio, 
+              (float)-1.0 / heightRatio, 
+              (float)1.0 / heightRatio, 
+              -1,
+              1);
     glViewport(0, 0, (GLsizei)texSize.width, (GLsizei)texSize.height);
 //     CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, texSize.width, texSize.height);
 
@@ -235,7 +240,12 @@ void CCRenderTextureMutable::end(bool bIsTOCacheTexture)
 	}
 #endif
     
+#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS
     m_pTexture->updateData();
+#else
+    // on ios, we need to read the fbo directly cause there's no glGetTexImage in opengles
+    m_pTexture->updateData(m_uFBO, m_nOldFBO);
+#endif
 }
 
 void CCRenderTextureMutable::clear(float r, float g, float b, float a)

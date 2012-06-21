@@ -28,4 +28,6 @@
     type get##prop() const { return accessor; } \
     void set##prop(type val) { accessor = val; }
 
+#define TVP_DEFAULT_FONT "Courier"
+
 #endif
