@@ -30,4 +30,10 @@
 
 #define TVP_DEFAULT_FONT "Courier"
 
+#define TVP_ASSERT(cond, log) \
+    if(!(cond)) { \
+        printf("ASSERTION FAILED with mssg %s at function %s, file %s, line %d", log, __FUNCTION__, __FILE__, __LINE__)); \
+        ukn_assert(0); \
+    }
+
 #endif

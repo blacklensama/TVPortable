@@ -501,6 +501,7 @@
 		88655C1A159365410045BF4B /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
 		88655C3915937F090045BF4B /* WindowsWrappers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsWrappers.h; sourceTree = "<group>"; };
 		88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowsWrappers.cpp; sourceTree = "<group>"; };
+		88655C491594A5FC0045BF4B /* ListenerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListenerManager.h; sourceTree = "<group>"; };
 		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
 		88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_OSX.h; sourceTree = "<group>"; };
@@ -1256,6 +1257,7 @@
 				D42B769D1589856100306904 /* Classes */,
 				88EE94021589C36F0096AEF9 /* Predefine.h */,
 				88EE94171589CCDD0096AEF9 /* Type.h */,
+				88655C491594A5FC0045BF4B /* ListenerManager.h */,
 			);
 			path = TVPortable;
 			sourceTree = "<group>";

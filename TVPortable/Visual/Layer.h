@@ -12,14 +12,44 @@
 #include "cocos2d.h"
 
 #include "Prerequisites.h"
-
+#include "../ListenerManager.h"
 
 TVP_NS_VISUAL_BEGIN
         
+    class LayerListener {
+    public:
+        virtual void onBeforeFocus(Layer* layer, bool blurred, bool direction) { }
+        virtual void onBlur(bool focused) { }
+        virtual void onClick(float x, float y) { }
+        virtual void onDoubleClick(float x, float y) { }
+        virtual void onFocus(bool focused, bool direction) { }
+        virtual void onHitTest(float x, float y, bool hit) { }
+        virtual void onKeyDown(uint8 key, int32 shift, bool process = true) { }
+        virtual void onKeyPress(uint8 key, bool process = true) { }
+        virtual void onKeyUp(uint8 key, int32 shift, bool process = true) { }
+        virtual void onMouseDown(float x, float y, int32 btn, int32 shift) { }
+        virtual void onMouseEnter() { }
+        virtual void onMouseLeave() { }
+        virtual void onMouseMove(float x, float y, int32 shift) { }
+        virtual void onMouseUp(float x, float y, int32 button, int32 shift) { }
+        virtual void onMouseWheel(int32 shift, int32 delta, float x, float y) { }
+        virtual void onNodeDisabled() { }
+        virtual void onNodeEnabled() { }
+        virtual void onPaint() { }
+        virtual void onSearchNextFocusable(Layer* layer) { }
+        virtual void onSearchPrevFocusable(Layer* layer) { }
+        virtual void onTransitionCompleted(Layer* dest, Layer* src) { }
+    };
+
     /**
      krkr Layer
      **/
-    class Layer: public cocos2d::CCTargetedTouchDelegate, public cocos2d::CCInputListener, public cocos2d::CCNode {
+    class Layer: 
+    public cocos2d::CCTargetedTouchDelegate, 
+    public cocos2d::CCInputListener, 
+    public cocos2d::CCNode, 
+    public ListenerManager<LayerListener> {
+    
     public:
         Layer(Window* window, Layer* parent);
         virtual ~Layer();
@@ -41,6 +71,8 @@ TVP_NS_VISUAL_BEGIN
         TVP_PROPERTY(CursorY, int32);
         TVP_PROPERTY(Enabled, bool);
         TVP_PROPERTY(Face, int32);
+        TVP_PROPERTY(Type, int32);
+        TVP_PROPERTY(Opacity, int32);
         TVP_PROPERTY(Focusable, bool);
         TVP_PROPERTY(HasImage, bool);
         TVP_PROPERTY(ParentLayer, Layer*);
@@ -222,31 +254,6 @@ TVP_NS_VISUAL_BEGIN
         /* need redraw buffer texture? */
         bool mDirty;
     };
-
-class LayerListener {
-public:
-    virtual void onBeforeFocus(Layer* layer, bool blurred, bool direction) { }
-    virtual void onBlur(bool focused) { }
-    virtual void onClick(float x, float y) { }
-    virtual void onDoubleClick(float x, float y) { }
-    virtual void onFocus(bool focused, bool direction) { }
-    virtual void onHitTest(float x, float y, bool hit) { }
-    virtual void onKeyDown(uint8 key, int32 shift, bool process = true) { }
-    virtual void onKeyPress(uint8 key, bool process = true) { }
-    virtual void onKeyUp(uint8 key, int32 shift, bool process = true) { }
-    virtual void onMouseDown(float x, float y, int32 btn, int32 shift) { }
-    virtual void onMouseEnter() { }
-    virtual void onMouseLeave() { }
-    virtual void onMouseMove(float x, float y, int32 shift) { }
-    virtual void onMouseUp(float x, float y, int32 button, int32 shift) { }
-    virtual void onMouseWheel(int32 shift, int32 delta, float x, float y) { }
-    virtual void onNodeDisabled() { }
-    virtual void onNodeEnabled() { }
-    virtual void onPaint() { }
-    virtual void onSearchNextFocusable(Layer* layer) { }
-    virtual void onSearchPrevFocusable(Layer* layer) { }
-    virtual void onTransitionCompleted(Layer* dest, Layer* src) { }
-};
 
 TVP_NS_VISUAL_END
 

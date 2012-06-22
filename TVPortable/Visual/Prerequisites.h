@@ -66,7 +66,7 @@ TVP_NS_VISUAL_BEGIN
         dfMain      = 1U << 7,
     };
 
-    enum {
+    enum LayerType {
         ltOpaque,
         ltAlpha,
         ltAddApha,

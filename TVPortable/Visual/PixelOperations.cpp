@@ -68,6 +68,7 @@ float do_blend(float src, float dst, float alpha, int operation) {
         case lsPsDifference5:   return ABS(dst - src * alpha);
         case ltPsExclusion:     return BLEND(dst, dst + src - 2.0f * src * dst, alpha);
     }
+    return 0.f;
 }
 
 TVP_NS_VISUAL_END

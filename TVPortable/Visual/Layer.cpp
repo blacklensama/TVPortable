@@ -16,6 +16,7 @@
 
 #include "MenuItem.h"
 #include "Window.h"
+#include "Font.h"
 
 #include "ukn/Color.h"
 
@@ -51,7 +52,11 @@ TVP_NS_VISUAL_BEGIN
     mFont(0),
     mRenderLayer(0),
     mWindow(window),
-    mText(0){
+    mText(0),
+    mOpacity(255),
+    mType(ltOpaque) {
+        mFace = dfMain | dfOpaque;
+        
         CCInputDispatcher::Instance().addListener(this, 1);
         CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 1, false);
         
@@ -64,6 +69,8 @@ TVP_NS_VISUAL_BEGIN
         if(parent) {
             parent->addChild(this);
         }
+        
+        mFont = Font::DefaultFont();
     }
 
     Layer::~Layer() {
@@ -233,7 +240,60 @@ TVP_NS_VISUAL_BEGIN
         
         // render layer buffer
        // mRenderLayer->getSprite()->setFlipY(true);
-        mRenderLayer->getSprite()->draw();
+        this->onPaint();
+        
+        if((mFace & dfAlpha) ||
+           (mFace & dfAlphaAdd) ||
+           (mFace & dfMain) ||
+           (mFace & dfAuto)) {
+            ccBlendFunc blendFunc;
+            switch(mType) {
+                case ltAlpha:
+                    blendFunc.src = CC_BLEND_SRC;
+                    blendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
+                    break;
+                    
+                case ltAddApha:
+                    blendFunc.src = GL_ONE;
+                    blendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
+                    break;
+                    
+                case ltAdditive:
+                    blendFunc.src = GL_SRC_ALPHA;
+                    blendFunc.dst = GL_ONE;
+                    break;
+                    
+                case ltDarken:
+                case ltLighten:
+                case ltSubtractive:
+                    break;
+                    
+                case ltDodge:
+                    blendFunc.src = GL_ONE;
+                    blendFunc.dst = GL_ONE;
+                    break;
+                    
+                case ltMultiplicative:
+                    blendFunc.src = GL_DST_COLOR;
+                    blendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
+                    break;
+                    
+                case ltScreen:
+                    blendFunc.src = GL_ONE;
+                    blendFunc.dst = GL_ONE_MINUS_SRC_COLOR;
+                    break;
+            }
+            
+            mRenderLayer->getSprite()->setOpacity(mOpacity);
+            mRenderLayer->getSprite()->setBlendFunc(blendFunc);
+            mRenderLayer->getSprite()->draw();
+        }
+        if(mFace & dfProvince) {
+            
+        }
+        if(mFace & dfMask) {
+            
+        }
     }
 
     void Layer::onEnter() {
@@ -328,6 +388,7 @@ TVP_NS_VISUAL_BEGIN
                     if(evt.button == CCMouse::RightButton) {
                         Window::MainWindow()->getMenu()->popup(0, evt.x, evt.y);
                     }
+                    
                     break;
                     
                 case CCMouse::Release:
@@ -369,8 +430,32 @@ TVP_NS_VISUAL_BEGIN
         return false;
     }
 
-    void Layer::adjustGamma(float rgamma, int32 rfloor, int32 rceil, float ggamma, int32 gfloow, int32 gceil, float bgamma, int32 bfloor, int32 bceil)  {
-        
+    void Layer::adjustGamma(float rgamma, int32 rfloor, int32 rceil, float ggamma, int32 gfloor, int32 gceil, float bgamma, int32 bfloor, int32 bceil)  {
+        if(mRenderLayer) {
+            CCTexture2DMutable* texture = mRenderLayer->getTexture();
+            int width = texture->getContentSize().width;
+            int height = texture->getContentSize().height;
+            unsigned int* data = texture->getDataRGBA();
+            assert(data);
+            for(int y = 0; y < height; ++y) {
+                for(int x = 0; x < width; ++x) {
+                    uint32 color = 
+                    data[y * texture->getPixelsWide() + x];
+                    
+                    uint8 r = COLOR_GETR_RGBA(color);
+                    uint8 g = COLOR_GETG_RGBA(color);
+                    uint8 b = COLOR_GETB_RGBA(color);
+                    uint8 a = COLOR_GETA_RGBA(color);
+                    
+                    uint8 newR = clampf(255 * ::pow((float)r/255.f, 1.f / rgamma), rfloor, rceil);
+                    uint8 newG = clampf(255 * ::pow((float)g/255.f, 1.f / ggamma), gfloor, gceil);
+                    uint8 newB = clampf(255 * ::pow((float)b/255.f, 1.f / bgamma), bfloor, bceil);
+                    
+                    data[y * texture->getPixelsWide() + x] = COLOR_RGBA(newR, newG, newB, a);
+                }
+            }
+            texture->putDataRGBA();
+        }
     }
 
     void Layer::affineBlend(Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight, bool affine, float A, float B, float C, float D, float E, float F, int32 opa, int32 type) {
@@ -414,7 +499,51 @@ TVP_NS_VISUAL_BEGIN
     }
 
     void Layer::blendRect(int32 dleft, int32 dtop, Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight, int32 opa) {
+        if(mRenderLayer) {
+            CCTexture2DMutable* texture = mRenderLayer->getTexture();
+            int width = texture->getContentSize().width;
+            int height = texture->getContentSize().height;
+            unsigned int* data = texture->getDataRGBA();
+            assert(data);
+            
+            CCTexture2DMutable* srcTexture = src->getRenderLayer()->getTexture();
+            int srcWidth = srcTexture->getContentSize().width;
+            int srcHeight = srcTexture->getContentSize().height;
+            unsigned int* srcData = srcTexture->getDataRGBA();
+            assert(srcData);
+            
+            int yend = dtop + sheight;
+            if(yend > height) yend = height;
+            int xend = dleft + swidth;
+            if(xend > width) xend = width;
+            
+            for(int y = dtop; y < yend; ++y) {
+                for(int x = dleft; x < xend; ++x) {
+                    int srcX = x - dleft + sleft;
+                    int srcY = y - dtop + stop;
+                    
+                    uint32 color = data[y * texture->getPixelsWide() + x];
+                    uint32 srcColor = srcData[srcY * srcTexture->getPixelsWide() + srcX];
+                    float opa = opa / 255.f;
+                    
+                    uint8 r = COLOR_GETR_RGBA(color);
+                    uint8 g = COLOR_GETG_RGBA(color);
+                    uint8 b = COLOR_GETB_RGBA(color);
+                    uint8 a = COLOR_GETA_RGBA(color);
+                    
+                    uint8 srcr = COLOR_GETR_RGBA(srcColor);
+                    uint8 srcg = COLOR_GETG_RGBA(srcColor);
+                    uint8 srcb = COLOR_GETB_RGBA(srcColor);
+                    
+                    data[y * texture->getPixelsWide() + x] = COLOR_RGBA(r * opa + srcr * (1.f - opa), 
+                                                                        g * opa + srcg * (1.f - opa), 
+                                                                        b * opa + srcb * (1.f - opa), 
+                                                                        a);
+                }
+            }
         
+            texture->putDataRGBA();
+        }
     }
 
     void Layer::bringToFront() {
@@ -433,10 +562,11 @@ TVP_NS_VISUAL_BEGIN
         }
     }
 
-    void Layer::colorRect(float left, float right, float width, float height, uint32 color, int32 opacity) {
-        
-        
-        
+    void Layer::colorRect(float left, float top, float width, float height, uint32 color, int32 opacity) {
+        if(mRenderLayer) {
+            mRenderLayer->getTexture()->fillRect(CCRectMake(left, top, width, height),
+                                                 COLOR_SETA_RGBA(color, opacity));
+        }
     }
 
     void Layer::doBoxBlur(float xblur/* = 1*/, float yblur/* = 1*/) {
@@ -521,12 +651,34 @@ TVP_NS_VISUAL_BEGIN
 
     void Layer::drawText(float x, float y, const char* text, uint32 color, int32 opacity/* = 255*/, bool aa/* = true*/, int32 shadowlevel/* = 0*/, uint32 shadowColor/*=0x00000000*/, float shadowWidth/*= 0*/, float shadowfsx/* = 0*/, float shadowfsy/* = 0*/) {
 
-        setDirty();
-
+        if(!mText)
+            mText = CCLabelTTF::labelWithString("", 
+                                                mFont->getFace().c_str(), 
+                                                mFont->getHeight());
+        if(mText) {
+            mText->setString(text);
+            mText->setPosition(ccp(x, y));
+            mText->setColor(ccc3(COLOR_GETR_RGBA(color), 
+                                 COLOR_GETG_RGBA(color), 
+                                 COLOR_GETB_RGBA(color)));
+            mText->setOpacity(opacity);
+            
+            // to do with shadow;
+            // and font render angle
+            
+            setDirty();
+            
+        }
     }
 
     void Layer::fillRect(float left, float top, float width, float height, uint32 color) {
-        
+        if(mRenderLayer) {
+            mRenderLayer->getTexture()->fillRect(CCRectMake(left,
+                                                            top,
+                                                            width, 
+                                                            height), 
+                                                 color);
+        }
     }
 
     void Layer::flipLR() {
@@ -771,87 +923,89 @@ TVP_NS_VISUAL_BEGIN
     }
 
     void Layer::onBeforeFocus(Layer* layer, bool blurred, bool direction) {
-        
+        this->publishListenerEvent(&LayerListener::onBeforeFocus, layer, blurred, direction);
     }
 
     void Layer::onBlur(bool focused) {
-        
+        this->publishListenerEvent(&LayerListener::onBlur, focused);
     }
 
     void Layer::onClick(float x, float y) {
-        
+        this->publishListenerEvent(&LayerListener::onClick, x, y);
     }
 
     void Layer::onDoubleClick(float x, float y) {
-        
+        this->publishListenerEvent(&LayerListener::onDoubleClick, x, y);
     }
 
     void Layer::onFocus(bool focused, bool direction) {
-        
+        this->publishListenerEvent(&LayerListener::onFocus, focused, direction);
     }
 
     void Layer::onHitTest(float x, float y, bool hit) {
-        
+        this->publishListenerEvent(&LayerListener::onHitTest, x, y, hit);
     }
 
     void Layer::onKeyDown(uint8 key, int32 shift, bool process/* = true*/) {
-        
+        this->publishListenerEvent(&LayerListener::onKeyDown, key, shift, process);
     }
 
     void Layer::onKeyPress(uint8 key, bool process/* = true*/) {
-        
+        this->publishListenerEvent(&LayerListener::onKeyPress, key, process);
     }
 
     void Layer::onKeyUp(uint8 key, int32 shift, bool process/* = true*/) {
-        
+        this->publishListenerEvent(&LayerListener::onKeyUp, key, shift, process);
     }
 
     void Layer::onMouseDown(float x, float y, int32 btn, int32 shift) {
-        
+        this->publishListenerEvent(&LayerListener::onMouseDown, x, y, btn, shift);
     }
 
     void Layer::onMouseEnter() {
-        
+        this->publishListenerEvent(&LayerListener::onMouseEnter);
     }
 
     void Layer::onMouseLeave() {
-        
+        this->publishListenerEvent(&LayerListener::onMouseLeave);
     }
 
     void Layer::onMouseMove(float x, float y, int32 shift) {
-        
+        this->publishListenerEvent(&LayerListener::onMouseMove, x, y, shift);
     }
 
     void Layer::onMouseUp(float x, float y, int32 button, int32 shift) {
-        
+        this->publishListenerEvent(&LayerListener::onMouseUp, x, y, button, shift);
     }
 
     void Layer::onMouseWheel(int32 shift, int32 delta, float x, float y) {
-        
+        this->publishListenerEvent(&LayerListener::onMouseWheel, shift, delta, x, y);
     }
 
     void Layer::onNodeDisabled() {
-        
+        this->publishListenerEvent(&LayerListener::onNodeDisabled);
     }
 
     void Layer::onNodeEnabled() {
-        
+        this->publishListenerEvent(&LayerListener::onNodeEnabled);
     }
 
     void Layer::onPaint() {
-        
+        this->publishListenerEvent(&LayerListener::onPaint);
     }
 
     void Layer::onSearchNextFocusable(Layer* layer) {
-        
+        this->publishListenerEvent(&LayerListener::onSearchNextFocusable, layer);
     }
 
     void Layer::onSearchPrevFocusable(Layer* layer) {
-        
+        this->publishListenerEvent(&LayerListener::onSearchPrevFocusable, layer);
+
     }
 
     void Layer::onTransitionCompleted(Layer* dest, Layer* src) {
-        
+        this->publishListenerEvent(&LayerListener::onTransitionCompleted, dest, src);
+
     }
 
     void Layer::setDirty() {

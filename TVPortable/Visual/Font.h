@@ -15,6 +15,7 @@ TVP_NS_VISUAL_BEGIN
 
     class Font {
     public:
+        Font(const char* name, int size);
         Font();
         ~Font();
         
@@ -41,6 +42,9 @@ TVP_NS_VISUAL_BEGIN
         TVP_PROPERTY(Italic, bool);
         TVP_PROPERTY(Strikeout, bool);
         TVP_PROPERTY(Underline, bool);
+        
+    public:
+        static Font* DefaultFont();
     };
         
 TVP_NS_VISUAL_END
