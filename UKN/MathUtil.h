@@ -1239,6 +1239,8 @@ namespace ukn {
         }
     };
     
+#undef min
+#undef max
     
     class AABB3 {
     public:

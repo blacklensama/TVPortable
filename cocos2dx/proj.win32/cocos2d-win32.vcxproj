@@ -148,6 +148,7 @@
     <ClCompile Include="..\extensions\CCInputDispatcher.cpp" />
     <ClCompile Include="..\extensions\CCInputEvent.cpp" />
     <ClCompile Include="..\extensions\CCInputListener.cpp" />
+    <ClCompile Include="..\extensions\CCRenderTextureMutable.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelAtlas.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelBMFont.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelTTF.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="..\support\zip_support\unzip.cpp" />
     <ClCompile Include="..\support\zip_support\ZipUtils.cpp" />
     <ClCompile Include="..\textures\CCTexture2D.cpp" />
+    <ClCompile Include="..\textures\CCTexture2DMutable.cpp" />
     <ClCompile Include="..\textures\CCTextureAtlas.cpp" />
     <ClCompile Include="..\textures\CCTextureCache.cpp" />
     <ClCompile Include="..\textures\CCTexturePVR.cpp" />
@@ -279,6 +281,7 @@
     <ClInclude Include="..\include\CCProgressTimer.h" />
     <ClInclude Include="..\include\CCProtocols.h" />
     <ClInclude Include="..\include\CCRenderTexture.h" />
+    <ClInclude Include="..\include\CCRenderTextureMutable.h" />
     <ClInclude Include="..\include\CCRibbon.h" />
     <ClInclude Include="..\include\CCScene.h" />
     <ClInclude Include="..\include\CCScheduler.h" />
@@ -291,6 +294,7 @@
     <ClInclude Include="..\include\CCString.h" />
     <ClInclude Include="..\include\CCTextFieldTTF.h" />
     <ClInclude Include="..\include\CCTexture2D.h" />
+    <ClInclude Include="..\include\CCTexture2DMutable.h" />
     <ClInclude Include="..\include\CCTextureAtlas.h" />
     <ClInclude Include="..\include\CCTextureCache.h" />
     <ClInclude Include="..\include\CCTexturePVR.h" />

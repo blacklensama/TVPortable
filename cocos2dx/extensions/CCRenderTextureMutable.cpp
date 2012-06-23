@@ -240,7 +240,7 @@ void CCRenderTextureMutable::end(bool bIsTOCacheTexture)
 	}
 #endif
     
-#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS
+#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS && CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
     m_pTexture->updateData();
 #else
     // on ios, we need to read the fbo directly cause there's no glGetTexImage in opengles

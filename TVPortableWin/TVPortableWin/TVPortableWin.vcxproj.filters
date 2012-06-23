@@ -345,6 +345,12 @@
     <ClInclude Include="..\..\TVPortable\Visual\Prerequisites.h">
       <Filter>TVPortable\Visual</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\TVPortable\ListenerManager.h">
+      <Filter>TVPortable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\WindowsWrappers.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp">
@@ -564,6 +570,9 @@
       <Filter>TVPortable\Visual</Filter>
     </ClCompile>
     <ClCompile Include="..\..\TVPortable\Visual\Window.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\WindowsWrappers.cpp">
       <Filter>TVPortable\Visual</Filter>
     </ClCompile>
   </ItemGroup>
