@@ -199,10 +199,8 @@ namespace ukn {
             return opt;
         
         if(attr.empty()) {
-            ukn_string name = mCurrNode.name();
-            if(name.empty())
-                name = mCurrNode.child_value();
-            return name;
+            ukn_string child_value = mCurrNode.child_value();
+            return child_value;
         }
         pugi::xml_attribute attribute = mCurrNode.attribute(attr.c_str());
         if(attribute) {
@@ -225,10 +223,6 @@ namespace ukn {
         pugi::xml_attribute attribute = mCurrNode.attribute(attr.c_str());
         if(attribute) {
             return attribute.as_bool();
-        } else {
-            ukn_string c = mCurrNode.child_value(attr.c_str());
-            if(!c.empty())
-                return opt;
         }
         return opt;
     }
@@ -242,10 +236,6 @@ namespace ukn {
         pugi::xml_attribute attribute = mCurrNode.attribute(attr.c_str());
         if(attribute) {
             return attribute.as_int();
-        } else {
-            ukn_string c = mCurrNode.child_value(attr.c_str());
-            if(!c.empty())
-                return opt;
         }
         return opt;
     }
@@ -259,10 +249,6 @@ namespace ukn {
         pugi::xml_attribute attribute = mCurrNode.attribute(attr.c_str());
         if(attribute) {
             return attribute.as_float();
-        } else {
-            ukn_string c = mCurrNode.child_value(attr.c_str());
-            if(!c.empty())
-                return opt;
         }
         return opt;
     }
