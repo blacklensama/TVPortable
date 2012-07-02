@@ -51,6 +51,7 @@
     <ClInclude Include="..\..\tjs2\tjsVariantString.h" />
     <ClInclude Include="..\..\TVPortable\Classes\AppDelegate.h" />
     <ClInclude Include="..\..\TVPortable\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\..\TVPortable\ListenerManager.h" />
     <ClInclude Include="..\..\TVPortable\Predefine.h" />
     <ClInclude Include="..\..\TVPortable\Type.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Font.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="..\..\TVPortable\Visual\PixelOperations.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Prerequisites.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Window.h" />
+    <ClInclude Include="..\..\TVPortable\Visual\WindowsWrappers.h" />
     <ClInclude Include="..\..\UKN\AppleStuff.h" />
     <ClInclude Include="..\..\UKN\Base64.h" />
     <ClInclude Include="..\..\UKN\Basic.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="..\..\TVPortable\Visual\MenuItemImpl_Win.cpp" />
     <ClCompile Include="..\..\TVPortable\Visual\PixelOperations.cpp" />
     <ClCompile Include="..\..\TVPortable\Visual\Window.cpp" />
+    <ClCompile Include="..\..\TVPortable\Visual\WindowsWrappers.cpp" />
     <ClCompile Include="..\..\UKN\Base64.cpp" />
     <ClCompile Include="..\..\UKN\Convert.cpp" />
     <ClCompile Include="..\..\UKN\FileUtil.cpp" />

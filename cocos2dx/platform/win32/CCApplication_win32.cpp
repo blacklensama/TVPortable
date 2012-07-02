@@ -68,9 +68,9 @@ int CCApplication::run()
 				if(!CCDirector::sharedDirector()->isPaused())
 					mainWnd.dispatchInputEvents();
 
-				HMENU menu = GetMenu(mainWnd.getHWnd());
+		/*		HMENU menu = GetMenu(mainWnd.getHWnd());
 				if(menu != NULL)
-					DrawMenuBar(mainWnd.getHWnd());
+					DrawMenuBar(mainWnd.getHWnd());*/
             }
             else
             {

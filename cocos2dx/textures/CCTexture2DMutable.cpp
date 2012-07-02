@@ -29,7 +29,7 @@ void CCTexture2DMutable::setTexData(void *var) {
 }
 
     void CCTexture2DMutable::updateData() {
-#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS
+#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS && CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
 
         glBindTexture(GL_TEXTURE_2D, m_uName);
         
@@ -73,9 +73,9 @@ void CCTexture2DMutable::setTexData(void *var) {
             case kTexture2DPixelFormat_RGBA8888:
                 glReadPixels(0, 
                              0, 
-                             m_tContentSize.width, 
-                             m_tContentSize.height, 
-                             GL_RGBA, 
+                             m_uPixelsWide,
+                             m_uPixelsHigh, 
+							 GL_RGBA, 
                              GL_UNSIGNED_BYTE, 
                              data_);
                 break;
@@ -83,8 +83,8 @@ void CCTexture2DMutable::setTexData(void *var) {
             case kTexture2DPixelFormat_RGBA4444:
                 glReadPixels(0, 
                              0, 
-                             m_tContentSize.width, 
-                             m_tContentSize.height, 
+                             m_uPixelsWide, 
+                             m_uPixelsHigh,  
                              GL_RGBA, 
                              GL_UNSIGNED_SHORT_4_4_4_4, 
                              data_);
@@ -93,8 +93,8 @@ void CCTexture2DMutable::setTexData(void *var) {
             case kTexture2DPixelFormat_RGB565:
                 glReadPixels(0, 
                              0, 
-                             m_tContentSize.width, 
-                             m_tContentSize.height, 
+                             m_uPixelsWide, 
+                             m_uPixelsHigh, 
                              GL_RGB, 
                              GL_UNSIGNED_SHORT_5_6_5, 
                              data_);
@@ -103,8 +103,8 @@ void CCTexture2DMutable::setTexData(void *var) {
             case kTexture2DPixelFormat_RGB5A1:
                 glReadPixels(0, 
                              0, 
-                             m_tContentSize.width, 
-                             m_tContentSize.height, 
+                             m_uPixelsWide, 
+                             m_uPixelsHigh, 
                              GL_RGBA, 
                              GL_UNSIGNED_SHORT_5_5_5_1, 
                              data_);

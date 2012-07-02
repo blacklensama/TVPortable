@@ -246,7 +246,7 @@ TVP_NS_VISUAL_BEGIN
            (mFace & dfAlphaAdd) ||
            (mFace & dfMain) ||
            (mFace & dfAuto)) {
-            ccBlendFunc blendFunc;
+			   ccBlendFunc blendFunc = {CC_BLEND_SRC, GL_ONE_MINUS_SRC_ALPHA};
             switch(mType) {
                 case ltAlpha:
                     blendFunc.src = CC_BLEND_SRC;
@@ -389,6 +389,7 @@ TVP_NS_VISUAL_BEGIN
                         Window::MainWindow()->getMenu()->popup(0, evt.x, evt.y);
                     }
                     
+					this->adjustGamma(1.5, 0, 255, 1.5, 0, 255, 1.5, 0, 255);
                     break;
                     
                 case CCMouse::Release:
@@ -498,7 +499,7 @@ TVP_NS_VISUAL_BEGIN
         setDirty();
     }
 
-    void Layer::blendRect(int32 dleft, int32 dtop, Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight, int32 opa) {
+    void Layer::blendRect(int32 dleft, int32 dtop, Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight, int32 opacity) {
         if(mRenderLayer) {
             CCTexture2DMutable* texture = mRenderLayer->getTexture();
             int width = texture->getContentSize().width;
@@ -524,7 +525,7 @@ TVP_NS_VISUAL_BEGIN
                     
                     uint32 color = data[y * texture->getPixelsWide() + x];
                     uint32 srcColor = srcData[srcY * srcTexture->getPixelsWide() + srcX];
-                    float opa = opa / 255.f;
+                    float opa = opacity / 255.f;
                     
                     uint8 r = COLOR_GETR_RGBA(color);
                     uint8 g = COLOR_GETG_RGBA(color);
@@ -574,14 +575,16 @@ TVP_NS_VISUAL_BEGIN
             CCTexture2DMutable* texture = mRenderLayer->getTexture();
             int width = texture->getContentSize().width;
             int height = texture->getContentSize().height;
+			int padding = texture->getPixelsWide();
             unsigned int* data = texture->getDataRGBA();
             assert(data);
            
             uint8 filterSize = (xblur*2) * (yblur*2);
             
             // RGBA8888
-            unsigned int* origin = (unsigned int*)malloc(width * height * 4);
-            memcpy(origin, data, width * height * 4);
+
+            unsigned int* origin = (unsigned int*)malloc(texture->getPixelsWide() * texture->getPixelsHigh() * 4);
+            memcpy(origin, data, texture->getPixelsWide() * texture->getPixelsHigh() * 4);
             
             for(int y = 0; y < height; ++y) {
                 for(int x = 0; x < width; ++x) {
@@ -642,7 +645,6 @@ TVP_NS_VISUAL_BEGIN
                     uint8 avg = 0.3 * r + 0.59 * g + 0.11 * b;
                     
                     data[y * texture->getPixelsWide() + x] = COLOR_RGBA(avg, avg, avg, a);
-                    
                 }
             }
             texture->putDataRGBA();
