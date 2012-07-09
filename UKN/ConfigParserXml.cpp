@@ -268,7 +268,7 @@ namespace ukn {
             return ukn_string();
         
         myWritter writter(indent);
-        mDocument->save(writter, PUGIXML_TEXT("\t"), pugi::format_indent, pugi::encoding_wchar);
+        mDocument->save(writter, PUGIXML_TEXT("\t"), pugi::format_indent, pugi::encoding_utf8);
         return writter.str;
     }
     
@@ -286,7 +286,7 @@ namespace ukn {
             return MakeSharedPtr<MemoryStream>();
         
         myStreamWritter writter(indent);
-        mDocument->save(writter, PUGIXML_TEXT("\t"), pugi::format_indent, pugi::encoding_wchar);
+        mDocument->save(writter, PUGIXML_TEXT("\t"), pugi::format_indent, pugi::encoding_utf8);
         return writter.stream;
     }
     
