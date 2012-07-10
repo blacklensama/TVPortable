@@ -189,7 +189,7 @@ namespace ukn {
         
         std::vector<ukn_string> attributes;
         for(; it != end; ++it) {
-            attributes.push_back(ukn_string(it->value()));
+            attributes.push_back(ukn_string(it->name()));
         }
         return attributes;
     }
