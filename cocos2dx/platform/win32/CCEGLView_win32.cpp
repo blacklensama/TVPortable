@@ -1,6 +1,6 @@
 /****************************************************************************
 Copyright (c) 2010 cocos2d-x.org
-
+Copyright (c) 2012 Robert Bu(Studio Symphonie). All rights reserved.
 http://www.cocos2d-x.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
