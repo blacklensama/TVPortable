@@ -26,6 +26,7 @@
  THE SOFTWARE.
  */
 
+#include "CCGestureRecognizeriOS.h"
 #include "CCGestureRecognizer.h"
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
@@ -101,47 +102,17 @@
 namespace cocos2d {
     
     static GestureReceiver* __receiver;
-
-    CCGestureRecognizer& CCGestureRecognizer::Instance() {
-        static CCGestureRecognizer* instance = new CCGestureRecognizer;
-        return *instance;
-    }
     
-    CCGestureRecognizer::CCGestureRecognizer() {
+    CCGestureRecognizerImpl::CCGestureRecognizerImpl(CCGestureRecognizer* parent) {
         __receiver = [[GestureReceiver alloc] init];
-        __receiver.parent = this;
+        __receiver.parent = parent;
     }
     
-    
-    CCGestureRecognizer::~CCGestureRecognizer() { 
-        
+    CCGestureRecognizerImpl::~CCGestureRecognizerImpl() {
+        removeAllRecognizers();
     }
-    
-    void CCGestureRecognizer::onPinch(unsigned long which, float v, float scale, float x, float y) {
-        this->publishListenerEvent(&CCGestureListener::onPinch, which, v, scale, x, y);
-    }
-    
-    void CCGestureRecognizer::onTap(unsigned long which) {
-        this->publishListenerEvent(&CCGestureListener::onTap, which);
-    }
-    
-    void CCGestureRecognizer::onLongPress(unsigned long which) {
-        this->publishListenerEvent(&CCGestureListener::onLongPress, which);
-    }
-    
-    void CCGestureRecognizer::onSwipe(unsigned long which) {
-        this->publishListenerEvent(&CCGestureListener::onSwipe, which);
-    }
-    
-    void CCGestureRecognizer::onPan(unsigned long which, float tranlationX, float translationY, float velocityX, float velocityY) {
-        this->publishListenerEvent(&CCGestureListener::onPan, which, tranlationX, translationY, velocityX, velocityY);
-    }
-    
-    void CCGestureRecognizer::onRotation(unsigned long which, float rotation, float velocity) {
-        this->publishListenerEvent(&CCGestureListener::onRotation, which, rotation, velocity);
-    }
-    
-    unsigned long CCGestureRecognizer::addPinchRecognizer() {
+
+    unsigned long CCGestureRecognizerImpl::addPinchRecognizer() {
         UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handlePinchGesture:)];
         
         UIWindow* window = [[UIApplication sharedApplication] keyWindow];
@@ -151,12 +122,12 @@ namespace cocos2d {
         return (unsigned long)pinch;
     }
     
-    unsigned long CCGestureRecognizer::addTapRecognizer(int tapsRequired, int touchesRequired) {
+    unsigned long CCGestureRecognizerImpl::addTapRecognizer(int tapsRequired, int touchesRequired) {
         UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handleTapGesture:)];
         
         tap.numberOfTapsRequired = tapsRequired;
         tap.numberOfTouchesRequired = touchesRequired;
-
+        
         UIWindow* window = [[UIApplication sharedApplication] keyWindow];
         [window.rootViewController.view addGestureRecognizer:tap];
         
@@ -164,7 +135,7 @@ namespace cocos2d {
         return (unsigned long)tap;
     }
     
-    unsigned long CCGestureRecognizer::addPanRecognizer(int minTouches, int maxTouches) {
+    unsigned long CCGestureRecognizerImpl::addPanRecognizer(int minTouches, int maxTouches) {
         UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handlePanGesture:)];
         
         pan.minimumNumberOfTouches = minTouches;
@@ -177,7 +148,7 @@ namespace cocos2d {
         return (unsigned long)pan;
     }
     
-    unsigned long CCGestureRecognizer::addRotationRecognizer() {
+    unsigned long CCGestureRecognizerImpl::addRotationRecognizer() {
         UIRotationGestureRecognizer* rot = [[UIRotationGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handleRotationGesture:)];
         
         UIWindow* window = [[UIApplication sharedApplication] keyWindow];
@@ -187,20 +158,23 @@ namespace cocos2d {
         return (unsigned long)rot;
     }
     
-    unsigned long CCGestureRecognizer::addSwipeRecognizer(SwipeDirection diretion, int touchesRequired) {
+    unsigned long CCGestureRecognizerImpl::addSwipeRecognizer(int direction, int touchesRequired) {
         UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handleSwipeGesture:)];
         
-        swipe.direction = (UISwipeGestureRecognizerDirection)diretion;
+        swipe.direction = (UISwipeGestureRecognizerDirection)direction;
         swipe.numberOfTouchesRequired = touchesRequired;
         
         UIWindow* window = [[UIApplication sharedApplication] keyWindow];
         [window.rootViewController.view addGestureRecognizer:swipe];
         
         mGestureRegozniers.insert(std::make_pair((unsigned long)swipe, swipe));
-        return (unsigned long)swipe;
+        return (unsigned long)swipe;            
     }
     
-    unsigned long CCGestureRecognizer::addLongPressRecognizer(float minPressDuration, int tapsRequired, int touchesRequried, float movementAllowed) {
+    unsigned long CCGestureRecognizerImpl::addLongPressRecognizer(float minPressDuration /* 0.5 sec */, 
+                                         int tapsRequired, 
+                                         int touchesRequried, 
+                                         float movementAllowed /* 10 pixels */) {
         UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handleLongPressGesture:)];
         
         longPress.minimumPressDuration = minPressDuration;
@@ -213,10 +187,9 @@ namespace cocos2d {
         
         mGestureRegozniers.insert(std::make_pair((unsigned long)longPress, longPress));
         return (unsigned long)longPress;
-
     }
     
-    void CCGestureRecognizer::removeRecognizer(unsigned long which) {
+    void CCGestureRecognizerImpl::removeRecognizer(unsigned long which) {
         GestureRecognizerMap::iterator it = mGestureRegozniers.find(which);
         if(it != mGestureRegozniers.end()) {
             UIGestureRecognizer* recognizer = (UIGestureRecognizer*)it->second;
@@ -227,8 +200,7 @@ namespace cocos2d {
             mGestureRegozniers.erase(it);
         }
     }
-    
-    void CCGestureRecognizer::removeAllRecognizers() {
+    void CCGestureRecognizerImpl::removeAllRecognizers() {
         UIWindow* window = [[UIApplication sharedApplication] keyWindow];
         for(GestureRecognizerMap::iterator it = mGestureRegozniers.begin(),
             end = mGestureRegozniers.end();
@@ -241,14 +213,13 @@ namespace cocos2d {
         mGestureRegozniers.clear();
     }
     
-    void* CCGestureRecognizer::getRecognizerByTag(unsigned long which) const {
+    void* CCGestureRecognizerImpl::getRecognizerByTag(unsigned long which) const {
         GestureRecognizerMap::const_iterator it = mGestureRegozniers.find(which);
         if(it != mGestureRegozniers.end()) {
             return it->second;
         }
         return 0;
     }
-
 }
 
 #endif // CC_PLATFORM_IOS
