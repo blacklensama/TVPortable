@@ -4,6 +4,11 @@
 #include "../Visual/MenuItem.h"
 #include "../Visual/Window.h"
 
+#include "InputEventTest.h"
+#include "GestureRecognizerTest.h"
+
+#include "extensions/CCMenuItemProgressTimer.h"
+
 USING_NS_CC;
 
 CCScene* HelloWorld::scene()
@@ -19,7 +24,7 @@ CCScene* HelloWorld::scene()
 
     TVPortable::Visual::Layer* c_layer = new TVPortable::Visual::Layer(mainWindow, 0);
     
-    c_layer->loadImages("HelloWorld.png", 0xFFFFFFFF);
+   // c_layer->loadImages("HelloWorld.png", 0xFFFFFFFF);
     c_layer->focus();
    
     TVPortable::Visual::MenuItem* mainMenuItem = mainWindow->getMenu();
@@ -50,8 +55,23 @@ CCScene* HelloWorld::scene()
         
     }
     
+    CCMenu* menu = CCMenu::node();
+    CCMenuItemProgressTimer* ptimer = CCMenuItemProgressTimer::itemFromSpriteAndTime(CCSprite::spriteWithFile("mask.png"), CCSprite::spriteWithFile("CloseNormal.png"), 5.f, kCCProgressTimerTypeVerticalBarBT);
+    
+    
+    ptimer->setPosition(ccp(100, 110));
+    menu->setIsTouchEnabled(true);
+    
+    layer->setIsTouchEnabled(true);
+    
+    
+    c_layer->addChild(new MyInputListener());
+    c_layer->addChild(new MyGestureRecognizer());
+    menu->addChild(ptimer, 1);
+    
+    layer->addChild(menu);
 	// add layer as a child to scene
-	scene->addChild(c_layer);
+	scene->addChild(layer);
 
 	// return the scene
 	return scene;
@@ -82,7 +102,7 @@ bool HelloWorld::init()
 	// create menu, it's an autorelease object
 	CCMenu* pMenu = CCMenu::menuWithItems(pCloseItem, NULL);
 	pMenu->setPosition( CCPointZero );
-	this->addChild(pMenu, 1);
+	//this->addChild(pMenu, 1);
 
 	/////////////////////////////
 	// 3. add your codes below...
@@ -97,7 +117,7 @@ bool HelloWorld::init()
 	pLabel->setPosition( ccp(size.width / 2, size.height - 50) );
 
 	// add the label as a child to this layer
-	this->addChild(pLabel, 1);
+	//this->addChild(pLabel, 1);
 
 	// add "HelloWorld" splash screen"
 	CCSprite* pSprite = CCSprite::spriteWithFile("HelloWorld.png");
@@ -106,7 +126,7 @@ bool HelloWorld::init()
 	pSprite->setPosition( ccp(size.width/2, size.height/2) );
 
 	// add the sprite as a child to this layer
-	this->addChild(pSprite, 0);
+	//this->addChild(pSprite, 0);
 	
 	return true;
 }

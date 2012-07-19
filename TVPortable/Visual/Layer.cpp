@@ -57,8 +57,8 @@ TVP_NS_VISUAL_BEGIN
     mType(ltOpaque) {
         mFace = dfMain | dfOpaque;
         
-        CCInputDispatcher::Instance().addListener(this, 1);
-        CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 1, false);
+   //     CCInputDispatcher::Instance().addListener(this, 1);
+   //     CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 1, false);
         
         setClippingRect(CCRect(0,
                                0,

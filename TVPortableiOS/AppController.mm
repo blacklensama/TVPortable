@@ -59,6 +59,9 @@ static AppDelegate s_sharedApplication;
     // Set RootViewController to window
     [window addSubview: viewController.view];
     [window makeKeyAndVisible];
+    
+    window.rootViewController = viewController;
+
 
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     

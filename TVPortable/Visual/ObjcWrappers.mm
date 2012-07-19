@@ -57,15 +57,15 @@ TVP_NS_VISUAL_BEGIN
     }
     
     void SetWindowCaption(const char* title) {
-        void;
+        // void
     }
     
     void* GetApplicationKeyWindow() {
-        return (void*)[[NSApplication sharedApplication] keyWindow];
+        return (void*)[[UIApplication sharedApplication] keyWindow];
     }
     
     void SetWindowSize(uintPtr windowHandle, uint32 width, uint32 height) {
-        void;
+        // void
     }
     
 #endif

@@ -9,10 +9,9 @@
 #ifndef TVPortable_ListenerManager_h
 #define TVPortable_ListenerManager_h
 
-#include "Predefine.h"
-
 #include <map>
 #include <deque>
+#include <string>
 
 namespace TVPortable {
     
@@ -37,7 +36,6 @@ namespace TVPortable {
         
         void attachListener(ListenerType* listener, const TAG_TYPE& tag = std::string(), bool autoRelease=false) {
             {
-                assert(listener);
                 if(!listener)
                     return;
                 
@@ -51,49 +49,106 @@ namespace TVPortable {
             }
         }
         
+        void removeListener(ListenerType* listener) {
+            if(!listener)
+                return;
+            for(typename ListenerList::iterator it = mListenerList.begin(),
+                end = mListenerList.end();
+                it != end;
+                ++it) {
+                if(it->first == listener) {
+                    mListenerList.erase(it);
+                    break;
+                }
+            }
+            
+            for(typename ListenerMap::iterator it = mListenerMap.begin(),
+                end = mListenerMap.end();
+                it != end;
+                ++it) {
+                if(it->second == listener) {
+                    mListenerMap.erase(it);
+                    break;
+                }
+            }
+        }
+        
+        void removeListener(const TAG_TYPE& tag) {
+            typename ListenerMap::iterator it = mListenerMap.find(tag);
+            if(it != mListenerMap.end()) {
+                for(typename ListenerList::iterator lit = mListenerList.begin(),
+                    lend = mListenerList.end();
+                    lit != lend;
+                    ++lit) {
+                    if(lit->first == it->second) {
+                        mListenerList.erase(lit);
+                        break;
+                    }
+                }
+                
+                mListenerMap.erase(it);
+            }
+        }
+        
         ListenerType* getListener(const TAG_TYPE& tag) const {
-            typename ListenerMap::const_iterator it = mListenerMap.find(tag);
-            if(it != mListenerMap.end()) 
+            typename ListenerList::const_iterator it = mListenerList.find(tag);
+            if(it != mListenerList.end()) 
                 return it->second;
             return NULL;
         }
         
         void publishListenerEvent(void (ListenerType::*Memfun)()) {
-            typename ListenerMap::iterator it = mListenerMap.begin();
-            for(; it != mListenerMap.end(); ++it) {
-                ((it->second)->*Memfun)();
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)();
             }
         }
         
         template<typename ARG1>
         void publishListenerEvent(void (ListenerType::*Memfun)(ARG1), ARG1 arg1) {
-            typename ListenerMap::iterator it = mListenerMap.begin();
-            for(; it != mListenerMap.end(); ++it) {
-                ((it->second)->*Memfun)(arg1);
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1);
             }
         }
         
         template<typename ARG1, typename ARG2>
         void publishListenerEvent(void (ListenerType::*Memfun)(ARG1, ARG2), ARG1 arg1, ARG2 arg2) {
-            typename ListenerMap::iterator it = mListenerMap.begin();
-            for(; it != mListenerMap.end(); ++it) {
-                ((it->second)->*Memfun)(arg1, arg2);
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1, arg2);
             }
         }
         
         template<typename ARG1, typename ARG2, typename ARG3>
         void publishListenerEvent(void (ListenerType::*Memfun)(ARG1, ARG2, ARG3), ARG1 arg1, ARG2 arg2, ARG3 arg3) {
-            typename ListenerMap::iterator it = mListenerMap.begin();
-            for(; it != mListenerMap.end(); ++it) {
-                ((it->second)->*Memfun)(arg1, arg2, arg3);
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1, arg2, arg3);
             }
         }
         
         template<typename ARG1, typename ARG2, typename ARG3, typename ARG4>
         void publishListenerEvent(void (ListenerType::*Memfun)(ARG1, ARG2, ARG3, ARG4), ARG1 arg1, ARG2 arg2, ARG3 arg3, ARG4 arg4) {
-            typename ListenerMap::iterator it = mListenerMap.begin();
-            for(; it != mListenerMap.end(); ++it) {
-                ((it->second)->*Memfun)(arg1, arg2, arg3, arg4);
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1, arg2, arg3, arg4);
+            }
+        }
+        
+        template<typename ARG1, typename ARG2, typename ARG3, typename ARG4, typename ARG5>
+        void publishListenerEvent(void (ListenerType::*Memfun)(ARG1, ARG2, ARG3, ARG4, ARG5), ARG1 arg1, ARG2 arg2, ARG3 arg3, ARG4 arg4, ARG5 arg5) {
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1, arg2, arg3, arg4, arg5);
+            }
+        }
+        
+        template<typename ARG1, typename ARG2, typename ARG3, typename ARG4, typename ARG5, typename ARG6>
+        void publishListenerEvent(void (ListenerType::*Memfun)(ARG1, ARG2, ARG3, ARG4, ARG5, ARG6), ARG1 arg1, ARG2 arg2, ARG3 arg3, ARG4 arg4, ARG5 arg5, ARG6 arg6) {
+            typename ListenerList::iterator it = mListenerList.begin();
+            for(; it != mListenerList.end(); ++it) {
+                ((it->first)->*Memfun)(arg1, arg2, arg3, arg4, arg5, arg6);
             }
         }
         

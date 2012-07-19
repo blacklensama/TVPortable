@@ -47,19 +47,27 @@
 		881CE387158B0CBA00AAC5A5 /* Timeutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE357158B0CBA00AAC5A5 /* Timeutil.cpp */; };
 		881CE393158B12C300AAC5A5 /* CCInputEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE392158B12C300AAC5A5 /* CCInputEvent.cpp */; };
 		881CE394158B12C300AAC5A5 /* CCInputEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE392158B12C300AAC5A5 /* CCInputEvent.cpp */; };
-		881CE396158B132200AAC5A5 /* CCInputListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE395158B132200AAC5A5 /* CCInputListener.cpp */; };
-		881CE397158B132200AAC5A5 /* CCInputListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE395158B132200AAC5A5 /* CCInputListener.cpp */; };
 		881CE39A158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */; };
 		881CE39B158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */; };
 		881CE3A2158B1A3800AAC5A5 /* CCMacEventDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE3A1158B1A3100AAC5A5 /* CCMacEventDelegate.mm */; };
-		88655C0F15919E070045BF4B /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */; };
-		88655C1015919E070045BF4B /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */; };
 		88655C1215919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */; };
 		88655C1315919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */; };
 		88655C1B159365410045BF4B /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C19159365410045BF4B /* Font.cpp */; };
 		88655C1C159365410045BF4B /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C19159365410045BF4B /* Font.cpp */; };
 		88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */; };
 		88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */; };
+		8869BA0F15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */; };
+		8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */; };
+		8869BA1215AEDBBB0032E353 /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1115AEDBBB0032E353 /* testicon.png */; };
+		8869BA1315AEDBBB0032E353 /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1115AEDBBB0032E353 /* testicon.png */; };
+		8869BA1515AEDC660032E353 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1415AEDC660032E353 /* mask.png */; };
+		8869BA1615AEDC660032E353 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1415AEDC660032E353 /* mask.png */; };
+		888338E215AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
+		888338E315AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
+		8883390015ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */; };
+		8883390115ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */; };
+		8883390215ADB99C00B64F39 /* InputEventTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FE15ADB99C00B64F39 /* InputEventTest.cpp */; };
+		8883390315ADB99C00B64F39 /* InputEventTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FE15ADB99C00B64F39 /* InputEventTest.cpp */; };
 		88D9C90A158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90B158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90C158EF45D005E0DAC /* MenuItemImpl_Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C905158EF44E005E0DAC /* MenuItemImpl_Win.cpp */; };
@@ -74,6 +82,8 @@
 		88D9C92B158F0C90005E0DAC /* ObjcWrappers.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C929158F0C90005E0DAC /* ObjcWrappers.mm */; };
 		88EE94001589C3460096AEF9 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88EE93FE1589C3460096AEF9 /* Layer.cpp */; };
 		88EE94011589C3460096AEF9 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88EE93FE1589C3460096AEF9 /* Layer.cpp */; };
+		88F5006015B3BBC30048289B /* CCGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */; };
+		88F5006615B3BDBD0048289B /* CCGestureRecognizeriOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88F5006515B3BDBC0048289B /* CCGestureRecognizeriOS.mm */; };
 		D42B768B1589849F00306904 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE31589843A00306904 /* UIKit.framework */; };
 		D42B768C1589849F00306904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE51589843A00306904 /* Foundation.framework */; };
 		D42B768D1589849F00306904 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE71589843A00306904 /* CoreGraphics.framework */; };
@@ -488,13 +498,10 @@
 		881CE38C158B10E700AAC5A5 /* CCInputEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCInputEvent.h; sourceTree = "<group>"; };
 		881CE38D158B10ED00AAC5A5 /* CCInputListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCInputListener.h; sourceTree = "<group>"; };
 		881CE392158B12C300AAC5A5 /* CCInputEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCInputEvent.cpp; sourceTree = "<group>"; };
-		881CE395158B132200AAC5A5 /* CCInputListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCInputListener.cpp; sourceTree = "<group>"; };
 		881CE398158B135800AAC5A5 /* CCInputDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCInputDispatcher.h; sourceTree = "<group>"; };
 		881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCInputDispatcher.cpp; sourceTree = "<group>"; };
 		881CE3A0158B1A2F00AAC5A5 /* CCMacEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMacEventDelegate.h; sourceTree = "<group>"; };
 		881CE3A1158B1A3100AAC5A5 /* CCMacEventDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCMacEventDelegate.mm; sourceTree = "<group>"; };
-		88655C0D15919A100045BF4B /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
-		88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		88655C1115919FD40045BF4B /* CCRenderTextureMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCRenderTextureMutable.cpp; path = cocos2dx/extensions/CCRenderTextureMutable.cpp; sourceTree = SOURCE_ROOT; };
 		88655C141591A3240045BF4B /* CCRenderTextureMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRenderTextureMutable.h; sourceTree = "<group>"; };
 		88655C19159365410045BF4B /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
@@ -502,6 +509,17 @@
 		88655C3915937F090045BF4B /* WindowsWrappers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowsWrappers.h; sourceTree = "<group>"; };
 		88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowsWrappers.cpp; sourceTree = "<group>"; };
 		88655C491594A5FC0045BF4B /* ListenerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListenerManager.h; sourceTree = "<group>"; };
+		8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCMenuItemProgressTimer.cpp; sourceTree = "<group>"; };
+		8869BA0E15AEC0C50032E353 /* CCMenuItemProgressTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMenuItemProgressTimer.h; sourceTree = "<group>"; };
+		8869BA1115AEDBBB0032E353 /* testicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testicon.png; sourceTree = "<group>"; };
+		8869BA1415AEDC660032E353 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
+		888338DB15AD4CD400B64F39 /* CCGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizer.h; sourceTree = "<group>"; };
+		888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
+		888338E115AD502900B64F39 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
+		888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRecognizerTest.cpp; sourceTree = "<group>"; };
+		888338FD15ADB99C00B64F39 /* GestureRecognizerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerTest.h; sourceTree = "<group>"; };
+		888338FE15ADB99C00B64F39 /* InputEventTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputEventTest.cpp; sourceTree = "<group>"; };
+		888338FF15ADB99C00B64F39 /* InputEventTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputEventTest.h; sourceTree = "<group>"; };
 		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
 		88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_OSX.h; sourceTree = "<group>"; };
@@ -521,6 +539,9 @@
 		88EE93FF1589C3460096AEF9 /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
 		88EE94021589C36F0096AEF9 /* Predefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Predefine.h; sourceTree = "<group>"; };
 		88EE94171589CCDD0096AEF9 /* Type.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCGestureRecognizer.cpp; sourceTree = "<group>"; };
+		88F5006415B3BDBC0048289B /* CCGestureRecognizeriOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizeriOS.h; sourceTree = "<group>"; };
+		88F5006515B3BDBC0048289B /* CCGestureRecognizeriOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCGestureRecognizeriOS.mm; sourceTree = "<group>"; };
 		D42B6AE31589843A00306904 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D42B6AE51589843A00306904 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D42B6AE71589843A00306904 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1354,14 +1375,21 @@
 		D42B6B211589847A00306904 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */,
+				8869BA0E15AEC0C50032E353 /* CCMenuItemProgressTimer.h */,
+				88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */,
+				888338DB15AD4CD400B64F39 /* CCGestureRecognizer.h */,
+				88F5006415B3BDBC0048289B /* CCGestureRecognizeriOS.h */,
+				88F5006515B3BDBC0048289B /* CCGestureRecognizeriOS.mm */,
 				D42B6B221589847A00306904 /* CCNotificationCenter.cpp */,
 				D42B6B231589847A00306904 /* CCNotificationCenter.h */,
 				881CE38C158B10E700AAC5A5 /* CCInputEvent.h */,
 				881CE392158B12C300AAC5A5 /* CCInputEvent.cpp */,
 				881CE38D158B10ED00AAC5A5 /* CCInputListener.h */,
-				881CE395158B132200AAC5A5 /* CCInputListener.cpp */,
 				881CE398158B135800AAC5A5 /* CCInputDispatcher.h */,
 				881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */,
+				888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */,
+				888338E115AD502900B64F39 /* CCTexture2DMutable.h */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1369,7 +1397,6 @@
 		D42B6B241589847A00306904 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				88655C0D15919A100045BF4B /* CCTexture2DMutable.h */,
 				D42B6B251589847A00306904 /* CCAccelerometer.h */,
 				D42B6B261589847A00306904 /* CCAccelerometerDelegate.h */,
 				D42B6B271589847A00306904 /* CCAction.h */,
@@ -1913,7 +1940,6 @@
 				D42B747C1589847C00306904 /* CCTextureAtlas.cpp */,
 				D42B747D1589847C00306904 /* CCTextureCache.cpp */,
 				D42B747E1589847C00306904 /* CCTexturePVR.cpp */,
-				88655C0E15919E070045BF4B /* CCTexture2DMutable.cpp */,
 			);
 			path = textures;
 			sourceTree = "<group>";
@@ -2144,6 +2170,10 @@
 				D42B769F1589856100306904 /* AppDelegate.h */,
 				D42B76A01589856100306904 /* HelloWorldScene.cpp */,
 				D42B76A11589856100306904 /* HelloWorldScene.h */,
+				888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */,
+				888338FD15ADB99C00B64F39 /* GestureRecognizerTest.h */,
+				888338FE15ADB99C00B64F39 /* InputEventTest.cpp */,
+				888338FF15ADB99C00B64F39 /* InputEventTest.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2155,6 +2185,8 @@
 				D42B76A61589856C00306904 /* app.icf */,
 				D42B76A71589856C00306904 /* CloseNormal.png */,
 				D42B76A81589856C00306904 /* CloseSelected.png */,
+				8869BA1415AEDC660032E353 /* mask.png */,
+				8869BA1115AEDBBB0032E353 /* testicon.png */,
 				D42B76A91589856C00306904 /* fonts */,
 				D42B76AC1589856C00306904 /* HelloWorld.png */,
 			);
@@ -2302,6 +2334,8 @@
 				D42B76B11589856C00306904 /* arial.ttf in Resources */,
 				D42B76B21589856C00306904 /* Marker Felt.ttf in Resources */,
 				D42B76B31589856C00306904 /* HelloWorld.png in Resources */,
+				8869BA1215AEDBBB0032E353 /* testicon.png in Resources */,
+				8869BA1515AEDC660032E353 /* mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2315,6 +2349,8 @@
 				D42B783E1589A07E00306904 /* CloseNormal.png in Resources */,
 				D42B783F1589A07E00306904 /* CloseSelected.png in Resources */,
 				D42B78401589A07E00306904 /* HelloWorld.png in Resources */,
+				8869BA1315AEDBBB0032E353 /* testicon.png in Resources */,
+				8869BA1615AEDC660032E353 /* mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2504,7 +2540,6 @@
 				881CE384158B0CBA00AAC5A5 /* Thread.cpp in Sources */,
 				881CE386158B0CBA00AAC5A5 /* Timeutil.cpp in Sources */,
 				881CE393158B12C300AAC5A5 /* CCInputEvent.cpp in Sources */,
-				881CE396158B132200AAC5A5 /* CCInputListener.cpp in Sources */,
 				881CE39A158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */,
 				88D9C90A158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */,
 				88D9C90C158EF45D005E0DAC /* MenuItemImpl_Win.cpp in Sources */,
@@ -2512,10 +2547,15 @@
 				88D9C916158EF476005E0DAC /* Window.cpp in Sources */,
 				88D9C919158EF62E005E0DAC /* MenuItem.cpp in Sources */,
 				88D9C92A158F0C90005E0DAC /* ObjcWrappers.mm in Sources */,
-				88655C0F15919E070045BF4B /* CCTexture2DMutable.cpp in Sources */,
 				88655C1215919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
 				88655C1B159365410045BF4B /* Font.cpp in Sources */,
 				88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
+				888338E215AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */,
+				8883390015ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */,
+				8883390215ADB99C00B64F39 /* InputEventTest.cpp in Sources */,
+				8869BA0F15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
+				88F5006015B3BBC30048289B /* CCGestureRecognizer.cpp in Sources */,
+				88F5006615B3BDBD0048289B /* CCGestureRecognizeriOS.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2693,7 +2733,6 @@
 				881CE385158B0CBA00AAC5A5 /* Thread.cpp in Sources */,
 				881CE387158B0CBA00AAC5A5 /* Timeutil.cpp in Sources */,
 				881CE394158B12C300AAC5A5 /* CCInputEvent.cpp in Sources */,
-				881CE397158B132200AAC5A5 /* CCInputListener.cpp in Sources */,
 				881CE39B158B136000AAC5A5 /* CCInputDispatcher.cpp in Sources */,
 				881CE3A2158B1A3800AAC5A5 /* CCMacEventDelegate.mm in Sources */,
 				88D9C90B158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */,
@@ -2702,10 +2741,13 @@
 				88D9C917158EF476005E0DAC /* Window.cpp in Sources */,
 				88D9C91A158EF62E005E0DAC /* MenuItem.cpp in Sources */,
 				88D9C92B158F0C90005E0DAC /* ObjcWrappers.mm in Sources */,
-				88655C1015919E070045BF4B /* CCTexture2DMutable.cpp in Sources */,
 				88655C1315919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
 				88655C1C159365410045BF4B /* Font.cpp in Sources */,
 				88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
+				888338E315AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */,
+				8883390115ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */,
+				8883390315ADB99C00B64F39 /* InputEventTest.cpp in Sources */,
+				8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
