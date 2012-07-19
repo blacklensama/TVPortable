@@ -9,15 +9,7 @@
 #ifndef TVPortable_Visual_Prerequisites_h
 #define TVPortable_Visual_Prerequisites_h
 
-#include "../Predefine.h"
-
-#define TVP_NS_VISUAL_BEGIN \
-namespace TVPortable { \
-    namespace Visual { \
-
-#define TVP_NS_VISUAL_END \
-    } \
-} // namespace TVPortable
+#include "../Common/Common.h"
 
 TVP_NS_VISUAL_BEGIN
 

@@ -420,6 +420,8 @@
 		D42B783F1589A07E00306904 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A81589856C00306904 /* CloseSelected.png */; };
 		D42B78401589A07E00306904 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AC1589856C00306904 /* HelloWorld.png */; };
 		D4BD9FCF158C828C00E36E39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */; };
+		D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
+		D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1060,6 +1062,10 @@
 		D42B783215899B7F00306904 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		D42B783615899C1900306904 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D4D313F615B8DCB30034C24E /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventManager.cpp; path = Core/EventManager.cpp; sourceTree = "<group>"; };
+		D4D313F715B8DCB30034C24E /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManager.h; path = Core/EventManager.h; sourceTree = "<group>"; };
+		D4D313F815B8DCB30034C24E /* ScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScriptManager.h; path = Core/ScriptManager.h; sourceTree = "<group>"; };
+		D4D313FC15B8DCC10034C24E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1273,6 +1279,8 @@
 		D42B6AE91589843A00306904 /* TVPortable */ = {
 			isa = PBXGroup;
 			children = (
+				D4D313FB15B8DCC10034C24E /* Common */,
+				D4D313F415B8DC980034C24E /* Core */,
 				88EE93FD1589C3460096AEF9 /* Visual */,
 				D42B76A41589856C00306904 /* Resources */,
 				D42B769D1589856100306904 /* Classes */,
@@ -2258,6 +2266,24 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		D4D313F415B8DC980034C24E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D4D313F615B8DCB30034C24E /* EventManager.cpp */,
+				D4D313F715B8DCB30034C24E /* EventManager.h */,
+				D4D313F815B8DCB30034C24E /* ScriptManager.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		D4D313FB15B8DCC10034C24E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D4D313FC15B8DCC10034C24E /* Common.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2556,6 +2582,7 @@
 				8869BA0F15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
 				88F5006015B3BBC30048289B /* CCGestureRecognizer.cpp in Sources */,
 				88F5006615B3BDBD0048289B /* CCGestureRecognizeriOS.mm in Sources */,
+				D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2748,6 +2775,7 @@
 				8883390115ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */,
 				8883390315ADB99C00B64F39 /* InputEventTest.cpp in Sources */,
 				8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
+				D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
