@@ -410,6 +410,8 @@
 		D42B783F1589A07E00306904 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A81589856C00306904 /* CloseSelected.png */; };
 		D42B78401589A07E00306904 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AC1589856C00306904 /* HelloWorld.png */; };
 		D4BD9FCF158C828C00E36E39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */; };
+		D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
+		D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1039,6 +1041,10 @@
 		D42B783215899B7F00306904 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		D42B783615899C1900306904 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D4D313F615B8DCB30034C24E /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventManager.cpp; path = Core/EventManager.cpp; sourceTree = "<group>"; };
+		D4D313F715B8DCB30034C24E /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventManager.h; path = Core/EventManager.h; sourceTree = "<group>"; };
+		D4D313F815B8DCB30034C24E /* ScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScriptManager.h; path = Core/ScriptManager.h; sourceTree = "<group>"; };
+		D4D313FC15B8DCC10034C24E /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1252,6 +1258,8 @@
 		D42B6AE91589843A00306904 /* TVPortable */ = {
 			isa = PBXGroup;
 			children = (
+				D4D313FB15B8DCC10034C24E /* Common */,
+				D4D313F415B8DC980034C24E /* Core */,
 				88EE93FD1589C3460096AEF9 /* Visual */,
 				D42B76A41589856C00306904 /* Resources */,
 				D42B769D1589856100306904 /* Classes */,
@@ -2226,6 +2234,24 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		D4D313F415B8DC980034C24E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D4D313F615B8DCB30034C24E /* EventManager.cpp */,
+				D4D313F715B8DCB30034C24E /* EventManager.h */,
+				D4D313F815B8DCB30034C24E /* ScriptManager.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		D4D313FB15B8DCC10034C24E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D4D313FC15B8DCC10034C24E /* Common.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2516,6 +2542,7 @@
 				88655C1215919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
 				88655C1B159365410045BF4B /* Font.cpp in Sources */,
 				88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
+				D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2706,6 +2733,7 @@
 				88655C1315919FD40045BF4B /* CCRenderTextureMutable.cpp in Sources */,
 				88655C1C159365410045BF4B /* Font.cpp in Sources */,
 				88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
+				D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

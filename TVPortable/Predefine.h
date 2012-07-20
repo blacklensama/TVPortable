@@ -11,6 +11,23 @@
 
 #include "Type.h"
 
+#define TVP_NS_CORE_BEGIN \
+namespace TVPortable { \
+    namespace Core { \
+
+#define TVP_NS_CORE_END \
+    }\
+}\
+
+#define TVP_NS_VISUAL_BEGIN \
+namespace TVPortable { \
+    namespace Visual { \
+
+#define TVP_NS_VISUAL_END \
+    }\
+}\
+
+
 #define TVP_PROPERTY(prop, type) \
     private: \
         type m##prop; \
