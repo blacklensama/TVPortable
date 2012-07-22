@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "CCData.h"
 #include "CCNode.h"
 #include "CCSprite.h"
-#include "CCTexture2DMutable.h"
+#include "extensions/CCTexture2DMutable.h"
 
 namespace cocos2d {
 

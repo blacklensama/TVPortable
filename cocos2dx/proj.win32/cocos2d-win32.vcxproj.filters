@@ -348,14 +348,11 @@
     <ClCompile Include="..\extensions\CCInputEvent.cpp">
       <Filter>extensions</Filter>
     </ClCompile>
-    <ClCompile Include="..\extensions\CCInputListener.cpp">
-      <Filter>extensions</Filter>
-    </ClCompile>
     <ClCompile Include="..\extensions\CCRenderTextureMutable.cpp">
       <Filter>extensions</Filter>
     </ClCompile>
-    <ClCompile Include="..\textures\CCTexture2DMutable.cpp">
-      <Filter>textures</Filter>
+    <ClCompile Include="..\extensions\CCTexture2DMutable.cpp">
+      <Filter>extensions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -725,6 +722,9 @@
     </ClInclude>
     <ClInclude Include="..\include\CCRenderTextureMutable.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\extensions\CCTexture2DMutable.h">
+      <Filter>extensions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

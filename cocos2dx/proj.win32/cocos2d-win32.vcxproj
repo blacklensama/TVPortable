@@ -147,8 +147,8 @@
     <ClCompile Include="..\actions\CCActionTiledGrid.cpp" />
     <ClCompile Include="..\extensions\CCInputDispatcher.cpp" />
     <ClCompile Include="..\extensions\CCInputEvent.cpp" />
-    <ClCompile Include="..\extensions\CCInputListener.cpp" />
     <ClCompile Include="..\extensions\CCRenderTextureMutable.cpp" />
+    <ClCompile Include="..\extensions\CCTexture2DMutable.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelAtlas.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelBMFont.cpp" />
     <ClCompile Include="..\label_nodes\CCLabelTTF.cpp" />
@@ -196,7 +196,6 @@
     <ClCompile Include="..\support\zip_support\unzip.cpp" />
     <ClCompile Include="..\support\zip_support\ZipUtils.cpp" />
     <ClCompile Include="..\textures\CCTexture2D.cpp" />
-    <ClCompile Include="..\textures\CCTexture2DMutable.cpp" />
     <ClCompile Include="..\textures\CCTextureAtlas.cpp" />
     <ClCompile Include="..\textures\CCTextureCache.cpp" />
     <ClCompile Include="..\textures\CCTexturePVR.cpp" />
@@ -228,6 +227,7 @@
     <ClInclude Include="..\extensions\CCInputDispatcher.h" />
     <ClInclude Include="..\extensions\CCInputEvent.h" />
     <ClInclude Include="..\extensions\CCInputListener.h" />
+    <ClInclude Include="..\extensions\CCTexture2DMutable.h" />
     <ClInclude Include="..\include\CCAccelerometer.h" />
     <ClInclude Include="..\include\CCAccelerometerDelegate.h" />
     <ClInclude Include="..\include\CCAction.h" />
