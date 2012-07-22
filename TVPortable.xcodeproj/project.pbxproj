@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		881B522615BBEB96009B9482 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522415BBEB95009B9482 /* Application.cpp */; };
+		881B522715BBEB96009B9482 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522415BBEB95009B9482 /* Application.cpp */; };
+		881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
+		881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
 		881CE35E158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE35F158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE360158B0CBA00AAC5A5 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30E158B0CBA00AAC5A5 /* Base64.cpp */; };
@@ -58,16 +62,8 @@
 		88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */; };
 		8869BA0F15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */; };
 		8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */; };
-		8869BA1215AEDBBB0032E353 /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1115AEDBBB0032E353 /* testicon.png */; };
-		8869BA1315AEDBBB0032E353 /* testicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1115AEDBBB0032E353 /* testicon.png */; };
-		8869BA1515AEDC660032E353 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1415AEDC660032E353 /* mask.png */; };
-		8869BA1615AEDC660032E353 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869BA1415AEDC660032E353 /* mask.png */; };
 		888338E215AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
 		888338E315AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
-		8883390015ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */; };
-		8883390115ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */; };
-		8883390215ADB99C00B64F39 /* InputEventTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FE15ADB99C00B64F39 /* InputEventTest.cpp */; };
-		8883390315ADB99C00B64F39 /* InputEventTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338FE15ADB99C00B64F39 /* InputEventTest.cpp */; };
 		88D9C90A158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90B158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90C158EF45D005E0DAC /* MenuItemImpl_Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C905158EF44E005E0DAC /* MenuItemImpl_Win.cpp */; };
@@ -88,15 +84,10 @@
 		D42B768C1589849F00306904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE51589843A00306904 /* Foundation.framework */; };
 		D42B768D1589849F00306904 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE71589843A00306904 /* CoreGraphics.framework */; };
 		D42B76931589849F00306904 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D42B76911589849F00306904 /* InfoPlist.strings */; };
-		D42B76A21589856100306904 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B769E1589856100306904 /* AppDelegate.cpp */; };
-		D42B76A31589856100306904 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B76A01589856100306904 /* HelloWorldScene.cpp */; };
 		D42B76AD1589856C00306904 /* app.config.txt in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A51589856C00306904 /* app.config.txt */; };
 		D42B76AE1589856C00306904 /* app.icf in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A61589856C00306904 /* app.icf */; };
-		D42B76AF1589856C00306904 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A71589856C00306904 /* CloseNormal.png */; };
-		D42B76B01589856C00306904 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A81589856C00306904 /* CloseSelected.png */; };
 		D42B76B11589856C00306904 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AA1589856C00306904 /* arial.ttf */; };
 		D42B76B21589856C00306904 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AB1589856C00306904 /* Marker Felt.ttf */; };
-		D42B76B31589856C00306904 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AC1589856C00306904 /* HelloWorld.png */; };
 		D42B76B9158985B500306904 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D42B76B5158985B100306904 /* AppController.mm */; };
 		D42B76BA158985B500306904 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D42B76B6158985B100306904 /* main.m */; };
 		D42B76BB158985B500306904 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D42B76B8158985B100306904 /* RootViewController.mm */; };
@@ -137,8 +128,6 @@
 		D42B76F91589898300306904 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D42B76F81589898300306904 /* main.m */; };
 		D42B76FD1589898300306904 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D42B76FB1589898300306904 /* Credits.rtf */; };
 		D42B77031589898300306904 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D42B77011589898300306904 /* MainMenu.xib */; };
-		D42B7707158989CF00306904 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B769E1589856100306904 /* AppDelegate.cpp */; };
-		D42B7708158989CF00306904 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B76A01589856100306904 /* HelloWorldScene.cpp */; };
 		D42B7709158989E100306904 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B6AFC1589847A00306904 /* CCAction.cpp */; };
 		D42B770A158989E100306904 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B6AFD1589847A00306904 /* CCActionCamera.cpp */; };
 		D42B770B158989E100306904 /* CCActionEase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42B6AFE1589847A00306904 /* CCActionEase.cpp */; };
@@ -416,15 +405,16 @@
 		D42B783715899C1A00306904 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B783615899C1900306904 /* CoreVideo.framework */; };
 		D42B783815899C3000306904 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6E311589847A00306904 /* libfreetype.a */; };
 		D42B783915899C3600306904 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6D121589847A00306904 /* libcurl.a */; };
-		D42B783E1589A07E00306904 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A71589856C00306904 /* CloseNormal.png */; };
-		D42B783F1589A07E00306904 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76A81589856C00306904 /* CloseSelected.png */; };
-		D42B78401589A07E00306904 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D42B76AC1589856C00306904 /* HelloWorld.png */; };
 		D4BD9FCF158C828C00E36E39 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */; };
 		D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
 		D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4D313F615B8DCB30034C24E /* EventManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		881B522415BBEB95009B9482 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		881B522515BBEB95009B9482 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		881B522915BC032D009B9482 /* Cocos2dScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dScene.cpp; sourceTree = "<group>"; };
+		881B522A15BC0331009B9482 /* Cocos2dScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dScene.h; sourceTree = "<group>"; };
 		881CE30C158B0CBA00AAC5A5 /* AppleStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleStuff.h; sourceTree = "<group>"; };
 		881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleStuff.mm; sourceTree = "<group>"; };
 		881CE30E158B0CBA00AAC5A5 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
@@ -513,15 +503,9 @@
 		88655C491594A5FC0045BF4B /* ListenerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListenerManager.h; sourceTree = "<group>"; };
 		8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCMenuItemProgressTimer.cpp; sourceTree = "<group>"; };
 		8869BA0E15AEC0C50032E353 /* CCMenuItemProgressTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMenuItemProgressTimer.h; sourceTree = "<group>"; };
-		8869BA1115AEDBBB0032E353 /* testicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testicon.png; sourceTree = "<group>"; };
-		8869BA1415AEDC660032E353 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		888338DB15AD4CD400B64F39 /* CCGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizer.h; sourceTree = "<group>"; };
 		888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		888338E115AD502900B64F39 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
-		888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRecognizerTest.cpp; sourceTree = "<group>"; };
-		888338FD15ADB99C00B64F39 /* GestureRecognizerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerTest.h; sourceTree = "<group>"; };
-		888338FE15ADB99C00B64F39 /* InputEventTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputEventTest.cpp; sourceTree = "<group>"; };
-		888338FF15ADB99C00B64F39 /* InputEventTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputEventTest.h; sourceTree = "<group>"; };
 		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
 		88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_OSX.h; sourceTree = "<group>"; };
@@ -530,7 +514,6 @@
 		88D9C906158EF450005E0DAC /* MenuItemImpl_Win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_Win.h; sourceTree = "<group>"; };
 		88D9C907158EF453005E0DAC /* PixelOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelOperations.cpp; sourceTree = "<group>"; };
 		88D9C908158EF456005E0DAC /* PixelOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelOperations.h; sourceTree = "<group>"; };
-		88D9C911158EF476005E0DAC /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
 		88D9C912158EF476005E0DAC /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		88D9C913158EF476005E0DAC /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		88D9C918158EF62E005E0DAC /* MenuItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuItem.cpp; sourceTree = "<group>"; };
@@ -1027,17 +1010,10 @@
 		D42B76901589849F00306904 /* TVPortableiOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TVPortableiOS-Info.plist"; sourceTree = "<group>"; };
 		D42B76921589849F00306904 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D42B76961589849F00306904 /* TVPortableiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TVPortableiOS-Prefix.pch"; sourceTree = "<group>"; };
-		D42B769E1589856100306904 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
-		D42B769F1589856100306904 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D42B76A01589856100306904 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		D42B76A11589856100306904 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		D42B76A51589856C00306904 /* app.config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = app.config.txt; sourceTree = "<group>"; };
 		D42B76A61589856C00306904 /* app.icf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = app.icf; sourceTree = "<group>"; };
-		D42B76A71589856C00306904 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		D42B76A81589856C00306904 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		D42B76AA1589856C00306904 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 		D42B76AB1589856C00306904 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
-		D42B76AC1589856C00306904 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		D42B76B4158985B100306904 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		D42B76B5158985B100306904 /* AppController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		D42B76B6158985B100306904 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1217,9 +1193,8 @@
 			children = (
 				88EE93FF1589C3460096AEF9 /* Layer.h */,
 				88EE93FE1589C3460096AEF9 /* Layer.cpp */,
-				88D9C911158EF476005E0DAC /* Layer.h */,
-				88D9C912158EF476005E0DAC /* Window.cpp */,
 				88D9C913158EF476005E0DAC /* Window.h */,
+				88D9C912158EF476005E0DAC /* Window.cpp */,
 				88655C19159365410045BF4B /* Font.cpp */,
 				88655C1A159365410045BF4B /* Font.h */,
 				88D9C8F2158E2031005E0DAC /* MenuItem.h */,
@@ -1236,6 +1211,10 @@
 				88D9C929158F0C90005E0DAC /* ObjcWrappers.mm */,
 				88655C3915937F090045BF4B /* WindowsWrappers.h */,
 				88655C3A15937F0F0045BF4B /* WindowsWrappers.cpp */,
+				881B522515BBEB95009B9482 /* Application.h */,
+				881B522415BBEB95009B9482 /* Application.cpp */,
+				881B522A15BC0331009B9482 /* Cocos2dScene.h */,
+				881B522915BC032D009B9482 /* Cocos2dScene.cpp */,
 			);
 			path = Visual;
 			sourceTree = "<group>";
@@ -1283,7 +1262,6 @@
 				D4D313F415B8DC980034C24E /* Core */,
 				88EE93FD1589C3460096AEF9 /* Visual */,
 				D42B76A41589856C00306904 /* Resources */,
-				D42B769D1589856100306904 /* Classes */,
 				88EE94021589C36F0096AEF9 /* Predefine.h */,
 				88EE94171589CCDD0096AEF9 /* Type.h */,
 				88655C491594A5FC0045BF4B /* ListenerManager.h */,
@@ -2171,32 +2149,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D42B769D1589856100306904 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D42B769E1589856100306904 /* AppDelegate.cpp */,
-				D42B769F1589856100306904 /* AppDelegate.h */,
-				D42B76A01589856100306904 /* HelloWorldScene.cpp */,
-				D42B76A11589856100306904 /* HelloWorldScene.h */,
-				888338FC15ADB99C00B64F39 /* GestureRecognizerTest.cpp */,
-				888338FD15ADB99C00B64F39 /* GestureRecognizerTest.h */,
-				888338FE15ADB99C00B64F39 /* InputEventTest.cpp */,
-				888338FF15ADB99C00B64F39 /* InputEventTest.h */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		D42B76A41589856C00306904 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				D42B76A51589856C00306904 /* app.config.txt */,
 				D42B76A61589856C00306904 /* app.icf */,
-				D42B76A71589856C00306904 /* CloseNormal.png */,
-				D42B76A81589856C00306904 /* CloseSelected.png */,
-				8869BA1415AEDC660032E353 /* mask.png */,
-				8869BA1115AEDBBB0032E353 /* testicon.png */,
 				D42B76A91589856C00306904 /* fonts */,
-				D42B76AC1589856C00306904 /* HelloWorld.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2355,13 +2313,8 @@
 				D42B76931589849F00306904 /* InfoPlist.strings in Resources */,
 				D42B76AD1589856C00306904 /* app.config.txt in Resources */,
 				D42B76AE1589856C00306904 /* app.icf in Resources */,
-				D42B76AF1589856C00306904 /* CloseNormal.png in Resources */,
-				D42B76B01589856C00306904 /* CloseSelected.png in Resources */,
 				D42B76B11589856C00306904 /* arial.ttf in Resources */,
 				D42B76B21589856C00306904 /* Marker Felt.ttf in Resources */,
-				D42B76B31589856C00306904 /* HelloWorld.png in Resources */,
-				8869BA1215AEDBBB0032E353 /* testicon.png in Resources */,
-				8869BA1515AEDC660032E353 /* mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2372,11 +2325,6 @@
 				D42B76F71589898300306904 /* InfoPlist.strings in Resources */,
 				D42B76FD1589898300306904 /* Credits.rtf in Resources */,
 				D42B77031589898300306904 /* MainMenu.xib in Resources */,
-				D42B783E1589A07E00306904 /* CloseNormal.png in Resources */,
-				D42B783F1589A07E00306904 /* CloseSelected.png in Resources */,
-				D42B78401589A07E00306904 /* HelloWorld.png in Resources */,
-				8869BA1315AEDBBB0032E353 /* testicon.png in Resources */,
-				8869BA1615AEDC660032E353 /* mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2387,8 +2335,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D42B76A21589856100306904 /* AppDelegate.cpp in Sources */,
-				D42B76A31589856100306904 /* HelloWorldScene.cpp in Sources */,
 				D42B76B9158985B500306904 /* AppController.mm in Sources */,
 				D42B76BA158985B500306904 /* main.m in Sources */,
 				D42B76BB158985B500306904 /* RootViewController.mm in Sources */,
@@ -2577,12 +2523,12 @@
 				88655C1B159365410045BF4B /* Font.cpp in Sources */,
 				88655C3B15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
 				888338E215AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */,
-				8883390015ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */,
-				8883390215ADB99C00B64F39 /* InputEventTest.cpp in Sources */,
 				8869BA0F15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
 				88F5006015B3BBC30048289B /* CCGestureRecognizer.cpp in Sources */,
 				88F5006615B3BDBD0048289B /* CCGestureRecognizeriOS.mm in Sources */,
 				D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */,
+				881B522615BBEB96009B9482 /* Application.cpp in Sources */,
+				881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2591,8 +2537,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D42B76F91589898300306904 /* main.m in Sources */,
-				D42B7707158989CF00306904 /* AppDelegate.cpp in Sources */,
-				D42B7708158989CF00306904 /* HelloWorldScene.cpp in Sources */,
 				D42B7714158989E200306904 /* CCAction.cpp in Sources */,
 				D42B7715158989E200306904 /* CCActionCamera.cpp in Sources */,
 				D42B7716158989E200306904 /* CCActionEase.cpp in Sources */,
@@ -2772,10 +2716,10 @@
 				88655C1C159365410045BF4B /* Font.cpp in Sources */,
 				88655C3C15937F100045BF4B /* WindowsWrappers.cpp in Sources */,
 				888338E315AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */,
-				8883390115ADB99C00B64F39 /* GestureRecognizerTest.cpp in Sources */,
-				8883390315ADB99C00B64F39 /* InputEventTest.cpp in Sources */,
 				8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */,
 				D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */,
+				881B522715BBEB96009B9482 /* Application.cpp in Sources */,
+				881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

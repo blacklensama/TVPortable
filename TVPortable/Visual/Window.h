@@ -16,7 +16,7 @@ TVP_NS_VISUAL_BEGIN
     class Window {
     protected:
         // since there's no multiple window support on some platforms, we just limit max window count to 1
-        Window();
+        Window(size_t width, size_t height);
         ~Window();
         
     public:
@@ -37,7 +37,7 @@ TVP_NS_VISUAL_BEGIN
         void setCaption(const char* caption);
         
     public:
-        static Window* MainWindow();
+        static Window* Create(size_t width, size_t height);
         
     private:
         int32 mWidth;

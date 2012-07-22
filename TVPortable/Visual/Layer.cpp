@@ -383,12 +383,7 @@ TVP_NS_VISUAL_BEGIN
                 case CCMouse::Enter:
                 case CCMouse::Leave:
                 case CCMouse::Press:
-                    
-                    printf("Mouse down !!!!!, with button %d\n", evt.button);
-                    if(evt.button == CCMouse::RightButton) {
-                        Window::MainWindow()->getMenu()->popup(0, evt.x, evt.y);
-                    }
-                    
+                                        
 					this->adjustGamma(1.5, 0, 255, 1.5, 0, 255, 1.5, 0, 255);
                     break;
                     

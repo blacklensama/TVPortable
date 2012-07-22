@@ -22,7 +22,11 @@ TVP_NS_VISUAL_BEGIN
 
 using namespace cocos2d;
 
-Window::Window() {
+Window* Window::Create(size_t width, size_t height) {
+    return new Window(width, height);
+}
+
+Window::Window(size_t width, size_t height) {
 #ifdef UKN_OS_OSX
     mMenu = new MenuItem(this, GetApplicationMainMenu());
     mNativeHandle = (uintPtr)GetApplicationKeyWindow();
@@ -49,8 +53,8 @@ Window::Window() {
     
 #endif
     
-    mWidth = cocos2d::CCDirector::sharedDirector()->getWinSize().width;
-    mHeight = cocos2d::CCDirector::sharedDirector()->getWinSize().height;
+    mWidth = width;
+    mHeight = height;
     
 #ifndef UKN_OS_ANDROID
     // ukn currently not implemented on Android
@@ -76,11 +80,6 @@ Window::Window() {
 
 Window::~Window() {
     
-}
-
-Window* Window::MainWindow() {
-    static Window* window = new Window;
-    return window;
 }
 
 int32 Window::getWidth() const {

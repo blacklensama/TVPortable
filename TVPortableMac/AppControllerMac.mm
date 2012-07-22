@@ -6,22 +6,28 @@
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 #include "CCPlatformConfig.h"
-#include "AppDelegate.h"
 #import "AppControllerMac.h"
 #include "CCDirectorMac.h"
 
+#include "TVPortable/Visual/Application.h"
+#include "ukn/SysUtil.h"
 
 @implementation AppControllerMac
 @synthesize window, glView;
 
-// cocos2d application instance
-static AppDelegate s_sharedApplication;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 //    cocos2d::CCDirectorMac *director = (cocos2d::CCDirectorMac*) cocos2d::CCDirectorMac::sharedDirector();
-//    
-    NSRect rect = NSMakeRect(650, 350, 480, 320);    
+//
+    
+    TVPortable::Visual::Application& myApp = TVPortable::Visual::Application::App(TVPortable::Visual::ApplicationConfig::DefaultConfig());
+    
+    ukn::SystemInformation::DesktopMode desktopResolution = ukn::SystemInformation::EnumDesktopMode().front();
+    
+    NSRect rect = NSMakeRect(desktopResolution.width / 2 - myApp.getConfig().windowWidth / 2,
+                             desktopResolution.height / 2 - myApp.getConfig().windowHeight / 2,
+                             myApp.getConfig().windowWidth,
+                             myApp.getConfig().windowHeight);
     window = [[NSWindow alloc] initWithContentRect: rect styleMask:( NSClosableWindowMask | NSTitledWindowMask) backing:NSBackingStoreBuffered defer:YES];
     
     glView = [[EAGLView alloc] initWithFrame:rect];
@@ -30,8 +36,9 @@ static AppDelegate s_sharedApplication;
     [window setTitle:@"TVPortable"];
     
     [window makeKeyAndOrderFront:self];
-    cocos2d::CCApplication::sharedApplication().run();
-    
+
+    myApp.run();
+
 //	director->setOpenGLView(glView_);
 //
 //	// EXPERIMENTAL stuff.

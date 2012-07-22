@@ -25,31 +25,29 @@
 #import "AppController.h"
 #import "cocos2d.h"
 #import "EAGLView.h"
-#import "AppDelegate.h"
 
 #import "RootViewController.h"
+
+// tvporrtable
+#include "tvportable/visual/Application.h"
 
 @implementation AppController
 
 #pragma mark -
 #pragma mark Application lifecycle
 
-// cocos2d application instance
-static AppDelegate s_sharedApplication;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after application launch.
-
+    // initialize a application with default settings
     // Add the view controller's view to the window and display.
     window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     EAGLView *__glView = [EAGLView viewWithFrame: [window bounds]
 										pixelFormat: kEAGLColorFormatRGBA8
 										depthFormat: GL_DEPTH_COMPONENT16_OES
 								 preserveBackbuffer: NO
-                                                                                 sharegroup:nil
-                                                                          multiSampling:NO
-                                                                    numberOfSamples:0];
+                                      sharegroup:nil
+                                      multiSampling:NO
+                                      numberOfSamples:0];
     
     // Use RootViewController manage EAGLView 
     viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
@@ -62,10 +60,11 @@ static AppDelegate s_sharedApplication;
     
     window.rootViewController = viewController;
 
-
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
     
-    cocos2d::CCApplication::sharedApplication().run();
+    TVPortable::Visual::Application& myApp = TVPortable::Visual::Application::App(TVPortable::Visual::ApplicationConfig::DefaultConfig());
+    myApp.run();
+    
     return YES;
 }
 

@@ -2,3 +2,5 @@
 Thumbs.db
 TVPortable.xcodeproj/project.xcworkspace/xcuserdata
 TVPortable.xcodeproj/xcuserdata
+build
+.build

@@ -26,7 +26,7 @@ TVP_NS_VISUAL_BEGIN
         typedef std::list<MenuItem*> ChildList;
 
     public:
-        /* HMENU on Windows; NSMenu* on OSX; not availabe on other platforms */
+        /* HMENU on Windows; NSMenu* on OSX; currently not availabe on other platforms */
         TVP_PROPERTY_READ_ONLY(Menu, Handle);
         TVP_PROPERTY_READ_ONLY(Parent, MenuItem*);
         TVP_PROPERTY_READ_ONLY(Window, Window*);
@@ -34,7 +34,7 @@ TVP_NS_VISUAL_BEGIN
         TVP_PROPERTY(Listener, MenuItemListener*);
         
     private:
-        /* used by Window, useful on OSX */
+        /* used by Window */
         friend class Window;
         MenuItem(Window* window, void* native_mainmenu);
         

@@ -169,7 +169,6 @@ TVP_NS_VISUAL_BEGIN
         void loadImages(const char* image, uint32 color);
         void loadProvinceImage(const char* image);
         
-        
         void moveBefore(Layer* layer);
         void moveBehind(Layer* layer);
         
@@ -180,10 +179,7 @@ TVP_NS_VISUAL_BEGIN
         void pileRect(int32 dleft, int32 dtop, Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight, int32 opa = 255);
         void piledCopy(int32 dleft, int32 dtop, Layer* src, int32 sleft, int32 stop, int32 swidth, int32 sheight);
         
-        
         void releaseCapture();
-        void removeMode();
-        
         
         void saveLayerImage(const char* name, const char* type = "bmp");
         void setAttentionPos(int32 left, int32 top);
@@ -197,6 +193,8 @@ TVP_NS_VISUAL_BEGIN
         void setMaskPixel(int32 x, int32 y, uint32 value);
         
         void setMode();
+        void removeMode();
+
         void setPos(int32 left, int32 top, int32 width, int32 height);
         void setProvincePixel(int32 x, int32 y, uint32 value);
         

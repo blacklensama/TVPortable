@@ -1538,7 +1538,6 @@ namespace ukn {
         }\
         template<typename T2>\
         SelfType& operator-=(const PointTemplate<n, T2>& rhs) {\
-            SelfType tmp = *this;\
             for(int i=0; i<PointCount; ++i) {\
                 this->value[i] -= static_cast<Type>(rhs.value[i]);\
             }\

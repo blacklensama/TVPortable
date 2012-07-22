@@ -342,14 +342,14 @@ void CCDirector::setProjection(ccDirectorProjection kProjection)
 #if	(CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
             gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 1500.0f);
 #else
-            if (m_pobOpenGLView && m_pobOpenGLView->isIpad() && m_pobOpenGLView->getMainScreenScale() > 1.0)
+          /*  if (m_pobOpenGLView && m_pobOpenGLView->isIpad() && m_pobOpenGLView->getMainScreenScale() > 1.0)
             {
                 gluPerspective(60, (GLfloat)size.width/size.height, zeye-size.height/2, zeye+size.height/2);	
             }
             else
-            {
+            {*/
                 gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 1500.0f);
-            }	
+           // }
 #endif
 			
 		

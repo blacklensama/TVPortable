@@ -215,7 +215,7 @@ namespace cocos2d {
 
     void CCFileUtils::setResourcePath(const char *pszResourcePath)
     {
-        assert(0);
+     //   assert(0);
     }
     
     int CCFileUtils::ccLoadFileIntoMemory(const char *filename, unsigned char **out)
