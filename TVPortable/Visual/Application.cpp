@@ -42,10 +42,10 @@ public:
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
             
-            CCEGLView* mEGLView = new CCEGLView();
-            bRet = !mEGLView || ! mEGLView->Create(cfg.windowTitle.c_str(),
-                                                   cfg.windowWidth,
-                                                   cfg.windowHeight);
+            cocos2d::CCEGLView* mEGLView = new cocos2d::CCEGLView();
+            bRet = mEGLView && mEGLView->Create(L"Test",
+                                                 cfg.windowWidth,
+                                                 cfg.windowHeight);
             
 #endif  // CC_PLATFORM_WIN32
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -74,7 +74,7 @@ public:
             // Initialize OpenGLView instance, that release by CCDirector when application terminate.
             // The HelloWorld is designed as HVGA.
             CCEGLView* mEGLView = new CCEGLView();
-            bRet = !mEGLView || !mEGLView->Create(cfg.windowTitle.c_str(),
+            bRet = mEGLView && mEGLView->Create(cfg.windowTitle.c_str(),
                                                   cfg.windowWidth,
                                                   cfg.windowHeight,
                                                   cfg.windowWidth,
@@ -91,6 +91,7 @@ public:
             bRet = true;
             
 #endif
+			mApplication->initTVPortableWindow();
             cocos2d::CCFileUtils::setResourcePath(cfg.resourcePath.c_str());
 
         }
@@ -139,10 +140,14 @@ Application& Application::App(const ApplicationConfig& config) {
     return *app;
 }
 
-void Application::run() {    
-    mMainWindow = Window::Create(mAppConfig.windowWidth,
+void Application::initTVPortableWindow() {
+	
+	mMainWindow = Window::Create(mAppConfig.windowWidth,
                                  mAppConfig.windowHeight);
     
+}
+
+void Application::run() {    
     // cocos2d implementation
     new ApplicationImplCocos2dx(this);
     

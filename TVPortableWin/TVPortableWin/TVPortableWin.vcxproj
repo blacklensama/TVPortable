@@ -49,11 +49,13 @@
     <ClInclude Include="..\..\tjs2\tjsUtils.h" />
     <ClInclude Include="..\..\tjs2\tjsVariant.h" />
     <ClInclude Include="..\..\tjs2\tjsVariantString.h" />
-    <ClInclude Include="..\..\TVPortable\Classes\AppDelegate.h" />
-    <ClInclude Include="..\..\TVPortable\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\..\TVPortable\Core\EventManager.h" />
+    <ClInclude Include="..\..\TVPortable\Core\ScriptManager.h" />
     <ClInclude Include="..\..\TVPortable\ListenerManager.h" />
     <ClInclude Include="..\..\TVPortable\Predefine.h" />
     <ClInclude Include="..\..\TVPortable\Type.h" />
+    <ClInclude Include="..\..\TVPortable\Visual\Application.h" />
+    <ClInclude Include="..\..\TVPortable\Visual\Cocos2dScene.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Font.h" />
     <ClInclude Include="..\..\TVPortable\Visual\Layer.h" />
     <ClInclude Include="..\..\TVPortable\Visual\MenuItem.h" />
@@ -165,8 +167,9 @@
     <ClCompile Include="..\..\tjs2\tjsUtils.cpp" />
     <ClCompile Include="..\..\tjs2\tjsVariant.cpp" />
     <ClCompile Include="..\..\tjs2\tjsVariantString.cpp" />
-    <ClCompile Include="..\..\TVPortable\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\..\TVPortable\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\..\TVPortable\Core\EventManager.cpp" />
+    <ClCompile Include="..\..\TVPortable\Visual\Application.cpp" />
+    <ClCompile Include="..\..\TVPortable\Visual\Cocos2dScene.cpp" />
     <ClCompile Include="..\..\TVPortable\Visual\Font.cpp" />
     <ClCompile Include="..\..\TVPortable\Visual\Layer.cpp" />
     <ClCompile Include="..\..\TVPortable\Visual\MenuItem.cpp" />

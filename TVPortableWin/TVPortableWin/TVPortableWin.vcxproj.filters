@@ -28,8 +28,8 @@
     <Filter Include="TVPortable\Visual">
       <UniqueIdentifier>{7ae196b4-aa19-42a3-a7c4-258a8fde89bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TVPortable\Classes">
-      <UniqueIdentifier>{74007307-ada7-4e2b-9924-44fce8465ef3}</UniqueIdentifier>
+    <Filter Include="TVPortable\core">
+      <UniqueIdentifier>{496d35b9-4cfc-4c30-bfd2-dd38ac7a81c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -318,12 +318,6 @@
     <ClInclude Include="..\..\TVPortable\Type.h">
       <Filter>TVPortable</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\TVPortable\Classes\HelloWorldScene.h">
-      <Filter>TVPortable\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\TVPortable\Classes\AppDelegate.h">
-      <Filter>TVPortable\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\TVPortable\Visual\MenuItemImpl_Null.h">
       <Filter>TVPortable\Visual</Filter>
     </ClInclude>
@@ -350,6 +344,18 @@
     </ClInclude>
     <ClInclude Include="..\..\TVPortable\Visual\WindowsWrappers.h">
       <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Application.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Visual\Cocos2dScene.h">
+      <Filter>TVPortable\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Core\EventManager.h">
+      <Filter>TVPortable\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\TVPortable\Core\ScriptManager.h">
+      <Filter>TVPortable\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -551,12 +557,6 @@
     <ClCompile Include="..\..\TVPortable\Visual\Layer.cpp">
       <Filter>TVPortable\Visual</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\TVPortable\Classes\AppDelegate.cpp">
-      <Filter>TVPortable\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\TVPortable\Classes\HelloWorldScene.cpp">
-      <Filter>TVPortable\Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\TVPortable\Visual\MenuItemImpl_Win.cpp">
       <Filter>TVPortable\Visual</Filter>
     </ClCompile>
@@ -574,6 +574,15 @@
     </ClCompile>
     <ClCompile Include="..\..\TVPortable\Visual\WindowsWrappers.cpp">
       <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\Cocos2dScene.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Visual\Application.cpp">
+      <Filter>TVPortable\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\TVPortable\Core\EventManager.cpp">
+      <Filter>TVPortable\core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
