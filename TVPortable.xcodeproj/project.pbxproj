@@ -11,6 +11,10 @@
 		881B522715BBEB96009B9482 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522415BBEB95009B9482 /* Application.cpp */; };
 		881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
 		881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
+		881B523115BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */; };
+		881B523215BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */; };
+		881B523315BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */; };
+		881B523415BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */; };
 		881CE35E158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE35F158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE360158B0CBA00AAC5A5 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30E158B0CBA00AAC5A5 /* Base64.cpp */; };
@@ -415,6 +419,10 @@
 		881B522515BBEB95009B9482 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		881B522915BC032D009B9482 /* Cocos2dScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dScene.cpp; sourceTree = "<group>"; };
 		881B522A15BC0331009B9482 /* Cocos2dScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dScene.h; sourceTree = "<group>"; };
+		881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalizedStringTable.cpp; sourceTree = "<group>"; };
+		881B522E15BC0EC4009B9482 /* LocalizedStringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStringTable.h; sourceTree = "<group>"; };
+		881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalizedStringTableLoader.cpp; sourceTree = "<group>"; };
+		881B523015BC0EC5009B9482 /* LocalizedStringTableLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStringTableLoader.h; sourceTree = "<group>"; };
 		881CE30C158B0CBA00AAC5A5 /* AppleStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleStuff.h; sourceTree = "<group>"; };
 		881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleStuff.mm; sourceTree = "<group>"; };
 		881CE30E158B0CBA00AAC5A5 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
@@ -1131,6 +1139,10 @@
 				881CE359158B0CBA00AAC5A5 /* Type.h */,
 				881CE35A158B0CBA00AAC5A5 /* Uncopyable.h */,
 				881CE35B158B0CBA00AAC5A5 /* Util.h */,
+				881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */,
+				881B522E15BC0EC4009B9482 /* LocalizedStringTable.h */,
+				881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */,
+				881B523015BC0EC5009B9482 /* LocalizedStringTableLoader.h */,
 			);
 			path = UKN;
 			sourceTree = "<group>";
@@ -2529,6 +2541,8 @@
 				D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */,
 				881B522615BBEB96009B9482 /* Application.cpp in Sources */,
 				881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
+				881B523115BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
+				881B523315BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2720,6 +2734,8 @@
 				D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */,
 				881B522715BBEB96009B9482 /* Application.cpp in Sources */,
 				881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
+				881B523215BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
+				881B523415BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

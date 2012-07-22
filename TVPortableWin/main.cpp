@@ -1,9 +1,8 @@
 #include "main.h"
 
-#include "Classes\AppDelegate.h"
-
 #include <windows.h>
 #include <io.h>
+#include "TVPortable/Visual/Application.h"
 
 #define USE_CONSOLE
 
@@ -16,7 +15,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
     // create the application instance
-	AppDelegate app;
+ 	TVPortable::Visual::Application& myApp = TVPortable::Visual::Application::App(TVPortable::Visual::ApplicationConfig::DefaultConfig());
+
 
 	// for debug usage
 	// as there's no debug console for vs
@@ -25,5 +25,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	stdout->_file = _open_osfhandle((intptr_t)GetStdHandle(STD_OUTPUT_HANDLE),0);
 #endif
 
-    return cocos2d::CCApplication::sharedApplication().run();
+    myApp.run();
+
+    return 0;
 }
