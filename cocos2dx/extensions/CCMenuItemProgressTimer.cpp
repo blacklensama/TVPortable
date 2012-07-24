@@ -101,7 +101,7 @@ namespace cocos2d {
         return 0;
     }
     
-    CCMenuItemProgressTimer* CCMenuItemProgressTimer::itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector) {
+    CCMenuItemProgressTimer* CCMenuItemProgressTimer::itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector) {
         CCMenuItemProgressTimer* ptimer = new CCMenuItemProgressTimer();
         if(ptimer->init(mask, normalSprite, 0, interval, type, target, selector)) {
             ptimer->autorelease();
@@ -111,7 +111,7 @@ namespace cocos2d {
         return 0;
     }
     
-    CCMenuItemProgressTimer* CCMenuItemProgressTimer::itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector) {
+    CCMenuItemProgressTimer* CCMenuItemProgressTimer::itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector) {
         CCMenuItemProgressTimer* ptimer = new CCMenuItemProgressTimer();
         if(ptimer->init(mask, normalSprite, disabledSprite, interval, type, target, selector)) {
             ptimer->autorelease();
@@ -121,7 +121,7 @@ namespace cocos2d {
         return 0;
     }
     
-    bool CCMenuItemProgressTimer::init(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector) {
+    bool CCMenuItemProgressTimer::init(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector) {
         assert(normalSprite);
         
         CCMenuItem::initWithTarget(target, selector);
@@ -186,6 +186,14 @@ namespace cocos2d {
         }
     }
     
+    void CCMenuItemProgressTimer::preventTimer() {
+        this->unschedule(schedule_selector(CCMenuItemProgressTimer::onTimerTick));
+        
+        mCurrent = 0.f;
+        mCanBeActivated = true;
+        mProgressTimer->setPercentage(0);
+    }
+    
     void CCMenuItemProgressTimer::selected() {
         CCMenuItem::selected();
     }
@@ -233,6 +241,5 @@ namespace cocos2d {
             mCanBeActivated = true;
         }
         mProgressTimer->setPercentage((1.f - mCurrent / mInterval) * 100.f);
-        printf("%f\n", mProgressTimer->getPercentage());
     }
 }

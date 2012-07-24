@@ -27,9 +27,9 @@ namespace cocos2d {
     public:
         static CCMenuItemProgressTimer* itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, float interval, CCProgressTimerType type, CCSprite* disabledSprite = NULL);
 
-        static CCMenuItemProgressTimer* itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector);
+        static CCMenuItemProgressTimer* itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector);
         
-        static CCMenuItemProgressTimer* itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector);
+        static CCMenuItemProgressTimer* itemFromSpriteAndTime(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector);
 
     public:
                                                               
@@ -46,9 +46,13 @@ namespace cocos2d {
         virtual void unselected();
         virtual void setIsEnabled(bool bEnabled);
         
+    public:
+        // prevent timer fire after activate
+        void preventTimer();
+        
     protected:
         
-        bool init(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, CCObject* target, SEL_MenuHandler selector);
+        bool init(CCSprite* mask, CCSprite* normalSprite, CCSprite* disabledSprite, float interval, CCProgressTimerType type, SelectorProtocol* target, SEL_MenuHandler selector);
         
         float mInterval;
         float mCurrent;
