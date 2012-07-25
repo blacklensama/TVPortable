@@ -857,7 +857,7 @@ void CCEGLView::setScreenScale(float factor)
 
 bool CCEGLView::canSetContentScaleFactor()
 {
-    return true;
+    return false;
 }
 
 void CCEGLView::setContentScaleFactor(float contentScaleFactor)

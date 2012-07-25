@@ -68,6 +68,7 @@ private:
     /* ios & osx*/
     friend class ApplicationImplCocos2dx;
     
+	void initTVPortableWindow();
     void applicationDidEnterBackground();
     void applicationWillEnterForeground();
     void applicationDidFinishLaunching();
