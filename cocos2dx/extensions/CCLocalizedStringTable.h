@@ -14,22 +14,20 @@
 #include <string>
 #include <exception>
 
-namespace ukn {
+namespace cocos2d {
 
-    class StringMap {
+    class CCStringMap {
     public:
         typedef std::map<std::string, std::string> StringMapCont;
         
         std::string stringAtIndex(size_t index) const;
         std::string stringAtId(const std::string& sid) const;
-
         void setStringAtId(const std::string& sid, const std::string& string);
         void addString(const std::string& sid, const std::string& string);
         void removeStringAtId(const std::string& sid);
+        size_t size() const;
         void setStringIdAtId(const std::string& sid, const std::string& after);
         
-        size_t size() const;
-
         typedef StringMapCont::iterator iterator;
         typedef StringMapCont::const_iterator const_iterator;
         
@@ -44,12 +42,19 @@ namespace ukn {
         StringMapCont mStringMap;
     };
     
-    class LocalizedStringTable {
-    public:
-        typedef std::map<std::string /* lan */, StringMap /* StringMap */> LanguageMap;
+    class CCLocalizedStringTable {
+    protected:
+        CCLocalizedStringTable() { }
+        ~CCLocalizedStringTable() { }
         
-        const StringMap& languageStringMapAtId(const std::string& lanName) const;
-        StringMap& languageStringMapAtId(const std::string& lanName);
+    public:
+        static CCLocalizedStringTable& Instance();
+    
+    public:
+        typedef std::map<std::string /* lan */, CCStringMap /* StringMap */> LanguageMap;
+        
+        const CCStringMap& languageStringMapAtId(const std::string& lanName) const;
+        CCStringMap& languageStringMapAtId(const std::string& lanName);
         
         void addLanguage(const std::string& lanName);
 

@@ -7,7 +7,8 @@
 //
 
 #include "ukn/LocalizedStringTable.h"
-#include "ukn/ConfigParser.h"
+#include "ukn/Exception.h"
+#include "ukn/Logger.h"
 
 namespace ukn {
     
@@ -110,6 +111,15 @@ namespace ukn {
     }
     
     void LocalizedStringTable::addString(const std::string& sid, const std::string& string) {
+        
+        IdVector::iterator idIt = std::find(mIdVector.begin(),
+                                            mIdVector.end(),
+                                            sid);
+        if(idIt != mIdVector.end()) {
+            log_error(format_string("ukn::LocalizedStringTable::addString: string id %s already exist", sid.c_str()));
+            return;
+        }
+        
         for(LanguageMap::iterator it = mLocalizedString.begin(),
             end = mLocalizedString.end();
             it != end;
@@ -120,33 +130,39 @@ namespace ukn {
     }
     
     void LocalizedStringTable::removeStringById(const std::string& sid) {
-        for(LanguageMap::iterator it = mLocalizedString.begin(),
-            end = mLocalizedString.end();
-            it != end;
-            ++it) {
-            it->second.removeStringAtId(sid);
-        }
         
-        for(IdVector::iterator it = mIdVector.begin(),
-            end = mIdVector.end();
-            it != end;
-            ++it) {
-            if(*it == sid) {
-                mIdVector.erase(it);
-                break;
+        IdVector::iterator idIt = std::find(mIdVector.begin(),
+                                            mIdVector.end(),
+                                            sid);
+        if(idIt != mIdVector.end()) {
+
+            for(LanguageMap::iterator it = mLocalizedString.begin(),
+                end = mLocalizedString.end();
+                it != end;
+                ++it) {
+                it->second.removeStringAtId(sid);
             }
+            
+            mIdVector.erase(idIt);
+        } else {
+            log_error(format_string("ukn::LocalizedStringTable::removeStringById: string id %s already exist", sid.c_str()));
         }
         
     }
     
     std::string LocalizedStringTable::getString(const std::string& lan, const std::string& sid) {
-        StringMap& map = languageStringMapAtId(lan);
-        return map.stringAtId(sid);
+        if(checkLanguage(lan)) {
+            StringMap& map = languageStringMapAtId(lan);
+            return map.stringAtId(sid);
+        }
+        return "";
     }
     
     void LocalizedStringTable::setString(const std::string& lan, const std::string& sid, const std::string& string) {
-        StringMap& map = languageStringMapAtId(lan);
-        map.setStringAtId(sid, string);
+        if(checkLanguage(lan)) {
+            StringMap& map = languageStringMapAtId(lan);
+            map.setStringAtId(sid, string);
+        }
     }
     
     size_t LocalizedStringTable::sizeOfLanguages() const {
@@ -160,13 +176,21 @@ namespace ukn {
     }
     
     void LocalizedStringTable::setStringIdAtId(const std::string& before, const std::string& after) {
-        for(LanguageMap::iterator it = mLocalizedString.begin(),
-            end = mLocalizedString.end();
-            it != end;
-            ++it)  {
-            it->second.setStringIdAtId(before, after);
+        IdVector::const_iterator idIt = std::find(mIdVector.begin(),
+                                                  mIdVector.end(),
+                                                  before);
+        if(idIt != mIdVector.end()) {
+            for(LanguageMap::iterator it = mLocalizedString.begin(),
+                end = mLocalizedString.end();
+                it != end;
+                ++it)  {
+                it->second.setStringIdAtId(before, after);
+            }
+            updateStringId(before, after);
+        } else {
+            log_error(format_string("ukn::LocalizedStringTable::setStringIdAtId: string id %s already exist", before.c_str()));
         }
-        updateStringId(before, after);
+        
     }
     
     std::string LocalizedStringTable::getIdByIndex(size_t index) const {

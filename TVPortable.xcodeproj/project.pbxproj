@@ -68,6 +68,10 @@
 		8869BA1015AEC0C50032E353 /* CCMenuItemProgressTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */; };
 		888338E215AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
 		888338E315AD502900B64F39 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */; };
+		88C7D1BF15BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D1BD15BFD97E007AF855 /* CCLocalizedLabel.cpp */; };
+		88C7D1C015BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D1BD15BFD97E007AF855 /* CCLocalizedLabel.cpp */; };
+		88C7D1C715BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D1C515BFDA25007AF855 /* CCLocalizedStringTable.cpp */; };
+		88C7D1C815BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C7D1C515BFDA25007AF855 /* CCLocalizedStringTable.cpp */; };
 		88D9C90A158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90B158EF45D005E0DAC /* MenuItemImpl_OSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C904158EF44D005E0DAC /* MenuItemImpl_OSX.mm */; };
 		88D9C90C158EF45D005E0DAC /* MenuItemImpl_Win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88D9C905158EF44E005E0DAC /* MenuItemImpl_Win.cpp */; };
@@ -514,6 +518,10 @@
 		888338DB15AD4CD400B64F39 /* CCGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizer.h; sourceTree = "<group>"; };
 		888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		888338E115AD502900B64F39 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
+		88C7D1BD15BFD97E007AF855 /* CCLocalizedLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLocalizedLabel.cpp; sourceTree = "<group>"; };
+		88C7D1BE15BFD97E007AF855 /* CCLocalizedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalizedLabel.h; sourceTree = "<group>"; };
+		88C7D1C515BFDA25007AF855 /* CCLocalizedStringTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCLocalizedStringTable.cpp; sourceTree = "<group>"; };
+		88C7D1C615BFDA25007AF855 /* CCLocalizedStringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalizedStringTable.h; sourceTree = "<group>"; };
 		88D9C8F2158E2031005E0DAC /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		88D9C8F5158E205E005E0DAC /* Prerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prerequisites.h; sourceTree = "<group>"; };
 		88D9C903158EF44D005E0DAC /* MenuItemImpl_OSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemImpl_OSX.h; sourceTree = "<group>"; };
@@ -1373,8 +1381,8 @@
 		D42B6B211589847A00306904 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */,
 				8869BA0E15AEC0C50032E353 /* CCMenuItemProgressTimer.h */,
+				8869BA0D15AEC0C50032E353 /* CCMenuItemProgressTimer.cpp */,
 				88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */,
 				888338DB15AD4CD400B64F39 /* CCGestureRecognizer.h */,
 				88F5006415B3BDBC0048289B /* CCGestureRecognizeriOS.h */,
@@ -1388,6 +1396,10 @@
 				881CE399158B136000AAC5A5 /* CCInputDispatcher.cpp */,
 				888338E015AD502800B64F39 /* CCTexture2DMutable.cpp */,
 				888338E115AD502900B64F39 /* CCTexture2DMutable.h */,
+				88C7D1BD15BFD97E007AF855 /* CCLocalizedLabel.cpp */,
+				88C7D1BE15BFD97E007AF855 /* CCLocalizedLabel.h */,
+				88C7D1C515BFDA25007AF855 /* CCLocalizedStringTable.cpp */,
+				88C7D1C615BFDA25007AF855 /* CCLocalizedStringTable.h */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -2543,6 +2555,8 @@
 				881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
 				881B523115BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
 				881B523315BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
+				88C7D1BF15BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */,
+				88C7D1C715BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2736,6 +2750,8 @@
 				881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
 				881B523215BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
 				881B523415BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
+				88C7D1C015BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */,
+				88C7D1C815BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
