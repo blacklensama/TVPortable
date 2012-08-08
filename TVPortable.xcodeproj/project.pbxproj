@@ -11,10 +11,6 @@
 		881B522715BBEB96009B9482 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522415BBEB95009B9482 /* Application.cpp */; };
 		881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
 		881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522915BC032D009B9482 /* Cocos2dScene.cpp */; };
-		881B523115BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */; };
-		881B523215BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */; };
-		881B523315BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */; };
-		881B523415BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */; };
 		881CE35E158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE35F158B0CBA00AAC5A5 /* AppleStuff.mm in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */; };
 		881CE360158B0CBA00AAC5A5 /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881CE30E158B0CBA00AAC5A5 /* Base64.cpp */; };
@@ -88,6 +84,7 @@
 		88EE94011589C3460096AEF9 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88EE93FE1589C3460096AEF9 /* Layer.cpp */; };
 		88F5006015B3BBC30048289B /* CCGestureRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */; };
 		88F5006615B3BDBD0048289B /* CCGestureRecognizeriOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 88F5006515B3BDBC0048289B /* CCGestureRecognizeriOS.mm */; };
+		88F55DAF15D2C3820098243E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F55DAE15D2C3820098243E /* CoreServices.framework */; };
 		D42B768B1589849F00306904 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE31589843A00306904 /* UIKit.framework */; };
 		D42B768C1589849F00306904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE51589843A00306904 /* Foundation.framework */; };
 		D42B768D1589849F00306904 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B6AE71589843A00306904 /* CoreGraphics.framework */; };
@@ -423,10 +420,6 @@
 		881B522515BBEB95009B9482 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		881B522915BC032D009B9482 /* Cocos2dScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cocos2dScene.cpp; sourceTree = "<group>"; };
 		881B522A15BC0331009B9482 /* Cocos2dScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cocos2dScene.h; sourceTree = "<group>"; };
-		881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalizedStringTable.cpp; sourceTree = "<group>"; };
-		881B522E15BC0EC4009B9482 /* LocalizedStringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStringTable.h; sourceTree = "<group>"; };
-		881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalizedStringTableLoader.cpp; sourceTree = "<group>"; };
-		881B523015BC0EC5009B9482 /* LocalizedStringTableLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizedStringTableLoader.h; sourceTree = "<group>"; };
 		881CE30C158B0CBA00AAC5A5 /* AppleStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleStuff.h; sourceTree = "<group>"; };
 		881CE30D158B0CBA00AAC5A5 /* AppleStuff.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppleStuff.mm; sourceTree = "<group>"; };
 		881CE30E158B0CBA00AAC5A5 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
@@ -543,6 +536,7 @@
 		88F5005F15B3BBC30048289B /* CCGestureRecognizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCGestureRecognizer.cpp; sourceTree = "<group>"; };
 		88F5006415B3BDBC0048289B /* CCGestureRecognizeriOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGestureRecognizeriOS.h; sourceTree = "<group>"; };
 		88F5006515B3BDBC0048289B /* CCGestureRecognizeriOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCGestureRecognizeriOS.mm; sourceTree = "<group>"; };
+		88F55DAE15D2C3820098243E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		D42B6AE31589843A00306904 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D42B6AE51589843A00306904 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D42B6AE71589843A00306904 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1081,6 +1075,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F55DAF15D2C3820098243E /* CoreServices.framework in Frameworks */,
 				D42B783715899C1A00306904 /* CoreVideo.framework in Frameworks */,
 				D42B783315899B8000306904 /* libz.dylib in Frameworks */,
 				D42B783115899B7800306904 /* libxml2.dylib in Frameworks */,
@@ -1147,10 +1142,6 @@
 				881CE359158B0CBA00AAC5A5 /* Type.h */,
 				881CE35A158B0CBA00AAC5A5 /* Uncopyable.h */,
 				881CE35B158B0CBA00AAC5A5 /* Util.h */,
-				881B522D15BC0EC4009B9482 /* LocalizedStringTable.cpp */,
-				881B522E15BC0EC4009B9482 /* LocalizedStringTable.h */,
-				881B522F15BC0EC4009B9482 /* LocalizedStringTableLoader.cpp */,
-				881B523015BC0EC5009B9482 /* LocalizedStringTableLoader.h */,
 			);
 			path = UKN;
 			sourceTree = "<group>";
@@ -1242,6 +1233,7 @@
 		D42B6AD41589843A00306904 = {
 			isa = PBXGroup;
 			children = (
+				88F55DAE15D2C3820098243E /* CoreServices.framework */,
 				D4BD9FCE158C828C00E36E39 /* AudioToolbox.framework */,
 				881CE30B158B0CBA00AAC5A5 /* UKN */,
 				D42B6AE91589843A00306904 /* TVPortable */,
@@ -2553,8 +2545,6 @@
 				D4D313F915B8DCB30034C24E /* EventManager.cpp in Sources */,
 				881B522615BBEB96009B9482 /* Application.cpp in Sources */,
 				881B522B15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
-				881B523115BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
-				881B523315BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
 				88C7D1BF15BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */,
 				88C7D1C715BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */,
 			);
@@ -2748,8 +2738,6 @@
 				D4D313FA15B8DCB30034C24E /* EventManager.cpp in Sources */,
 				881B522715BBEB96009B9482 /* Application.cpp in Sources */,
 				881B522C15BC0334009B9482 /* Cocos2dScene.cpp in Sources */,
-				881B523215BC0EC5009B9482 /* LocalizedStringTable.cpp in Sources */,
-				881B523415BC0EC5009B9482 /* LocalizedStringTableLoader.cpp in Sources */,
 				88C7D1C015BFD97E007AF855 /* CCLocalizedLabel.cpp in Sources */,
 				88C7D1C815BFDA25007AF855 /* CCLocalizedStringTable.cpp in Sources */,
 			);

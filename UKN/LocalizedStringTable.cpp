@@ -9,6 +9,7 @@
 #include "ukn/LocalizedStringTable.h"
 #include "ukn/Exception.h"
 #include "ukn/Logger.h"
+#include "ukn/Common.h"
 
 namespace ukn {
     
