@@ -20,6 +20,7 @@
 
 #include "ukn/Color.h"
 
+
 TVP_NS_VISUAL_BEGIN
         
     using namespace cocos2d;
@@ -115,12 +116,12 @@ TVP_NS_VISUAL_BEGIN
 
     void Layer::visit() {
         // quick return if not visible
-        if (!getIsVisible()) {
+        if (!isVisible()) {
             return;
         }
         
-        glPushMatrix(); 
-        glEnable(GL_SCISSOR_TEST);
+       // glPushMatrix();
+       // glEnable(GL_SCISSOR_TEST);
         
         CCRect clippingRect = _getClippingRect();
         /*
@@ -135,8 +136,8 @@ TVP_NS_VISUAL_BEGIN
             draw();
         }
         
-        glDisable(GL_SCISSOR_TEST);
-        glPopMatrix();
+       // glDisable(GL_SCISSOR_TEST);
+       // glPopMatrix();
     }
 
 

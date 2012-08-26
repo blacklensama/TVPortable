@@ -10,9 +10,13 @@
 #define TVPortable_Layer_h
 
 #include "cocos2d.h"
+#include "extensions/CCInputListener.h"
+#include "extensions/CCRenderTextureMutable.h"
 
 #include "Prerequisites.h"
 #include "../ListenerManager.h"
+
+#include <list>
 
 TVP_NS_VISUAL_BEGIN
         

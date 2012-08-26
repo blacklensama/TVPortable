@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "Cocos2dScene.h"
 
+#include "Layer.h"
+
 TVP_NS_VISUAL_BEGIN
 
 ApplicationConfig& ApplicationConfig::DefaultConfig() {
@@ -30,12 +32,14 @@ public:
     ApplicationImplCocos2dx(Application* app):
     mApplication(app) {
         assert(app);
+        
+        this->initInstance();
     }
     
     /**
      @brief	Implement for initialize OpenGL instance, set source path, etc...
      */
-    virtual bool initInstance() {
+    bool initInstance() {
         bool bRet = false;
         {
             const ApplicationConfig& cfg = mApplication->getConfig();
@@ -53,7 +57,8 @@ public:
             bRet = true;
 
             // OpenGLView initialized in testsAppDelegate.mm on ios platform, nothing need to do here.
-            cocos2d::CCDirector::sharedDirector()->setDeviceOrientation(cocos2d::CCDeviceOrientationLandscapeLeft);
+            // 2.x ?
+       //     cocos2d::CCDirector::sharedDirector()->setDeviceOrientation(cocos2d::kDeviceOrientationLeft);
             
 #endif  // CC_PLATFORM_IOS
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -92,7 +97,7 @@ public:
             
 #endif
 			mApplication->initTVPortableWindow();
-            cocos2d::CCFileUtils::setResourcePath(cfg.resourcePath.c_str());
+            cocos2d::CCFileUtils::sharedFileUtils()->setResourcePath(cfg.resourcePath.c_str());
 
         }
         return bRet;
@@ -105,7 +110,7 @@ public:
         
         pDirector->setOpenGLView(&cocos2d::CCEGLView::sharedOpenGLView());
         pDirector->enableRetinaDisplay(cfg.enableRetina);
-        pDirector->setDisplayFPS(cfg.displayFPS);
+        pDirector->setDisplayStats(false);
         pDirector->setAnimationInterval(1.0 / cfg.fps);
     
         mApplication->applicationDidFinishLaunching();
@@ -147,7 +152,11 @@ void Application::initTVPortableWindow() {
     
 }
 
-void Application::run() {    
+Window* Application::getMainWindow() const {
+    return mMainWindow;
+}
+
+void Application::run() {
     // cocos2d implementation
     new ApplicationImplCocos2dx(this);
     

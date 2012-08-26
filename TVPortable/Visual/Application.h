@@ -21,7 +21,7 @@ class Layer;
 class MenuItem;
 
 struct ApplicationConfig {
-    /* width & height only useful on desktop platforms */
+    /* width & height only used on desktop platforms */
     /* will adjust automatically on mobile platforms */
     size_t windowWidth;
     size_t windowHeight;
@@ -39,7 +39,7 @@ struct ApplicationConfig {
     ApplicationConfig& setWindowHeight(size_t height) { windowHeight = height; return *this; }
     ApplicationConfig& setWindowTitle(const std::string& title) { windowTitle = title; return *this; }
     ApplicationConfig& setResourcePath(const std::string& path) { resourcePath = path; return *this; }
-    ApplicationConfig& setDisplayFps(bool flag) { displayFPS = flag; return *this; }
+    ApplicationConfig& setDisplayFps(size_t nfps) { fps = nfps; return *this; }
     ApplicationConfig& setEnableRetina(bool flag) { enableRetina = flag; return *this; }
     
     static ApplicationConfig& DefaultConfig();
