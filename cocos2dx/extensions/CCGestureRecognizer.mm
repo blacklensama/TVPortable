@@ -146,10 +146,10 @@ namespace cocos2d {
             mGestureRegozniers.insert(std::make_pair((unsigned long)rot, rot));
             return (unsigned long)rot;
         }
-        unsigned long addSwipeRecognizer(SwipeDirection direction = Right, int touchesRequired = 1) {
+        unsigned long addSwipeRecognizer(CCGestureRecognizer::SwipeDirection direction = CCGestureRecognizer::Right, int touchesRequired = 1) {
             UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:__receiver action:@selector(handleSwipeGesture:)];
         
-            swipe.direction = (UISwipeGestureRecognizerDirection)diretion;
+            swipe.direction = (UISwipeGestureRecognizerDirection)direction;
             swipe.numberOfTouchesRequired = touchesRequired;
             
             UIWindow* window = [[UIApplication sharedApplication] keyWindow];

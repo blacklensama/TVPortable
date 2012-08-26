@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include <sys/stat.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <vector>
 #include "CCDirectorMac.h"
 
 #include "ft2build.h"
@@ -254,7 +255,7 @@ static bool _initPremultipliedATextureWithImage(CGImageRef image, NSUInteger POT
     return true;
 }
 
-static bool _initWithImage(CGImageRef CGImage, tImageInfo *pImageinfo, double scaleX, double scaleY)
+static bool _initWithImage(CGImageRef CGImage, tImageInfo *pImageinfo)
 {
     NSUInteger POTWide, POTHigh;
     
@@ -263,16 +264,16 @@ static bool _initWithImage(CGImageRef CGImage, tImageInfo *pImageinfo, double sc
         return false;
     }
     
-	if (cocos2d::CCImage::getIsScaleEnabled())
+	/*if (cocos2d::CCImage::getIsScaleEnabled())
 	{
 		POTWide = CGImageGetWidth(CGImage) * scaleX;
 		POTHigh = CGImageGetHeight(CGImage) * scaleY;
 	}
 	else 
-	{
+	{*/
 		POTWide = CGImageGetWidth(CGImage);
 		POTHigh = CGImageGetHeight(CGImage);
-	}
+	///}
     
     
     // always load premultiplied images
@@ -296,7 +297,7 @@ static bool _initWithFile(const char* path, tImageInfo *pImageinfo)
     CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[jpg TIFFRepresentation], NULL);
 	CGImage =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
     
-    ret = _initWithImage(CGImage, pImageinfo, 1.0, 1.0);
+    ret = _initWithImage(CGImage, pImageinfo);
     
     //    [png release];
     [jpg release];
@@ -305,7 +306,7 @@ static bool _initWithFile(const char* path, tImageInfo *pImageinfo)
 }
 
 
-static bool _initWithData(void * pBuffer, int length, tImageInfo *pImageinfo, double scaleX, double scaleY)
+static bool _initWithData(void * pBuffer, int length, tImageInfo *pImageinfo)
 {
     bool ret = false;
     
@@ -318,7 +319,7 @@ static bool _initWithData(void * pBuffer, int length, tImageInfo *pImageinfo, do
 		CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)data, NULL);
         CGImage = CGImageSourceCreateImageAtIndex(source, 0, NULL);
         
-        ret = _initWithImage(CGImage, pImageinfo, scaleX, scaleY);
+        ret = _initWithImage(CGImage, pImageinfo);
     }
     
     return ret;
@@ -766,7 +767,7 @@ public:
 	FT_Library library;
 	unsigned char *m_pData;
 	int libError;
-	vector<TextLine> vLines;
+    std::vector<TextLine> vLines;
 	int iInterval;
 	int iMaxLineWidth;
 	int iMaxLineHeight;
@@ -845,8 +846,8 @@ CCImage::CCImage()
 , m_pData(0)
 , m_bHasAlpha(false)
 , m_bPreMulti(false)
-, m_dScaleX(1.0)
-, m_dScaleY(1.0)
+//, m_dScaleX(1.0)
+//, m_dScaleY(1.0)
 
 {
     
@@ -857,50 +858,35 @@ CCImage::~CCImage()
     CC_SAFE_DELETE_ARRAY(m_pData);
 }
 
-bool cocos2d::CCImage::m_bEnabledScale = true;
+//bool cocos2d::CCImage::m_bEnabledScale = true;
 
 bool CCImage::initWithImageFile(const char * strPath, EImageFormat eImgFmt/* = eFmtPng*/)
 {
- 	std::string strTemp = CCFileUtils::fullPathFromRelativePath(strPath);
-	if (m_bEnabledScale)
-	{
-		if (!isFileExists(strTemp.c_str()))
-		{
-			if (strTemp.rfind("@2x") == std::string::npos)
-			{
-				int t = strTemp.rfind(".");
-				if (t != std::string::npos)
-				{
-					strTemp.insert(t, "@2x");
-				}
-				CCSize size = cocos2d::CCDirectorMac::sharedDirector()->getWinSize();		
-	#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-				m_dScaleX = size.width/800.0f;
-				m_dScaleY = size.height/480.0f;
-	#else
-				m_dScaleX = size.width/640.0f;
-				m_dScaleY = size.height/960.0f;
-				
-	#endif
-			}
-		}    
-		else
-		{
-			m_dScaleX = 1.0;
-			m_dScaleY = 1.0;
-		}
-	}
-	CCFileData tempData(strTemp.c_str(), "rb");			
-	return initWithImageData(tempData.getBuffer(), tempData.getSize(), eImgFmt);
+ 	bool bRet = false;
+    unsigned long nSize = 0;
+    unsigned char* pBuffer = CCFileUtils::sharedFileUtils()->getFileData(
+                                                                         CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(strPath),
+                                                                         "rb",
+                                                                         &nSize);
+    
+    if (pBuffer != NULL && nSize > 0)
+    {
+        bRet = initWithImageData(pBuffer, nSize, eImgFmt);
+    }
+    CC_SAFE_DELETE_ARRAY(pBuffer);
+    return bRet;
 }
 bool CCImage::initWithImageFileThreadSafe(const char *fullpath, EImageFormat imageType)
 {
-    CC_UNUSED_PARAM(imageType);
-    /*
-     * CCFileUtils::fullPathFromRelativePath() is not thread-safe, it use autorelease().
-     */
-    CCFileData data(fullpath, "rb");
-    return initWithImageData(data.getBuffer(), data.getSize(), imageType);
+    bool bRet = false;
+    unsigned long nSize = 0;
+    unsigned char* pBuffer = CCFileUtils::sharedFileUtils()->getFileData(fullpath, "rb", &nSize);
+    if (pBuffer != NULL && nSize > 0)
+    {
+        bRet = initWithImageData(pBuffer, nSize, imageType);
+    }
+    CC_SAFE_DELETE_ARRAY(pBuffer);
+    return bRet;
 }
 //bool CCImage::potImageData(unsigned int POTWide, unsigned int POTHigh)
 //{
@@ -1122,7 +1108,7 @@ bool CCImage::initWithImageData(void * pData,
         }
         else // init with png or jpg file data
         {
-            bRet = _initWithData(pData, nDataLen, &info, m_dScaleX, m_dScaleY);
+            bRet = _initWithData(pData, nDataLen, &info);
             if (bRet)
             {
                 m_nHeight = (short)info.height;
@@ -1159,7 +1145,7 @@ bool CCImage::initWithString(
             
             BitmapDC &dc = sharedBitmapDC();
             
-            const char* pFullFontName = CCFileUtils::fullPathFromRelativePath(pFontName);
+            const char* pFullFontName = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(pFontName);
             //CCLog("-----pText=%s and Font File is %s nWidth= %d,nHeight=%d",pText,pFullFontName,nWidth,nHeight);
             
             CC_BREAK_IF(! dc.getBitmap(pText, nWidth, nHeight, eAlignMask, pFullFontName, nSize));

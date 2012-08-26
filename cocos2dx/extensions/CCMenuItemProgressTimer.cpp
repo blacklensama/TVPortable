@@ -20,7 +20,7 @@ namespace cocos2d {
     mCurrent(0),
     mCanBeActivated(true),
     mProgressTimer(0),
-    mType(kCCProgressTimerTypeVerticalBarBT) {
+    mType(kCCProgressTimerTypeBar) {
         
     }
     
@@ -39,7 +39,7 @@ namespace cocos2d {
         if (image) {
             addChild(image, 0, kNormalTag);
             image->setAnchorPoint(ccp(0, 0));
-            image->setIsVisible(true);
+            image->setVisible(true);
         }
         
         if (mNormalImage) {
@@ -57,7 +57,7 @@ namespace cocos2d {
         if (image) {
             addChild(image, 0, kDisableTag);
             image->setAnchorPoint(ccp(0, 0));
-            image->setIsVisible(true);
+            image->setVisible(true);
         }
         
         if (mDisabledImage) {
@@ -203,33 +203,33 @@ namespace cocos2d {
     }
     
     void CCMenuItemProgressTimer::setIsEnabled(bool bEnabled) {
-        CCMenuItem::setIsEnabled(bEnabled);
+        CCMenuItem::setEnabled(bEnabled);
         
         if(!bEnabled) {
-            mProgressTimer->setIsVisible(false);
+            mProgressTimer->setVisible(false);
         } else {
-            mProgressTimer->setIsVisible(true);
+            mProgressTimer->setVisible(true);
         }
         
         if (bEnabled)
         {
-            mNormalImage->setIsVisible(true);
+            mNormalImage->setVisible(true);
             
             if (mDisabledImage)
             {
-                mDisabledImage->setIsVisible(false);
+                mDisabledImage->setVisible(false);
             }
         }
         else
         {
             if (mDisabledImage)
             {
-                mDisabledImage->setIsVisible(true);
-                mNormalImage->setIsVisible(false);
+                mDisabledImage->setVisible(true);
+                mNormalImage->setVisible(false);
             }
             else
             {
-                mNormalImage->setIsVisible(true);
+                mNormalImage->setVisible(true);
             }
         }
     }

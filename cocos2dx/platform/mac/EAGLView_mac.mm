@@ -39,7 +39,7 @@
 #import "CCTouch.h"
 #import "CCIMEDispatcher.h"
 #import "CCEventDispatcher.h"
-
+#import "CCEGLView.h"
 
 #define MAX_TOUCHES     11
 
@@ -222,7 +222,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 	
 	float x = local_point.x;
 	float y = [self getHeight] - local_point.y;
-	pTouch->SetTouchInfo(x, y);
+	pTouch->setTouchInfo(0, x, y);
 	
 	CFDictionaryAddValue(touchesIntergerDict, [NSNumber numberWithInt:11], [NSNumber numberWithInt:unUsedIndex]);
 	
@@ -261,7 +261,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 	
 	float x = local_point.x;
 	float y = [self getHeight] - local_point.y;
-	pTouch->SetTouchInfo(x, y);
+	pTouch->setTouchInfo(1, x, y);
 	
 	set.addObject(pTouch);
 	
@@ -292,7 +292,7 @@ static cocos2d::CCTouch *s_pTouches[MAX_TOUCHES];
 	
 	float x = local_point.x;
 	float y = [self getHeight] - local_point.y;
-	pTouch->SetTouchInfo(x, y);
+	pTouch->setTouchInfo(1, x, y);
 	
 	set.addObject(pTouch);
 	CFDictionaryRemoveValue(touchesIntergerDict, [NSNumber numberWithInt:11]);

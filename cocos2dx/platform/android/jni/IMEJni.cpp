@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "IMEJni.h"
-#include "CCIMEDispatcher.h"
+#include "text_input_node/CCIMEDispatcher.h"
 #include "JniHelper.h"
 
 #include <android/log.h>
@@ -46,27 +46,23 @@ extern "C"
 
     void setKeyboardStateJNI(int bOpen)
     {
-		JniMethodInfo t;
+        JniMethodInfo t;
 
-		if (JniHelper::getStaticMethodInfo(t, 
-			"org/cocos2dx/lib/Cocos2dxGLSurfaceView",
-			(bOpen) ? "openIMEKeyboard" : "closeIMEKeyboard",
-			"()V"))
-		{
-			t.env->CallStaticVoidMethod(t.classID, t.methodID);
-			t.env->DeleteLocalRef(t.classID);
-		}
+        if (JniHelper::getStaticMethodInfo(t, 
+            "org/cocos2dx/lib/Cocos2dxGLSurfaceView",
+            (bOpen) ? "openIMEKeyboard" : "closeIMEKeyboard",
+            "()V"))
+        {
+            t.env->CallStaticVoidMethod(t.classID, t.methodID);
+            t.env->DeleteLocalRef(t.classID);
+        }
     }
 
     void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInsertText(JNIEnv* env, jobject thiz, jstring text)
     {
-        jboolean isCopy = 0;
-        const char* pszText = env->GetStringUTFChars(text, &isCopy);
-        if (isCopy) 
-        {
-            cocos2d::CCIMEDispatcher::sharedDispatcher()->dispatchInsertText(pszText, strlen(pszText));
-            env->ReleaseStringUTFChars(text, pszText);
-        }
+        const char* pszText = env->GetStringUTFChars(text, NULL);
+        cocos2d::CCIMEDispatcher::sharedDispatcher()->dispatchInsertText(pszText, strlen(pszText));
+        env->ReleaseStringUTFChars(text, pszText);
     }
 
     void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeDeleteBackward(JNIEnv* env, jobject thiz)

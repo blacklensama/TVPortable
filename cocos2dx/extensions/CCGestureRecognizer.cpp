@@ -2,7 +2,6 @@
 
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 #include "CCGestureRecognizeriOS.h"
-#endif
 
 namespace cocos2d {
 
@@ -80,3 +79,4 @@ namespace cocos2d {
     }
 
 }
+#endif

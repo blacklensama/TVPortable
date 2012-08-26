@@ -66,7 +66,7 @@ void CCTexture2DMutable::setTexData(void *var) {
     
     void CCTexture2DMutable::updateData(unsigned int fbo, unsigned int oldfbo) {
         
-        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, fbo);
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
         
         switch(m_ePixelFormat)
         {
@@ -115,7 +115,7 @@ void CCTexture2DMutable::setTexData(void *var) {
         }
        
         
-        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, oldfbo);
+        glBindFramebuffer(GL_FRAMEBUFFER, oldfbo);
     }
 
 void CCTexture2DMutable::releaseData(void* data)

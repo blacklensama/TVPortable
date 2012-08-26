@@ -44,7 +44,7 @@ public:
 	CCDirectorMac();
 	
 	virtual bool init(void);
-	virtual void setOpenGLView(CC_GLVIEW *pobOpenGLView);
+	virtual void setOpenGLView(CCEGLView *pobOpenGLView);
 	virtual void setProjection(ccDirectorProjection projection);
 	virtual CCSize getWinSizeInPixels(void);
 	virtual CCSize getWinSize(void);
@@ -78,7 +78,7 @@ private:
     
 	// cache
 	//NSWindow		*windowGLView_;
-    CC_GLVIEW       *superViewGLView_;
+    CCEGLView       *superViewGLView_;
     CCRect          originalWinRect_; // Original size and position
 };
 	
@@ -96,7 +96,7 @@ public:
 	
 	
 	virtual void drawScene(void);
-	virtual void setOpenGLView(CC_GLVIEW *view);
+	virtual void setOpenGLView(CCEGLView *view);
 	
 protected:
 	bool m_bInvalid;

@@ -1,6 +1,8 @@
 
+#include <string>
+
 struct TextLine {
-	string sLineStr;
+    std::string sLineStr;
 	int iLineWidth;
 };
 

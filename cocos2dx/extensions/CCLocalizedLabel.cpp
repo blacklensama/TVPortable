@@ -7,14 +7,13 @@
 //
 
 #include "CCLocalizedLabel.h"
-
-#include "CCApplication.h"
+#include "cocos2d.h"
 #include "CCLocalizedStringTable.h"
 
 namespace cocos2d {
     
     inline const char* _current_language_to_language_name() {
-        ccLanguageType lan = CCApplication::getCurrentLanguage();
+        ccLanguageType lan = CCApplication::sharedApplication().getCurrentLanguage();
         switch(lan) {
             case kLanguageChinese: return "zh";
             case kLanguageEnglish: return "en";

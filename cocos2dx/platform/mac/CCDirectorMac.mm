@@ -30,11 +30,10 @@
 #include <sys/time.h>
 #include "CCDirectorMac.h"
 #include "CCEventDispatcher.h"
-#include "CCEGLView_mac.h"
+#include "CCEGLView.h"
 
 #include "cocoa/CCNS.h"
 #include "CCScene.h"
-#include "CCMutableArray.h"
 #include "CCScheduler.h"
 #include "ccMacros.h"
 #include "CCTouchDispatcher.h"
@@ -61,6 +60,106 @@
 
 using namespace cocos2d;
 
+
+void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
+{
+    GLfloat xmin, xmax, ymin, ymax;
+    
+    ymax = zNear * (GLfloat)tanf(fovy * (float)M_PI / 360);
+    ymin = -ymax;
+    xmin = ymin * aspect;
+    xmax = ymax * aspect;
+    
+    
+    
+    glFrustum(xmin, xmax,
+                ymin, ymax,
+                zNear, zFar);
+}
+
+void gluLookAt(float fEyeX, float fEyeY, float fEyeZ,
+               float fCenterX, float fCenterY, float fCenterZ,
+               float fUpX, float fUpY, float fUpZ)
+{
+    GLfloat m[16];
+    GLfloat x[3], y[3], z[3];
+    GLfloat mag;
+    
+    /* Make rotation matrix */
+    
+    /* Z vector */
+    z[0] = fEyeX - fCenterX;
+    z[1] = fEyeY - fCenterY;
+    z[2] = fEyeZ - fCenterZ;
+    mag = (float)sqrtf(z[0] * z[0] + z[1] * z[1] + z[2] * z[2]);
+    if (mag) {
+        z[0] /= mag;
+        z[1] /= mag;
+        z[2] /= mag;
+    }
+    
+    /* Y vector */
+    y[0] = fUpX;
+    y[1] = fUpY;
+    y[2] = fUpZ;
+    
+    /* X vector = Y cross Z */
+    x[0] = y[1] * z[2] - y[2] * z[1];
+    x[1] = -y[0] * z[2] + y[2] * z[0];
+    x[2] = y[0] * z[1] - y[1] * z[0];
+    
+    /* Recompute Y = Z cross X */
+    y[0] = z[1] * x[2] - z[2] * x[1];
+    y[1] = -z[0] * x[2] + z[2] * x[0];
+    y[2] = z[0] * x[1] - z[1] * x[0];
+    
+    /* cross product gives area of parallelogram, which is < 1.0 for
+     * non-perpendicular unit-length vectors; so normalize x, y here
+     */
+    
+    mag = (float)sqrtf(x[0] * x[0] + x[1] * x[1] + x[2] * x[2]);
+    if (mag) {
+        x[0] /= mag;
+        x[1] /= mag;
+        x[2] /= mag;
+    }
+    
+    mag = (float)sqrtf(y[0] * y[0] + y[1] * y[1] + y[2] * y[2]);
+    if (mag) {
+        y[0] /= mag;
+        y[1] /= mag;
+        y[2] /= mag;
+    }
+    
+#define M(row,col)  m[col*4+row]
+    M(0, 0) = x[0];
+    M(0, 1) = x[1];
+    M(0, 2) = x[2];
+    M(0, 3) = 0.0f;
+    M(1, 0) = y[0];
+    M(1, 1) = y[1];
+    M(1, 2) = y[2];
+    M(1, 3) = 0.0f;
+    M(2, 0) = z[0];
+    M(2, 1) = z[1];
+    M(2, 2) = z[2];
+    M(2, 3) = 0.0f;
+    M(3, 0) = 0.0f;
+    M(3, 1) = 0.0f;
+    M(3, 2) = 0.0f;
+    M(3, 3) = 1.0f;
+#undef M
+    {
+        int a;
+        GLfloat fixedM[16];
+        for (a = 0; a < 16; ++a)
+            fixedM[a] = m[a];
+        glMultMatrixf(fixedM);
+    }
+    
+    /* Translate Eye to Origin */
+    glTranslatef(-fEyeX, -fEyeY, -fEyeZ);
+}
 
 
 namespace cocos2d {
@@ -149,7 +248,7 @@ void CCDirectorMac::setProjection(ccDirectorProjection projection)
 			glViewport(offset.x, offset.y, widthAspect, heightAspect);
 			glMatrixMode(GL_PROJECTION);
 			glLoadIdentity();
-			ccglOrtho(0, size.width, 0, size.height, -1024, 1024);
+			glOrtho(0, size.width, 0, size.height, -1024, 1024);
 			glMatrixMode(GL_MODELVIEW);
 			glLoadIdentity();
 			break;
@@ -251,7 +350,7 @@ void CCDisplayLinkDirectorMac::mainLoop(void)
 		drawScene();
 		
 		// release the objects
-		CCPoolManager::getInstance()->pop();		
+		CCPoolManager::sharedPoolManager()->pop();
 	}
 }
 
@@ -281,70 +380,15 @@ void CCDisplayLinkDirectorMac::drawScene(void)
 	EAGLView *openGLView_ = (EAGLView*)[EAGLView sharedEGLView];
 	CGLLockContext((CGLContextObj)[[openGLView_ openGLContext] CGLContextObj]);
 	[[openGLView_ openGLContext] makeCurrentContext];
-	
-	/* calculate "global" dt */
-	calculateDeltaTime();
-	
-	/* tick before glClear: issue #533 */
-	if( ! m_bPaused ) {
-		CCScheduler::sharedScheduler()->tick(m_fDeltaTime);	
-	}
-	
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	/* to avoid flickr, nextScene MUST be here: after tick and before draw.
-	 XXX: Which bug is this one. It seems that it can't be reproduced with v0.9 */
-	if( m_pNextScene )
-	{
-		setNextScene();
-	}
-	
-	glPushMatrix();
-	
-	
-	// By default enable VertexArray, ColorArray, TextureCoordArray and Texture2D
-	CC_ENABLE_DEFAULT_GL_STATES();
-	
-	/* draw the scene */
-	if (m_pRunningScene)
-    {
-        m_pRunningScene->visit();
-    }
-	
-	/* draw the notification node */
-	if (m_pNotificationNode)
-	{
-		m_pNotificationNode->visit();
-	}
-	
-	if (m_bDisplayFPS)
-	{
-		showFPS();
-	}
     
-    if(!m_bPaused)
-        [[CCEventDispatcher sharedDispatcher] dispatchQueuedEvents];
-	
-//	if (m_pWatcherFun && m_pWatcherSender)
-//	{
-//		(*m_pWatcherFun)(m_pWatcherSender);
-//	}
-	
-#if CC_ENABLE_PROFILERS
-	showProfilers();
-#endif
-	
-	CC_DISABLE_DEFAULT_GL_STATES();
-	
-	glPopMatrix();
-	
-	
-	[[openGLView_ openGLContext] flushBuffer];	
+    CCDirector::drawScene();
+    
+	[[openGLView_ openGLContext] flushBuffer];
 	CGLUnlockContext((CGLContextObj)[[openGLView_ openGLContext] CGLContextObj]);	
 }
 
 // set the event dispatcher
-void CCDisplayLinkDirectorMac::setOpenGLView(CC_GLVIEW *view)
+void CCDisplayLinkDirectorMac::setOpenGLView(CCEGLView *view)
 {
 	if( view != m_pobOpenGLView ) {
 		

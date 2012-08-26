@@ -38,8 +38,8 @@ namespace cocos2d {
         virtual const ccColor3B& getColor();
         virtual void setOpacity(GLubyte opacity);
         virtual GLubyte getOpacity();
-        virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-        virtual bool getIsOpacityModifyRGB(void) { return false;}
+        virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+        virtual bool isOpacityModifyRGB(void) { return false;}
         
         virtual void activate();
         virtual void selected();

@@ -23,6 +23,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
+
+/*
+	A CCRenderTexture extension that supports modifying the rendered texture with CCTexture2DMutable
+	Copyright (c) 2012 Robert Bu(Studio Symphonie). All rights reserved.
+*/
+
 #include "CCConfiguration.h"
 #include "CCRenderTextureMutable.h"
 #include "CCDirector.h"
@@ -34,6 +40,9 @@ THE SOFTWARE.
 #include "CCGL.h"
 #include "CCRenderTexture.h"
 
+#include "kazmath/kazmath.h"
+#include "kazmath/GL/matrix.h"
+
 namespace cocos2d { 
 
 // implementation CCRenderTextureMutable
@@ -43,6 +52,7 @@ CCRenderTextureMutable::CCRenderTextureMutable()
 , m_nOldFBO(0)
 , m_pTexture(0)
 , m_pUITextureImage(NULL)
+, m_uDepthRenderBufffer(0)
 , m_ePixelFormat(kCCTexture2DPixelFormat_RGBA8888)
 {
 }
@@ -50,7 +60,7 @@ CCRenderTextureMutable::CCRenderTextureMutable()
 CCRenderTextureMutable::~CCRenderTextureMutable()
 {
     removeAllChildrenWithCleanup(true);
-    ccglDeleteFramebuffers(1, &m_uFBO);
+    glDeleteFramebuffers(1, &m_uFBO);
 
 	CC_SAFE_DELETE(m_pUITextureImage);
 }
@@ -86,7 +96,7 @@ CCRenderTextureMutable * CCRenderTextureMutable::renderTextureWithWidthAndHeight
 		pRet->autorelease();
 		return pRet;
 	}
-	CC_SAFE_DELETE(pRet)
+	CC_SAFE_DELETE(pRet);
 	return NULL;
 }
 
@@ -94,93 +104,136 @@ bool CCRenderTextureMutable::initWithWidthAndHeight(int w, int h, CCTexture2DPix
 {
 	// If the gles version is lower than GLES_VER_1_0, 
 	// some extended gles functions can't be implemented, so return false directly.
-	if (CCConfiguration::sharedConfiguration()->getGlesVersion() <= GLES_VER_1_0)
+/*	if (CCConfiguration::sharedConfiguration()->getGlesVersion() <= GLES_VER_1_0)
 	{
 		return false;
-	}
-
+	}*/
+    CCAssert(m_ePixelFormat != kCCTexture2DPixelFormat_A8, "only RGB and RGBA formats are valid for a render texture");
+    
     bool bRet = false;
-    do 
+    do
     {
         w *= (int)CC_CONTENT_SCALE_FACTOR();
         h *= (int)CC_CONTENT_SCALE_FACTOR();
-
-        glGetIntegerv(CC_GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
-
+        
+        glGetIntegerv(GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
+        
         // textures must be power of two squared
-        unsigned int powW = ccNextPOT(w);
-        unsigned int powH = ccNextPOT(h);
-
+        unsigned int powW = 0;
+        unsigned int powH = 0;
+        
+        if( CCConfiguration::sharedConfiguration()->supportsNPOT() ) {
+            powW = w;
+            powH = h;
+        } else {
+            powW = ccNextPOT(w);
+            powH = ccNextPOT(h);
+        }
+        
         void *data = malloc((int)(powW * powH * 4));
         CC_BREAK_IF(! data);
-
+        
         memset(data, 0, (int)(powW * powH * 4));
         m_ePixelFormat = eFormat;
-
+        
         m_pTexture = new CCTexture2DMutable();
         CC_BREAK_IF(! m_pTexture);
-
+        
         m_pTexture->initWithData(data, (CCTexture2DPixelFormat)m_ePixelFormat, powW, powH, CCSizeMake((float)w, (float)h));
         free( data );
-
+        
+        GLint oldRBO;
+        glGetIntegerv(GL_RENDERBUFFER_BINDING, &oldRBO);
+        
         // generate FBO
-        ccglGenFramebuffers(1, &m_uFBO);
-        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, m_uFBO);
-
+        glGenFramebuffers(1, &m_uFBO);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_uFBO);
+        
         // associate texture with FBO
-        ccglFramebufferTexture2D(CC_GL_FRAMEBUFFER, CC_GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_pTexture->getName(), 0);
-
-        // check if it worked (probably worth doing :) )
-        GLuint status = ccglCheckFramebufferStatus(CC_GL_FRAMEBUFFER);
-        if (status != CC_GL_FRAMEBUFFER_COMPLETE)
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_pTexture->getName(), 0);
+        
+        if (m_uDepthRenderBufffer != 0)
         {
-            CCAssert(0, "Render Texture : Could not attach texture to framebuffer");
-            CC_SAFE_DELETE(m_pTexture);
-            break;
+            GLuint uDepthStencilFormat = CC_GL_DEPTH24_STENCIL8;
+            
+            //create and attach depth buffer
+            glGenRenderbuffers(1, &m_uDepthRenderBufffer);
+            glBindRenderbuffer(GL_RENDERBUFFER, m_uDepthRenderBufffer);
+            glRenderbufferStorage(GL_RENDERBUFFER, uDepthStencilFormat, powW, powH);
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_uDepthRenderBufffer);
+            
+            // if depth format is the one with stencil part, bind same render buffer as stencil attachment
+            if (uDepthStencilFormat == CC_GL_DEPTH24_STENCIL8)
+                glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, m_uDepthRenderBufffer);
         }
-
+        
+        
+        // check if it worked (probably worth doing :) )
+        CCAssert(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "Could not attach texture to framebuffer");
+        
         m_pTexture->setAliasTexParameters();
-
-        m_pSprite = CCSprite::spriteWithTexture(m_pTexture);
-
+        
+        m_pSprite = CCSprite::create(m_pTexture);
+        
         m_pTexture->release();
         m_pSprite->setScaleY(-1);
         this->addChild(m_pSprite);
-
+        
         ccBlendFunc tBlendFunc = {GL_ONE, GL_ONE_MINUS_SRC_ALPHA };
         m_pSprite->setBlendFunc(tBlendFunc);
-
-        ccglBindFramebuffer(CC_GL_FRAMEBUFFER, m_nOldFBO);
+        
+        glBindRenderbuffer(GL_RENDERBUFFER, oldRBO);
+        glBindFramebuffer(GL_FRAMEBUFFER, m_nOldFBO);
         bRet = true;
     } while (0);
-    return bRet;
     
+    return bRet;
 }
 
 void CCRenderTextureMutable::begin()
 {
 	// Save the current matrix
-	glPushMatrix();
+	//glPushMatrix();
 
 	const CCSize& texSize = m_pTexture->getContentSizeInPixels();
 
 	// Calculate the adjustment ratios based on the old and new projections
-	CCSize size = CCDirector::sharedDirector()->getDisplaySizeInPixels();
+	CCSize size = CCDirector::sharedDirector()->getWinSizeInPixels();
 	float widthRatio = size.width / texSize.width;
 	float heightRatio = size.height / texSize.height;
-
-	// Adjust the orthographic propjection and viewport
-	ccglOrtho((float)-1.0 / widthRatio,  
+    CCDirector *director = CCDirector::sharedDirector();
+    
+    glViewport(0, 0, (GLsizei)(size.width * CC_CONTENT_SCALE_FACTOR()), (GLsizei)(size.height * CC_CONTENT_SCALE_FACTOR()) );
+   /* kmGLMatrixMode(KM_GL_PROJECTION);
+    kmGLLoadIdentity();
+    
+    kmMat4 orthoMatrix;
+    kmMat4OrthographicProjection(&orthoMatrix,
+                                 (float)-1.0 / widthRatio * CC_CONTENT_SCALE_FACTOR(),
+                                 (float)1.0 / widthRatio * CC_CONTENT_SCALE_FACTOR(),
+                                 (float)-1.0 / heightRatio * CC_CONTENT_SCALE_FACTOR(),
+                                 (float)1.0 / heightRatio * CC_CONTENT_SCALE_FACTOR(),
+                                 -1,
+                                 1);
+    kmGLMultMatrix( &orthoMatrix );
+    
+    kmGLMatrixMode(KM_GL_MODELVIEW);
+    kmGLLoadIdentity();
+    
+    
+    ccSetProjectionMatrixDirty();
+	*/// Adjust the orthographic propjection and viewport
+/*	glOrtho((float)-1.0 / widthRatio,
               (float)1.0 / widthRatio, 
               (float)-1.0 / heightRatio, 
               (float)1.0 / heightRatio, 
               -1,
-              1);
+              1);*/
     glViewport(0, 0, (GLsizei)texSize.width, (GLsizei)texSize.height);
 //     CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, texSize.width, texSize.height);
 
-	glGetIntegerv(CC_GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
-	ccglBindFramebuffer(CC_GL_FRAMEBUFFER, m_uFBO);//Will direct drawing to the frame buffer created above
+	glGetIntegerv(GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
+	glBindFramebuffer(GL_FRAMEBUFFER, m_uFBO);//Will direct drawing to the frame buffer created above
 
 	// Issue #1145
 	// There is no need to enable the default GL states here
@@ -192,7 +245,7 @@ void CCRenderTextureMutable::begin()
 	// If you understand the above mentioned message, then you can comment the following line
 	// and enable the gl states manually, in case you need them.
 
-	CC_ENABLE_DEFAULT_GL_STATES();	
+//	CC_ENABLE_DEFAULT_GL_STATES();
 }
 
 void CCRenderTextureMutable::beginWithClear(float r, float g, float b, float a)
@@ -212,12 +265,12 @@ void CCRenderTextureMutable::beginWithClear(float r, float g, float b, float a)
 
 void CCRenderTextureMutable::end(bool bIsTOCacheTexture)
 {
-	ccglBindFramebuffer(CC_GL_FRAMEBUFFER, m_nOldFBO);
+	glBindFramebuffer(GL_FRAMEBUFFER, m_nOldFBO);
 	// Restore the original matrix and viewport
-	glPopMatrix();
-	CCSize size = CCDirector::sharedDirector()->getDisplaySizeInPixels();
-	//	glViewport(0, 0, (GLsizei)size.width, (GLsizei)size.height);
-	CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, size.width, size.height);
+	//glPopMatrix();
+	CCSize size = CCDirector::sharedDirector()->getWinSizeInPixels();
+    glViewport(0, 0, (GLsizei)size.width, (GLsizei)size.height);
+	//CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, size.width, size.height);
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
 	if (bIsTOCacheTexture)
@@ -240,10 +293,10 @@ void CCRenderTextureMutable::end(bool bIsTOCacheTexture)
 	}
 #endif
     
-#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS && CC_TARGET_PLATFORM != CC_PLATFORM_WIN32
+#if CC_TARGET_PLATFORM != CC_PLATFORM_IOS && CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 && CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
     m_pTexture->updateData();
 #else
-    // on ios, we need to read the fbo directly cause there's no glGetTexImage in opengles
+    // on ios & android, we need to read the fbo directly cause there's no glGetTexImage in opengles
     m_pTexture->updateData(m_uFBO, m_nOldFBO);
 #endif
 }
@@ -270,13 +323,13 @@ bool CCRenderTextureMutable::saveBuffer(const char *szFilePath, int x, int y, in
 bool CCRenderTextureMutable::saveBuffer(int format, const char *fileName, int x, int y, int nWidth, int nHeight)
 {
 	bool bRet = false;
-	CCAssert(format == kCCImageFormatJPG || format == kCCImageFormatPNG,
+	CCAssert(format == kCCImageFormatJPEG || format == kCCImageFormatPNG,
 			 "the image can only be saved as JPG or PNG format");
 
 	CCImage *pImage = new CCImage();
 	if (pImage != NULL && getUIImageFromBuffer(pImage, x, y, nWidth, nHeight))
 	{
-		std::string fullpath = CCFileUtils::getWriteablePath() + fileName;
+		std::string fullpath = CCFileUtils::sharedFileUtils()->getWriteablePath() + fileName;
 		
 		bRet = pImage->saveToFile(fullpath.c_str());
 	}
@@ -375,94 +428,6 @@ bool CCRenderTextureMutable::getUIImageFromBuffer(CCImage *pImage, int x, int y,
 	return bRet;
 }
 
-
-CCData * CCRenderTextureMutable::getUIImageAsDataFromBuffer(int format)
-{
-    CC_UNUSED_PARAM(format);
-    CCData *  pData     = NULL;
-//@ todo CCRenderTextureMutable::getUIImageAsDataFromBuffer
-
-// #include "Availability.h"
-// #include "UIKit.h"
-
-//     GLubyte * pBuffer   = NULL;
-//     GLubyte * pPixels   = NULL;
-//     do 
-//     {
-//         CC_BREAK_IF(! m_pTexture);
-// 
-//         CCAssert(m_ePixelFormat == kCCTexture2DPixelFormat_RGBA8888, "only RGBA8888 can be saved as image");
-// 
-//         const CCSize& s = m_pTexture->getContentSizeInPixels();
-//         int tx = s.width;
-//         int ty = s.height;
-// 
-//         int bitsPerComponent = 8;
-//         int bitsPerPixel = 32;
-// 
-//         int bytesPerRow = (bitsPerPixel / 8) * tx;
-//         int myDataLength = bytesPerRow * ty;
-// 
-//         CC_BREAK_IF(! (pBuffer = new GLubyte[tx * ty * 4]));
-//         CC_BREAK_IF(! (pPixels = new GLubyte[tx * ty * 4]));
-// 
-//         this->begin();
-//         glReadPixels(0,0,tx,ty,GL_RGBA,GL_UNSIGNED_BYTE, pBuffer);
-//         this->end();
-// 
-//         int x,y;
-// 
-//         for(y = 0; y <ty; y++) {
-//             for(x = 0; x <tx * 4; x++) {
-//                 pPixels[((ty - 1 - y) * tx * 4 + x)] = pBuffer[(y * 4 * tx + x)];
-//             }
-//         }
-// 
-//         if (format == kCCImageFormatRawData)
-//         {
-//             pData = CCData::dataWithBytesNoCopy(pPixels, myDataLength);
-//             break;
-//         }
-
-        //@ todo impliment save to jpg or png
-        /*
-        CGImageCreate(size_t width, size_t height,
-        size_t bitsPerComponent, size_t bitsPerPixel, size_t bytesPerRow,
-        CGColorSpaceRef space, CGBitmapInfo bitmapInfo, CGDataProviderRef provider,
-        const CGFloat decode[], bool shouldInterpolate,
-        CGColorRenderingIntent intent)
-        */
-        // make data provider with data.
-//         CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast | kCGBitmapByteOrderDefault;
-//         CGDataProviderRef provider		= CGDataProviderCreateWithData(NULL, pixels, myDataLength, NULL);
-//         CGColorSpaceRef colorSpaceRef	= CGColorSpaceCreateDeviceRGB();
-//         CGImageRef iref					= CGImageCreate(tx, ty,
-//             bitsPerComponent, bitsPerPixel, bytesPerRow,
-//             colorSpaceRef, bitmapInfo, provider,
-//             NULL, false,
-//             kCGRenderingIntentDefault);
-// 
-//         UIImage* image					= [[UIImage alloc] initWithCGImage:iref];
-// 
-//         CGImageRelease(iref);	
-//         CGColorSpaceRelease(colorSpaceRef);
-//         CGDataProviderRelease(provider);
-// 
-// 
-// 
-//         if (format == kCCImageFormatPNG)
-//             data = UIImagePNGRepresentation(image);
-//         else
-//             data = UIImageJPEGRepresentation(image, 1.0f);
-// 
-//         [image release];
-//     } while (0);
-//     
-//     CC_SAFE_DELETE_ARRAY(pBuffer);
-//     CC_SAFE_DELETE_ARRAY(pPixels);
-	return pData;
-}
-    
     CCTexture2DMutable* CCRenderTextureMutable::getTexture() const {
         return m_pTexture;
     }

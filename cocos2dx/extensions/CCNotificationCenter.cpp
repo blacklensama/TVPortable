@@ -143,7 +143,7 @@ CCNotificationObserver::CCNotificationObserver(CCObject *target,
     m_name = new char[strlen(name)+1];
     memset(m_name,0,strlen(name)+1);
     
-    string orig (name);
+    std::string orig (name);
     orig.copy(m_name,strlen(name),0);
 }
 
