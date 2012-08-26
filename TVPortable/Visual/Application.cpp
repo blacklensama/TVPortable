@@ -166,6 +166,10 @@ void Application::applicationDidEnterBackground() {
     
 }
 
+Window* Application::getMainWindow() const {
+    return mMainWindow;
+}
+
 void Application::applicationWillEnterForeground() {
     
 }
