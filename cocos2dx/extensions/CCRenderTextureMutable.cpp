@@ -193,59 +193,27 @@ bool CCRenderTextureMutable::initWithWidthAndHeight(int w, int h, CCTexture2DPix
 void CCRenderTextureMutable::begin()
 {
 	// Save the current matrix
-	//glPushMatrix();
-
-	const CCSize& texSize = m_pTexture->getContentSizeInPixels();
-
-	// Calculate the adjustment ratios based on the old and new projections
-	CCSize size = CCDirector::sharedDirector()->getWinSizeInPixels();
-	float widthRatio = size.width / texSize.width;
-	float heightRatio = size.height / texSize.height;
-    CCDirector *director = CCDirector::sharedDirector();
+    kmGLPushMatrix();
     
-    glViewport(0, 0, (GLsizei)(size.width * CC_CONTENT_SCALE_FACTOR()), (GLsizei)(size.height * CC_CONTENT_SCALE_FACTOR()) );
-   /* kmGLMatrixMode(KM_GL_PROJECTION);
-    kmGLLoadIdentity();
+    const CCSize& texSize = m_pTexture->getContentSizeInPixels();
+    
+    // Calculate the adjustment ratios based on the old and new projections
+    CCDirector *director = CCDirector::sharedDirector();
+    CCSize size = director->getWinSizeInPixels();
+    float widthRatio = size.width / texSize.width;
+    float heightRatio = size.height / texSize.height;
+    
+    // Adjust the orthographic projection and viewport
+    glViewport(0, 0, (GLsizei)texSize.width, (GLsizei)texSize.height);
+    
     
     kmMat4 orthoMatrix;
-    kmMat4OrthographicProjection(&orthoMatrix,
-                                 (float)-1.0 / widthRatio * CC_CONTENT_SCALE_FACTOR(),
-                                 (float)1.0 / widthRatio * CC_CONTENT_SCALE_FACTOR(),
-                                 (float)-1.0 / heightRatio * CC_CONTENT_SCALE_FACTOR(),
-                                 (float)1.0 / heightRatio * CC_CONTENT_SCALE_FACTOR(),
-                                 -1,
-                                 1);
-    kmGLMultMatrix( &orthoMatrix );
+    kmMat4OrthographicProjection(&orthoMatrix, (float)-1.0 / widthRatio,  (float)1.0 / widthRatio,
+                                 (float)-1.0 / heightRatio, (float)1.0 / heightRatio, -1,1 );
+    kmGLMultMatrix(&orthoMatrix);
     
-    kmGLMatrixMode(KM_GL_MODELVIEW);
-    kmGLLoadIdentity();
-    
-    
-    ccSetProjectionMatrixDirty();
-	*/// Adjust the orthographic propjection and viewport
-/*	glOrtho((float)-1.0 / widthRatio,
-              (float)1.0 / widthRatio, 
-              (float)-1.0 / heightRatio, 
-              (float)1.0 / heightRatio, 
-              -1,
-              1);*/
-    glViewport(0, 0, (GLsizei)texSize.width, (GLsizei)texSize.height);
-//     CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, texSize.width, texSize.height);
-
-	glGetIntegerv(GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
-	glBindFramebuffer(GL_FRAMEBUFFER, m_uFBO);//Will direct drawing to the frame buffer created above
-
-	// Issue #1145
-	// There is no need to enable the default GL states here
-	// but since CCRenderTextureMutable is mostly used outside the "render" loop
-	// these states needs to be enabled.
-	// Since this bug was discovered in API-freeze (very close of 1.0 release)
-	// This bug won't be fixed to prevent incompatibilities with code.
-	// 
-	// If you understand the above mentioned message, then you can comment the following line
-	// and enable the gl states manually, in case you need them.
-
-//	CC_ENABLE_DEFAULT_GL_STATES();
+    glGetIntegerv(GL_FRAMEBUFFER_BINDING, &m_nOldFBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, m_uFBO);
 }
 
 void CCRenderTextureMutable::beginWithClear(float r, float g, float b, float a)
@@ -266,32 +234,22 @@ void CCRenderTextureMutable::beginWithClear(float r, float g, float b, float a)
 void CCRenderTextureMutable::end(bool bIsTOCacheTexture)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, m_nOldFBO);
-	// Restore the original matrix and viewport
-	//glPopMatrix();
-	CCSize size = CCDirector::sharedDirector()->getWinSizeInPixels();
-    glViewport(0, 0, (GLsizei)size.width, (GLsizei)size.height);
-	//CCDirector::sharedDirector()->getOpenGLView()->setViewPortInPoints(0, 0, size.width, size.height);
-
-#if CC_ENABLE_CACHE_TEXTTURE_DATA
-	if (bIsTOCacheTexture)
-	{
-		CC_SAFE_DELETE(m_pUITextureImage);
-
-		// to get the rendered texture data
-		const CCSize& s = m_pTexture->getContentSizeInPixels();
-		int tx = (int)s.width;
-		int ty = (int)s.height;
-		m_pUITextureImage = new CCImage;
-		if (true == getUIImageFromBuffer(m_pUITextureImage, 0, 0, tx, ty))
-		{
-			VolatileTexture::addDataTexture(m_pTexture, m_pUITextureImage->getData(), kTexture2DPixelFormat_RGBA8888, s);
-		} 
-		else
-		{
-			CCLOG("Cache rendertexture failed!");
-		}
-	}
-#endif
+    kmGLPopMatrix();
+    
+    CCDirector *director = CCDirector::sharedDirector();
+    
+    CCSize size = director->getWinSizeInPixels();
+    
+    // restore viewport
+    glViewport(0, 0, GLsizei(size.width * CC_CONTENT_SCALE_FACTOR()), GLsizei(size.height * CC_CONTENT_SCALE_FACTOR()));
+    
+    // special viewport for 3d projection + retina display
+    if ( director->getProjection() == kCCDirectorProjection3D && CC_CONTENT_SCALE_FACTOR() != 1 )
+    {
+        glViewport((GLsizei)(-size.width/2), (GLsizei)(-size.height/2), (GLsizei)(size.width * CC_CONTENT_SCALE_FACTOR()), (GLsizei)(size.height * CC_CONTENT_SCALE_FACTOR()));
+    }
+    
+    director->setProjection(director->getProjection());
     
 #if CC_TARGET_PLATFORM != CC_PLATFORM_IOS && CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 && CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID
     m_pTexture->updateData();
